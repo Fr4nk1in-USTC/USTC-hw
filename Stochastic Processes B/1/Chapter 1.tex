@@ -1,4 +1,4 @@
-\documentclass{homework}
+\documentclass[boxes]{homework}
 
 % This is a slightly-more-than-minimal document that uses the homework class.
 % See the README at http://git.io/vZWL0 for complete documentation.
@@ -8,15 +8,209 @@
 \course{随机过程 B}    % Replace (Course Name) with the course name.
 \hwnum{1}          % Replace (Number) with the number of the homework.
 \hwname{作业}    
-\problemname{问题}    
+\problemname{习题}    
 \solutionname{解:}
 
 % Load any other packages you need here.
-\usepackage{geometry}
-\geometry{a4paper,scale = 0.75}
-
+\usepackage[
+    a4paper,
+    top = 2.54cm,
+    bottom = 2.54cm,
+    left = 1.91cm,
+    right = 1.91cm,
+    includeheadfoot
+]{geometry}
+\fancyfootoffset{0pt} % make fancyhdr work properly
 \usepackage{ctex}
 
 \begin{document}
+\problemnumber{2}
+\begin{problem}
+记 $U_1, \cdots, U_n$ 为在 $(0,1)$ 中均匀分布的独立随机变量. 对 $0<t,x<1$ 定义
+\begin{equation}
+    I(t,x) = \begin{cases}
+        1, & x \le t, \\
+        0, & x > t,
+    \end{cases}
+\end{equation}
+并记 $\displaystyle X(t) = \frac{1}{n}\sum_{k = 1}^nI(t, U_k), 0 \le t \le 1$, 这是 $U_1, \cdots, U_n$ 的经验分布函数. 试求过程 $X(t)$ 的均值和协方差函数.
+\end{problem}
+\begin{solution}
+    $X(t)$ 的均值
+    \begin{align}
+        \begin{aligned}
+            \mu_X(t) &= E[X(t)]\\
+            &= E\left[\frac{1}{n}\sum_{k = 1}^nI(t, U_k)\right]\\
+            &= \frac{1}{n}\sum_{k = 1}^nE\left[I(t, U_k)\right]\\
+            &= \frac{1}{n}\sum_{k = 1}^nt\\
+            &= t
+        \end{aligned}
+    \end{align}
+    $X(t)$ 的协方差函数
+    \begin{align}
+        \begin{aligned}
+            R_X(t, s) &=E[(X(t) - t)(X(s) - s)]\\
+            &=E[X(t)X(s)-tX(s)-sX(t)+ts]\\
+            &=E[X(t)X(s)]-ts\\
+            &=\frac{1}{n^2}E\left[\left(\sum_{i = 1}^n I(t, U_i)\right)\left(\sum_{j = 1}^nI(s, U_j)\right)\right] - ts\\
+            &=\frac{1}{n^2}E\left[\sum_{i = 1}^n I(t, U_i)I(s,U_i)+\sum_{i=1}^n\sum_{\substack{j = 1\\j\not=i}}^nI(t, U_i)I(s,U_i)\right]-ts\\
+            &=\frac{1}{n^2}E\left[\sum_{i = 1}^nI(\min\{t,s\},U_i)\right]+\frac{1}{n^2}\sum_{i=1}^nE\left\{I(t,U_i)\right\}E\left[\sum_{\substack{j = 1\\j\not=i}}^nI(s,U_i)\right]-ts\\
+            &=\frac{n\min\{t,s\}+n(n-1)ts}{n^2}-ts\\
+            &=\frac{\min\{t,s\}-ts}{n}
+        \end{aligned}
+    \end{align}
+\end{solution}
+\problemnumber{3}
+\begin{problem}
+    令 $Z_1, Z_2$ 为独立的正态分布随机变量, 均值为 $0$, 方差为 $\sigma^2$, $\lambda$ 为实数. 定义过程 $X(t) = Z_1\cos\lambda t + Z_2\sin\lambda t$. 试求 $X(t)$ 的均值函数和协方差函数. 它是宽平稳的吗?
+\end{problem}
+\begin{solution}
+    $X(t)$ 的均值函数为
+    \begin{align}
+        \begin{aligned}
+            \mu_X(t) &= E[X(t)]\\
+            &= \cos\lambda tE[Z_1]+\sin\lambda tE[Z_2]\\
+            &= 0
+        \end{aligned}
+    \end{align}
+    $X(t)$ 的协方差函数为
+    \begin{align}
+        \begin{aligned}
+            \label{eq:3.2}
+            R_X(t, s) &= E[X(t)X(s)]\\
+            &= E[Z_1^2\cos\lambda t\cos\lambda s + Z_2^2\sin\lambda t\sin\lambda s + Z_1Z_2(\cos\lambda t \sin\lambda s + \sin\lambda t\cos\lambda s)]\\
+            &= E[Z_1^2]\cos\lambda t\cos\lambda s + E[Z_2^2]\sin\lambda t\sin\lambda s + Z_1Z_2(\cos\lambda t \sin\lambda s\\
+            &= (\cos\lambda t\cos\lambda s + \sin\lambda t\sin\lambda s)(0 + \sigma^2)\\
+            &= \sigma^2\cos\lambda(t-s)
+        \end{aligned}
+    \end{align}
+    同时, 由式 \ref{eq:3.2} 可知 $E\{X^2(t)\}\equiv \sigma^2<+\infty$, 即二阶矩存在. 而 $\mu_X(t)\equiv 0$ 且 $R_X(t, s)$ 只与 $t-s$ 有关, 因此 $X(t)$ 是宽平稳的.
+\end{solution}
+\problemnumber{9}
+\begin{problem}
+令 $X$ 和 $Y$ 是从单位圆内的均匀分布中随机取一点所得的横坐标和纵坐标, 试计算条件概率
 
+\begin{equation}
+    P\left(\left.X^2+Y^2\ge \frac{3}{4}\ \right\vert\  X>Y\right)
+\end{equation}
+
+\end{problem}
+\begin{solution}
+    由全概率公式, 我们有
+    \begin{align}
+        \label{eq:9.2}
+        P\left(X^2+Y^2\ge \frac{3}{4}\right) &= P\left(X^2+Y^2\ge \frac{3}{4}\ ,\  X=Y\right)\\
+        \label{eq:9.3}
+        &+P\left(X^2+Y^2\ge \frac{3}{4}\ ,\  X>Y\right)\\
+        \label{eq:9.4}
+        &+P\left(X^2+Y^2\ge \frac{3}{4}\ ,\  X<Y\right)
+    \end{align}
+    
+    因为 $P(X=Y)=0$, 所以项 \ref{eq:9.2} 也是 0, 而交换坐标轴的 x, y 轴后 (i.e. 以 $y = x$ 作轴进行对称变换), $X<Y$ 的情况转换为 $X>Y$ 的情况且 $X^2+Y^2$ 不变, 因此 $\displaystyle P(X>Y)=P(X<Y)=\frac{1}{2}$ 且项 \ref{eq:9.3} 和项 \ref{eq:9.4} 相等, 所以有
+
+    \begin{equation}
+        P\left(X^2+Y^2\ge \frac{3}{4}\ ,\  X>Y\right)=\frac{1}{2}P\left(X^2+Y^2\ge \frac{3}{4}\right) = \frac{1}{2}\left(1-\frac{3}{4}\right) = \frac{1}{8}
+    \end{equation}
+
+    因此条件概率 \ref{eq:9.2} 的值为 $\displaystyle\frac{1}{8}/\frac{1}{2}=\frac{1}{4}$
+\end{solution}
+\problemnumber{14}
+\begin{problem}
+    设 $X_1$ 和 $X_2$ 为相互独立的均值为 $\lambda_1$ 和 $\lambda_2$ 的 Poisson 随机变量. 试求 $X_1+X_2$ 的分布, 并计算给定 $X_1+X_2=n$ 时 $X_1$ 的条件分布.
+\end{problem}
+\begin{solution}
+    $X_1+X_2$ 的分布为
+    \begin{align}
+        \begin{aligned}
+            \label{eq:14.1}
+            P\left(X_1+X_2=n\right) &= \sum_{i = 0}^n P(X_1=i)P(X_2=n-i)\\
+            &=\sum_{i = 0}^n \frac{\lambda_1^i\mathrm{e}^{-\lambda_1}}{i!}\cdot\frac{\lambda_2^{n-i}\mathrm{e}^{-\lambda_2}}{(n-i)!}\\
+            &=\frac{\mathrm{e}^{-(\lambda_1+\lambda_2)}}{n!}\sum_{i=0}^n \begin{pmatrix}
+                n\\
+                i
+            \end{pmatrix}\lambda_1^i\lambda_2^{n-i}\\
+            &=\frac{(\lambda_1+\lambda_2)^n\mathrm{e}^{-(\lambda_1+\lambda_2)}}{n!}
+        \end{aligned}
+    \end{align}
+
+    式 \ref{eq:14.1} 说明 $X_1+X_2$ 满足参数为 $\lambda_1+\lambda_2$ 的 Poisson 分布.
+
+    给定 $X_1+X_2=n$ 时 $X_1$ 的条件分布为 ($0\leq m\leq n$)
+    \begin{align}
+        \begin{aligned}
+            P\left(X_1=m\ \vert\ X_1+X_2=n\right)&=\frac{P\left(X_1=m, X_2=n-m\right)}{P\left(X_1+X_2=n\right)}\\
+            &=\frac{\displaystyle\frac{\lambda_1^m\lambda_2^{n-m}e^{-(\lambda_1+\lambda_2)}}{m!(n-m)!}}{\displaystyle\frac{(\lambda_1+\lambda_2)^n\mathrm{e}^{-(\lambda_1+\lambda_2)}}{n!}}\\
+            &=\begin{pmatrix}
+                n\\
+                m
+            \end{pmatrix}
+            \frac{\lambda_1^m\lambda_2^{n-m}}{(\lambda_1+\lambda_2)^n}
+        \end{aligned}
+    \end{align}
+\end{solution}
+\problemnumber{16}
+\begin{problem}
+    若 $X_1, X_2, \cdots$ 独立同分布, $P(X_i=\pm 1)=\displaystyle\frac{1}{2}$. $N$ 与 $X_i, i\geq 1$ 独立且服从参数为 $\beta$ 的几何分布, $0 < \beta < 1$. 试求随机和 $\displaystyle Y=\sum_i^NX_i$ 的均值, 方差和三四阶矩.
+\end{problem}
+\begin{solution}
+    取定 $N=n$, 有
+
+    \begin{gather}
+            E \left(\left.\sum_{i=1}^N X_i\ \right\vert\ N = n\right) = E \left(\sum_{i=1}^n X_i\right)
+            = \sum_{i=1}^n E(X_i) = 0
+        \\
+        \begin{aligned}
+            E \left[\left.\left(\sum_{i=1}^N X_i\right)^2\ \right\vert\ N = n\right] &= E \left[\left(\sum_{i=1}^n X_i\right)^2\right]=E\left(\sum_{i=1}^n\sum_{j=1}^nX_iX_j\right) = \sum_{i=1}^n\sum_{j=1}^n E(X_iX_j) \\
+            &= \sum_{i=1}^n E(X_i^2)+\sum_{i=1}^n\sum_{\substack{j=1\\j\neq i}}^nE(X_iX_j)\\
+            &= n + 0 = n
+        \end{aligned}
+    \end{gather}
+    \begin{gather}
+        \begin{aligned}
+            E \left[\left.\left(\sum_{i=1}^N X_i\right)^3\ \right\vert\ N = n\right] &= E \left[\left(\sum_{i=1}^n X_i\right)^3\right]=E\left(\sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^nX_iX_jX_k\right)\\
+            &= \sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n E(X_iX_jX_k) = 0
+        \end{aligned}
+        \\
+        \begin{aligned}
+            \label{eq:16.4}
+            E \left[\left.\left(\sum_{i=1}^N X_i\right)^4\ \right\vert\ N = n\right] &= E \left[\left(\sum_{i=1}^n X_i\right)^4\right]=E\left(\sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n\sum_{l=1}^nX_iX_jX_kX_l\right)\\
+            &= \sum_{i=1}^n\sum_{j=1}^n\sum_{k=1}^n\sum_{l=1}^nE(X_iX_jX_kX_l)\\
+            &= \sum_{i=1}^n E(X_i^4) + 6\sum_{i=1}^n\sum_{j=i+1}^n I(X_i^2X_j^2)\\
+            &= 3n(n-1)+n=3n^2-2n
+        \end{aligned}
+    \end{gather}
+    
+    (其中式 \ref{eq:16.4} 第三行中的 6 为 $\displaystyle\begin{pmatrix}
+        4\\2
+    \end{pmatrix}$, 即将 4 个 $X$ 等分为两组的情况数)
+
+    而 $N$ 服从参数为 $\beta$ 的几何分布, 即 $P(N=n)=(1-\beta)^{n-1}\beta$.
+    
+    所以随机和 $Y$ 的均值为
+
+    \begin{equation}
+        E(Y)=E[E(Y|N)]=0
+    \end{equation}
+
+    方差为
+
+    \begin{equation}
+        Var(Y)=E(Y^2)-E^2(Y)=E(Y^2)=E[E(Y^2|N)]=E(N)=\frac{1}{\beta}
+    \end{equation}
+
+    三阶矩为
+
+    \begin{equation}
+        E(Y^3)=E[E(Y^3|N)]=0
+    \end{equation}
+
+    四阶矩为
+
+    \begin{align}
+        \begin{aligned}
+            E(Y^4)&=E[E(Y^4|N)]=E(3N^2-2N)=3(Var(N)+E^2(N))-2E(N)\\
+            &=3\left(\frac{1-\beta}{\beta^2}+\frac{1}{\beta^2}\right)-2\frac{1}{\beta}=\frac{6-5\beta}{\beta^2}
+        \end{aligned}
+    \end{align}
+\end{solution}
 \end{document}
