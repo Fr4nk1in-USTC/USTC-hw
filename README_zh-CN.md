@@ -21,5 +21,7 @@
 # 如何完成的?
 主要由 LaTeX 编译而成, 并且语言是中文.
 
+
+感谢 [Artem Mavrin](https://github.com/artemmavrin) 的 LaTeX 作业模板 [The `homework` class](https://github.com/artemmavrin/latex-homework).
 # 许可证
 MIT许可
