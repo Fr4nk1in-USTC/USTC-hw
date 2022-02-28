@@ -24,5 +24,6 @@ Most of them are written in LaTeX, and the natural language is Chinese.
 
 Thanks [Artem Mavrin](https://github.com/artemmavrin) for his LaTeX Homework Template [The `homework` class](https://github.com/artemmavrin/latex-homework).
 
+Thanks [Jake Zimmerman](https://github.com/jez) for his LaTeX Homework Template [LaTeX Homework Class](https://github.com/jez/latex-homework-class).
 # License
 MIT License

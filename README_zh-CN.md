@@ -23,5 +23,7 @@
 
 
 感谢 [Artem Mavrin](https://github.com/artemmavrin) 的 LaTeX 作业模板 [The `homework` class](https://github.com/artemmavrin/latex-homework).
+
+感谢 [Jake Zimmerman](https://github.com/jez) 的 LaTeX 作业模板 [LaTeX Homework Class](https://github.com/jez/latex-homework-class).
 # 许可证
 MIT许可
