@@ -227,7 +227,9 @@
     moredelim       =   *[s][\colorIndex]{[}{]},
     literate        =   *{:}{:}1,
     frame           =   lrtb,
-    frameround      =   tttt
+    frameround      =   tttt,
+    xleftmargin     =   2em,
+    xrightmargin    =   1em
 }
 \lstset{style = code}
 
