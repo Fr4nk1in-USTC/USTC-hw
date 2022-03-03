@@ -1,0 +1,114 @@
+\documentclass[boxes]{homework}
+
+% This is a slightly-more-than-minimal document that uses the homework class.
+% See the README at http://git.io/vZWL0 for complete documentation.
+
+\name{傅申 PB20000051}        % Replace (Your Name) with your name.
+\term{2022 春}     % Replace (Current Term) with the current term.
+\course{数理逻辑基础}    % Replace (Course Name) with the course name.
+\hwnum{1}          % Replace (Number) with the number of the homework.
+\hwname{作业}    
+\problemname{习题}    
+\solutionname{解:}
+
+% Load any other packages you need here.
+\usepackage[
+    a4paper,
+    top = 2.47cm,
+    bottom = 2.47cm,
+    left = 1.91cm,
+    right = 1.91cm,
+    includeheadfoot
+]{geometry}
+\fancyfootoffset{0pt} % make fancyhdr work properly
+\usepackage{ctex}
+
+\begin{document}
+
+\begin{problem}
+列出以下复合命题的真值表. (其中支命题 $p,q,r,s$ 视为问题变元.)
+\begin{parts}
+    \part
+    \label{1.1}
+    $(\lnot p\land q)\to (\lnot q\land r)$
+    \part
+    \label{1.2}
+    $(p\to q)\to (p\to r)$
+    \part
+    \label{1.3}
+    $\lnot (p\lor (q\land r))\leftrightarrow ((p\lor q)\land (p\lor r))$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+\ref{1.1}
+\begin{center}
+    \begin{tabular}{cccc|c|cccc}
+        $(\lnot$ & $p$ & $\land$ & $q)$ & $\to$ & $(\lnot$ & $q$ & $\land$ & $r)$\\
+        \hline
+        1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
+        1 & 0 & 0 & 0 & 1 & 1 & 0 & 1 & 1\\
+        1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 0\\
+        1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1\\
+        0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
+        0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 1\\
+        0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 0\\
+        0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 1
+    \end{tabular}
+\end{center}
+\ref{1.2}
+\begin{center}
+    \begin{tabular}{ccc|c|ccc}
+        $(p$ & $\to$ & $q)$ & $\to$ & $(p$ & $\to$ & $r)$ \\
+        \hline
+        0 & 1 & 0 & 1 & 0 & 1 & 0\\
+        0 & 1 & 0 & 1 & 0 & 1 & 1\\
+        0 & 1 & 1 & 1 & 0 & 1 & 0\\
+        0 & 1 & 1 & 1 & 0 & 1 & 1\\
+        1 & 0 & 0 & 1 & 1 & 0 & 0\\
+        1 & 0 & 0 & 1 & 1 & 1 & 1\\
+        1 & 1 & 1 & 0 & 1 & 0 & 0\\
+        1 & 1 & 1 & 1 & 1 & 1 & 1
+    \end{tabular}
+\end{center}
+\ref{1.3}
+\begin{center}
+    \begin{tabular}{cccccc|c|ccccccc}
+        $\lnot$ & $(p$ & $\lor$ & $(q$ & $\land$ & $r))$ & $\leftrightarrow$ & $((p$ & $\lor$ & $q)$ & $\land$ & $(p$ & $\lor$ & $r))$\\
+        \hline
+        1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+        1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1\\
+        1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0\\
+        0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1\\
+        0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 0\\
+        0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 1\\
+        0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 0\\
+        0 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+    \end{tabular}
+\end{center}
+\end{solution}
+
+\begin{problem}
+    写出由 $X_2=\{x_1, x_2\}$ 生成的公式集 $L(X_2)$ 的三个层次: $L_0$, $L_1$ 和 $L_2$.
+\end{problem}
+\begin{solution}
+    \begin{gather}
+        \begin{aligned}
+            L_0=X_2=\{x_1, x_2\}
+        \end{aligned}\\
+        \begin{aligned}
+            L_1=\{&\lnot x_1, \lnot x_2, x_1\to x_1, x_1 \to x_2, x_2\to x_1, x_2\to x_2\}
+        \end{aligned}\\
+        \begin{aligned}
+            L_2=\{&\lnot(\lnot x_1), \lnot(\lnot x_2),\\
+                  &\lnot(x_1\to x_1), \lnot(x_1\to x_2), \lnot(x_2\to x_1), \lnot(x_2\to x_2),\\
+                  &x_1\to(\lnot x_1), x_1\to (\lnot x_2), x_2\to (\lnot x_1), x_2\to (\lnot x_2),\\
+                  &(\lnot x_1)\to x_1, (\lnot x_1)\to x_2, (\lnot x_2)\to x_1, (\lnot x_2)\to x_2,\\
+                  &x_1\to(x_1\to x_1), x_1\to(x_1\to x_2), x_1\to(x_2\to x_1), x_1\to(x_2\to x_2),\\
+                  &x_2\to(x_1\to x_1), x_2\to(x_1\to x_2), x_2\to(x_2\to x_1), x_2\to(x_2\to x_2),\\
+                  &(x_1\to x_1)\to x_1, (x_1\to x_2)\to x_1, (x_2\to x_1)\to x_1, (x_2\to x_2)\to x_1,\\
+                  &(x_1\to x_1)\to x_2, (x_1\to x_2)\to x_2, (x_2\to x_1)\to x_2, (x_2\to x_2)\to x_2\}
+        \end{aligned}
+    \end{gather}
+\end{solution}
+\end{document}
