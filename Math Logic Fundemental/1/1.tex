@@ -8,7 +8,7 @@
 \course{数理逻辑基础}    % Replace (Course Name) with the course name.
 \hwnum{1}          % Replace (Number) with the number of the homework.
 \hwname{作业}    
-\problemname{习题}    
+\problemname{练习}    
 \solutionname{解:}
 
 % Load any other packages you need here.
@@ -26,70 +26,71 @@
 \begin{document}
 
 \begin{problem}
-列出以下复合命题的真值表. (其中支命题 $p,q,r,s$ 视为问题变元.)
-\begin{parts}
+1. 列出以下复合命题的真值表. (其中支命题 $p,q,r,s$ 视为问题变元.)
+\begin{parts}[n]
+    \setcounter{enumi}{6}
     \part
-    \label{1.1}
+    \label{1.7}
     $(\lnot p\land q)\to (\lnot q\land r)$
     \part
-    \label{1.2}
+    \label{1.8}
     $(p\to q)\to (p\to r)$
     \part
-    \label{1.3}
+    \label{1.9}
     $\lnot (p\lor (q\land r))\leftrightarrow ((p\lor q)\land (p\lor r))$
 \end{parts}
 \end{problem}
 
 \begin{solution}
-\ref{1.1}
-\begin{center}
-    \begin{tabular}{cccc|c|cccc}
-        $(\lnot$ & $p$ & $\land$ & $q)$ & $\to$ & $(\lnot$ & $q$ & $\land$ & $r)$\\
-        \hline
-        1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
-        1 & 0 & 0 & 0 & 1 & 1 & 0 & 1 & 1\\
-        1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 0\\
-        1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1\\
-        0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0\\
-        0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 1\\
-        0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 0\\
-        0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 1
-    \end{tabular}
-\end{center}
-\ref{1.2}
-\begin{center}
-    \begin{tabular}{ccc|c|ccc}
-        $(p$ & $\to$ & $q)$ & $\to$ & $(p$ & $\to$ & $r)$ \\
-        \hline
-        0 & 1 & 0 & 1 & 0 & 1 & 0\\
-        0 & 1 & 0 & 1 & 0 & 1 & 1\\
-        0 & 1 & 1 & 1 & 0 & 1 & 0\\
-        0 & 1 & 1 & 1 & 0 & 1 & 1\\
-        1 & 0 & 0 & 1 & 1 & 0 & 0\\
-        1 & 0 & 0 & 1 & 1 & 1 & 1\\
-        1 & 1 & 1 & 0 & 1 & 0 & 0\\
-        1 & 1 & 1 & 1 & 1 & 1 & 1
-    \end{tabular}
-\end{center}
-\ref{1.3}
-\begin{center}
-    \begin{tabular}{cccccc|c|ccccccc}
-        $\lnot$ & $(p$ & $\lor$ & $(q$ & $\land$ & $r))$ & $\leftrightarrow$ & $((p$ & $\lor$ & $q)$ & $\land$ & $(p$ & $\lor$ & $r))$\\
-        \hline
-        1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-        1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1\\
-        1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0\\
-        0 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1\\
-        0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 0\\
-        0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 1 & 1\\
-        0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 0\\
-        0 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
-    \end{tabular}
-\end{center}
+    \ref{1.7}
+    \begin{center}
+        \begin{tabular}{cccc|c|cccc}
+            $(\lnot$ & $p$ & $\land$ & $q)$ & $\to$ & $(\lnot$ & $q$ & $\land$ & $r)$ \\
+            \hline
+            1        & 0   & 0       & 0    & 1     & 1        & 0   & 0       & 0    \\
+            1        & 0   & 0       & 0    & 1     & 1        & 0   & 1       & 1    \\
+            1        & 0   & 1       & 1    & 0     & 0        & 1   & 0       & 0    \\
+            1        & 0   & 1       & 1    & 0     & 0        & 1   & 0       & 1    \\
+            0        & 1   & 0       & 0    & 1     & 1        & 0   & 0       & 0    \\
+            0        & 1   & 0       & 0    & 1     & 1        & 0   & 1       & 1    \\
+            0        & 1   & 0       & 1    & 1     & 0        & 1   & 0       & 0    \\
+            0        & 1   & 0       & 1    & 1     & 0        & 1   & 0       & 1
+        \end{tabular}
+    \end{center}
+    \ref{1.8}
+    \begin{center}
+        \begin{tabular}{ccc|c|ccc}
+            $(p$ & $\to$ & $q)$ & $\to$ & $(p$ & $\to$ & $r)$ \\
+            \hline
+            0    & 1     & 0    & 1     & 0    & 1     & 0    \\
+            0    & 1     & 0    & 1     & 0    & 1     & 1    \\
+            0    & 1     & 1    & 1     & 0    & 1     & 0    \\
+            0    & 1     & 1    & 1     & 0    & 1     & 1    \\
+            1    & 0     & 0    & 1     & 1    & 0     & 0    \\
+            1    & 0     & 0    & 1     & 1    & 1     & 1    \\
+            1    & 1     & 1    & 0     & 1    & 0     & 0    \\
+            1    & 1     & 1    & 1     & 1    & 1     & 1
+        \end{tabular}
+    \end{center}
+    \ref{1.9}
+    \begin{center}
+        \begin{tabular}{cccccc|c|ccccccc}
+            $\lnot$ & $(p$ & $\lor$ & $(q$ & $\land$ & $r))$ & $\leftrightarrow$ & $((p$ & $\lor$ & $q)$ & $\land$ & $(p$ & $\lor$ & $r))$ \\
+            \hline
+            1       & 0    & 0      & 0    & 0       & 0     & 0                 & 0     & 0      & 0    & 0       & 0    & 0      & 0     \\
+            1       & 0    & 0      & 0    & 0       & 1     & 0                 & 0     & 0      & 0    & 0       & 0    & 1      & 1     \\
+            1       & 0    & 0      & 1    & 0       & 0     & 0                 & 0     & 1      & 1    & 0       & 0    & 0      & 0     \\
+            0       & 0    & 1      & 1    & 1       & 1     & 0                 & 0     & 1      & 1    & 1       & 0    & 1      & 1     \\
+            0       & 1    & 1      & 0    & 0       & 0     & 0                 & 1     & 1      & 0    & 1       & 1    & 1      & 0     \\
+            0       & 1    & 1      & 0    & 0       & 1     & 0                 & 1     & 1      & 0    & 1       & 1    & 1      & 1     \\
+            0       & 1    & 1      & 1    & 0       & 0     & 0                 & 1     & 1      & 1    & 1       & 1    & 1      & 0     \\
+            0       & 1    & 1      & 1    & 1       & 1     & 0                 & 1     & 1      & 1    & 1       & 1    & 1      & 1     \\
+        \end{tabular}
+    \end{center}
 \end{solution}
 
 \begin{problem}
-    写出由 $X_2=\{x_1, x_2\}$ 生成的公式集 $L(X_2)$ 的三个层次: $L_0$, $L_1$ 和 $L_2$.
+2. 写出由 $X_2=\{x_1, x_2\}$ 生成的公式集 $L(X_2)$ 的三个层次: $L_0$, $L_1$ 和 $L_2$.
 \end{problem}
 \begin{solution}
     \begin{gather}
@@ -97,18 +98,167 @@
             L_0=X_2=\{x_1, x_2\}
         \end{aligned}\\
         \begin{aligned}
-            L_1=\{&\lnot x_1, \lnot x_2, x_1\to x_1, x_1 \to x_2, x_2\to x_1, x_2\to x_2\}
+            L_1=\{ & \lnot x_1, \lnot x_2, x_1\to x_1, x_1 \to x_2, x_2\to x_1, x_2\to x_2\}
         \end{aligned}\\
         \begin{aligned}
-            L_2=\{&\lnot(\lnot x_1), \lnot(\lnot x_2),\\
-                  &\lnot(x_1\to x_1), \lnot(x_1\to x_2), \lnot(x_2\to x_1), \lnot(x_2\to x_2),\\
-                  &x_1\to(\lnot x_1), x_1\to (\lnot x_2), x_2\to (\lnot x_1), x_2\to (\lnot x_2),\\
-                  &(\lnot x_1)\to x_1, (\lnot x_1)\to x_2, (\lnot x_2)\to x_1, (\lnot x_2)\to x_2,\\
-                  &x_1\to(x_1\to x_1), x_1\to(x_1\to x_2), x_1\to(x_2\to x_1), x_1\to(x_2\to x_2),\\
-                  &x_2\to(x_1\to x_1), x_2\to(x_1\to x_2), x_2\to(x_2\to x_1), x_2\to(x_2\to x_2),\\
-                  &(x_1\to x_1)\to x_1, (x_1\to x_2)\to x_1, (x_2\to x_1)\to x_1, (x_2\to x_2)\to x_1,\\
-                  &(x_1\to x_1)\to x_2, (x_1\to x_2)\to x_2, (x_2\to x_1)\to x_2, (x_2\to x_2)\to x_2\}
+            L_2=\{ & \lnot(\lnot x_1), \lnot(\lnot x_2),                                                  \\
+                   & \lnot(x_1\to x_1), \lnot(x_1\to x_2), \lnot(x_2\to x_1), \lnot(x_2\to x_2),          \\
+                   & x_1\to(\lnot x_1), x_1\to (\lnot x_2), x_2\to (\lnot x_1), x_2\to (\lnot x_2),       \\
+                   & (\lnot x_1)\to x_1, (\lnot x_1)\to x_2, (\lnot x_2)\to x_1, (\lnot x_2)\to x_2,      \\
+                   & x_1\to(x_1\to x_1), x_1\to(x_1\to x_2), x_1\to(x_2\to x_1), x_1\to(x_2\to x_2),      \\
+                   & x_2\to(x_1\to x_1), x_2\to(x_1\to x_2), x_2\to(x_2\to x_1), x_2\to(x_2\to x_2),      \\
+                   & (x_1\to x_1)\to x_1, (x_1\to x_2)\to x_1, (x_2\to x_1)\to x_1, (x_2\to x_2)\to x_1,  \\
+                   & (x_1\to x_1)\to x_2, (x_1\to x_2)\to x_2, (x_2\to x_1)\to x_2, (x_2\to x_2)\to x_2\}
         \end{aligned}
     \end{gather}
+\end{solution}
+\begin{problem}
+2. 写出以下公式在 $L$ 中的 ``证明''
+\begin{parts}[n]
+    \part
+    \label{3.1}
+    $(x_1\to x_2)\to((\lnot x_1\to \lnot x_2)\to (x_2\to x_1))$
+    \part
+    \label{3.2}
+    $((x_1\to(x_2\to x_3))\to (x_1\to x_2))\to ((x_1\to(x_2\to x_3))\to (x_1\to x_3))$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{3.1} 证明如下
+    \begin{enumerate}[label = (\arabic*)]
+        \item $(\lnot x_1\to \lnot x_2)\to (x_2\to x_1)$\hfill (L3)
+        \item $((\lnot x_1\to \lnot x_2)\to (x_2\to x_1))\to ((x_1\to x_2)\to ((\lnot x_1\to \lnot x_2)\to (x_2\to x_1)))$ \hfill (L1)
+        \item $(x_1\to x_2)\to ((\lnot x_1\to \lnot x_2)\to (x_2\to x_1))$\hfill (1), (2), MP
+    \end{enumerate}
+    \ref{3.2} 证明如下
+    \begin{enumerate}[label = (\arabic*)]
+        \item $(x_1\to (x_2\to x_3))\to ((x_1\to x_2)\to (x_1\to x_3))$\hfill (L2)
+        \item $(x_1\to (x_2\to x_3))\to ((x_1\to x_2)\to (x_1\to x_3))\to (((x_1\to (x_2\to x_3))\to (x_1\to x_2))\to ((x_1\to (x_2\to x_3))\to (x_1\to x_3)))$\hfill (L2)
+        \item $((x_1\to (x_2\to x_3))\to (x_1\to x_2))\to ((x_1\to (x_2\to x_3))\to (x_1\to x_3))$\hfill (1), (2), MP
+    \end{enumerate}
+\end{solution}
+\problemnumber{3}
+\begin{problem}
+3. 证明下面的结论
+\begin{parts}[n]
+    \setcounter{enumi}{1}
+    \part
+    \label{4.2}
+    $\{\lnot\lnot p\}\vdash p$
+    \part
+    \label{4.3}
+    $\{p\to q, \lnot (q\to r)\to \lnot p\}\vdash p\to r$
+    \part
+    \label{4.4}
+    $\{p\to (q\to r)\}\vdash q\to (p\to r)$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{4.2}
+    证明如下
+    \begin{enumerate}[label = (\arabic*)]\label{sol:4.1}
+        \item $\lnot\lnot p$\hfill 假定
+        \item $\lnot\lnot p\to (\lnot\lnot\lnot\lnot p\to \lnot\lnot p)$\hfill (L1)
+        \item $\lnot\lnot\lnot\lnot p\to \lnot\lnot p$\hfill (1), (2), MP
+        \item $(\lnot\lnot\lnot\lnot p\to \lnot\lnot p)\to (\lnot p\to \lnot\lnot\lnot p)$\hfill (L3)
+        \item $\lnot p\to \lnot\lnot\lnot p$\hfill (3), (4), MP
+        \item $(\lnot p\to \lnot\lnot\lnot p)\to (\lnot\lnot p\to p)$\hfill (L3)
+        \item $\lnot\lnot p\to p$\hfill (5), (6), MP
+        \item $p$\hfill (1), (7), MP
+    \end{enumerate}
+    \ref{4.3}
+    证明如下
+    \begin{enumerate}[label = (\arabic*)]
+        \item $\lnot (q\to r)\to \lnot p$\hfill 假定
+        \item $(\lnot (q\to r)\to \lnot p)\to(p\to(q\to r))$\hfill (L3)
+        \item $p\to(q\to r)$\hfill (1), (2), MP
+        \item $(p\to(q\to r))\to((p\to q)\to (p\to r))$\hfill (L2)
+        \item $(p\to q)\to (p\to r)$\hfill (3), (4), MP
+        \item $p\to q$\hfill 假定
+        \item $p\to r$\hfill (5), (6), MP
+    \end{enumerate}
+    \ref{4.4}
+    证明如下
+    \begin{enumerate}[label = (\arabic*)]
+        \item $p\to (q\to r)$\hfill 假定
+        \item $(p\to (q\to r))\to((p\to q)\to(p\to r))$\hfill (L2)
+        \item $(p\to q)\to(p\to r)$\hfill (1), (2), MP
+        \item $((p\to q)\to(p\to r))\to(q\to ((p\to q)\to (p\to r)))$\hfill (L1)
+        \item $q\to ((p\to q)\to (p\to r))$\hfill (3), (4), MP
+        \item $(q\to ((p\to q)\to (p\to r)))\to (q\to (p\to q))\to (q\to (p\to r))$ \hfill (L2)
+        \item $(q\to (p\to q))\to (q\to (p\to r))$\hfill (5), (6), MP
+        \item $q\to (p\to q)$\hfill (L1)
+        \item $q\to (p\to r)$\hfill (7), (8), MP
+    \end{enumerate}
+\end{solution}
+\begin{problem}
+    2. 利用演绎定律证明以下公式是 $L$ 的定理.
+    \begin{parts}[n]
+        \setcounter{enumi}{1}
+        \part
+        \label{5.2}
+        $(q\to p)\to(\lnot p\to \lnot q)$. (换位律)
+        \part
+        \label{5.3}
+        $((p\to q)\to p)\to p$. (Peirce 律)
+    \end{parts}
+\end{problem}
+\begin{solution}
+    \ref{5.2}
+    根据演绎定理, 只需要证明 $\{q\to p\}\vdash \lnot p\to \lnot q$. 下面是 $\lnot p\to \lnot q$ 从 $\{q\to p\}$ 的证明:
+    \begin{enumerate}[label = (\arabic*)]
+        \item $q\to p$\hfill 假定
+        \item $\lnot \lnot q\to q$\hfill 双重否定律
+        \item $\lnot \lnot q\to p$\hfill (1), (2), HS
+        \item $p\to \lnot \lnot p$\hfill 第二双重否定律
+        \item $\lnot \lnot q\to \lnot \lnot p$\hfill (3), (4), HS
+        \item $(\lnot \lnot q\to \lnot \lnot p)\to(\lnot p\to \lnot q)$\hfill (L3)
+        \item $\lnot p\to \lnot q$\hfill (5), (6), MP
+    \end{enumerate}
+    \ref{5.3}
+    根据演绎定理, 只需要证明 $\{(p\to q)\to p\}\vdash p$.
+    下面是 $p$ 从 $\{(p\to q)\to p\}$ 的证明:
+    \begin{enumerate}[label = (\arabic*)]
+        \item $(p\to q)\to p$\hfill 假定
+        \item $\lnot p\to (p\to q)$\hfill 否定前件律
+        \item $\lnot p\to p$\hfill (1), (2), HS
+        \item $(\lnot p\to p)\to p$\hfill 否定肯定律
+        \item $p$\hfill (3), (4), MP
+    \end{enumerate}
+\end{solution}
+\begin{problem}
+    1. 证明
+    \begin{parts}[n]
+        \setcounter{enumi}{1}
+        \part
+        \label{6.2}
+        $\vdash (\lnot p\to q)\to (\lnot q\to p)$
+        \part
+        \label{6.3}
+        $\vdash \lnot (p\to q)\to \lnot q$
+    \end{parts}
+\end{problem}
+\begin{solution}
+    \ref{6.2}
+    由演绎定律, 只需要证明 $\{\lnot p\to q, \lnot q\}\vdash p$. 用反证律, 把 $\lnot p$ 作为新假定. \\
+    以下公式从 $\{\lnot p\to q, \lnot q, \lnot p\}$ 都是可证的.
+    \begin{enumerate}[label = (\arabic*)]
+        \item $\lnot p$\hfill 新假定
+        \item $\lnot p\to q$\hfill 假定
+        \item $q$\hfill (1), (2), MP
+        \item $\lnot q$\hfill 假定
+    \end{enumerate}
+    由 (3), (4) 用反证律即得 $\{\lnot p\to q, \lnot q\}\vdash p$.
+    
+    \ref{6.3}
+    由演绎定律, 只需要证明 $\{\lnot(p\to q)\}\vdash \lnot q$. 用归谬律, 把 $q$ 作为新假定.\\
+    以下公式从 $\{\lnot(p\to q), q\}$ 都是可证的.
+    \begin{enumerate}[label = (\arabic*)]
+        \item $q$\hfill 新假定
+        \item $q\to (p\to q)$\hfill (L1)
+        \item $p\to q$\hfill (1), (2), MP
+        \item $\lnot (p\to q)$\hfill 假定
+    \end{enumerate}
+    由 (3), (4) 用归谬律即得 $\{\lnot(p\to q)\}\vdash \lnot q$.
 \end{solution}
 \end{document}
