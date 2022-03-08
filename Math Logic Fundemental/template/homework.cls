@@ -195,7 +195,7 @@
 \@namedef{partlabel@A}{\def\@partlabel{\textup{(\Alph*)}}}
 \@namedef{partlabel@r}{\def\@partlabel{\textup{(\roman*)}}}
 \@namedef{partlabel@R}{\def\@partlabel{\textup{(\Roman*)}}}
-\@namedef{partlabel@n}{\def\@partlabel{\textup{(\arabic*)}}}
+\@namedef{partlabel@n}{\def\@partlabel{\textup{$\arabic*^\circ$}}}
 
 % Actual parts environment
 \newenvironment{parts}[1][a]
