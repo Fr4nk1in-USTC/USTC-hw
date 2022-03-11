@@ -1,0 +1,111 @@
+\documentclass[boxes]{homework}
+
+% This is a slightly-more-than-minimal document that uses the homework class.
+% See the README at http://git.io/vZWL0 for complete documentation.
+
+\name{傅申 PB20000051}        % Replace (Your Name) with your name.
+\term{2022 春}     % Replace (Current Term) with the current term.
+\course{数理逻辑基础}    % Replace (Course Name) with the course name.
+\hwnum{2}          % Replace (Number) with the number of the homework.
+\hwname{作业}    
+\problemname{练习}    
+\solutionname{解:}
+
+% Load any other packages you need here.
+\usepackage[
+    a4paper,
+    top = 2.54cm,
+    bottom = 2.54cm,
+    left = 1.91cm,
+    right = 1.91cm,
+    includeheadfoot
+]{geometry}
+\fancyfootoffset{0pt} % make fancyhdr work properly
+\usepackage{ctex}
+
+\begin{document}
+\problemnumber{6}
+\begin{problem}
+2. 证明命题 2-$2^\circ$, $3^\circ$, $4^\circ$.
+\begin{enumerate}[label = 2-$\arabic*^\circ$]
+    \setcounter{enumi}{1}
+    \item \label{2.2}$\vdash (p\land q)\to q$
+    \item \label{2.3}$\vdash (p\land q)\to (q\land p)$
+    \item \label{2.4}$\vdash p\to(p\land p)$
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \ref{2.2} 要证 $\vdash (p\land q)\to q$, 即要证 $\vdash \lnot (p\to \lnot q)\to p$. 下面是所要的一个证明:
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\lnot q\to (p\to \lnot q)$\hfill (L1)
+        \item $(\lnot q\to (p\to \lnot q))\to (\lnot (p\to \lnot q)\to \lnot \lnot q)$\hfill 换位律
+        \item $\lnot (p\to \lnot q)\to \lnot \lnot q$\hfill (1), (2), MP
+        \item $\lnot\lnot q\to q$\hfill 双重否定律
+        \item $\lnot (p\to \lnot q)\to q$\hfill (3), (4), HS
+    \end{enumerate}
+
+    \ref{2.3} 要证 $\vdash (p\land q)\to (q\land p)$, 运用演绎定律, 即要证 $\{p\land q\}\vdash \lnot(q\to\lnot p)$, 用归谬律, 把 $q\to\lnot p$ 作为新假定. 
+    以下公式从 $\{p\land q, q\to \lnot p\}$ 都是可证的
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $p\land q$\hfill 假定
+        \item $(p\land q)\to p$\hfill 命题 2-$1^\circ$
+        \item $(p\land q)\to q$\hfill 命题 2-$2^\circ$
+        \item $p$\hfill (1), (2), MP
+        \item $q$\hfill (1), (3), MP
+        \item $q\to\lnot p$\hfill 新假定
+        \item $\lnot p$\hfill (5), (6), MP
+    \end{enumerate}
+    由 (4), (7) 用归谬律即得 $\{p\land q\}\vdash \lnot(q\to\lnot p)$, 用演绎定律即有 $\vdash (p\land q)\to (q\land p)$.
+
+    \ref{2.4} 要证 $\vdash p\to(p\land p)$, 用演绎定律即要证 $\{p\}\vdash \lnot (p\to \lnot p)$, 用归谬律, 把 $p\to\lnot p$ 作为新假定, 立即可得
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\{p, p\to \lnot p\}\vdash p$
+        \item $\{p, p\to \lnot p\}\vdash \lnot p$
+    \end{enumerate}
+    由 (1), (2) 用归谬律便得 $\{p\}\vdash\lnot (p\to p)$, 用演绎定律即有 $\vdash p\to (p\land p)$.
+\end{solution}
+\problemnumber{6}
+\begin{problem}
+    4. 证明命题 4-$1^\circ$
+    $$
+    \vdash \lnot (p\land q) \leftrightarrow (\lnot p\lor \lnot q)
+    $$
+\end{problem}
+
+\begin{solution}
+    %todo
+    即要证 $\vdash \lnot\lnot (p\to \lnot q)\leftrightarrow(\lnot\lnot p\to\lnot q)$.
+    
+    这里先证明 $\vdash \lnot\lnot (p\to \lnot q)\to(\lnot\lnot p\to\lnot q)$, 用演绎定律即要证 $\{\lnot\lnot(p\to\lnot q)\}\vdash (\lnot\lnot p\to\lnot q)$, 有
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\lnot\lnot (p\to \lnot q)$\hfill 假定
+        \item $\lnot\lnot (p\to \lnot q)\to (p\to\lnot q)$\hfill 双重否定律
+        \item $p\to\lnot q$\hfill (1), (2), MP
+        \item $\lnot\lnot p\to p$\hfill 双重否定律
+        \item $\lnot\lnot p\to\lnot q$\hfill (3), (4), HS
+    \end{enumerate}
+
+    再证明 $\vdash (\lnot\lnot p\to q)\to\lnot\lnot (p\to\lnot q)$, 用演绎定律即要证 $\{\lnot\lnot p\to\lnot q\}\vdash \lnot\lnot (p\to\lnot q)$, 有
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\lnot\lnot p\to\lnot q$\hfill 假定
+        \item $p\to\lnot\lnot p$\hfill 第二双重否定律
+        \item $p\to\lnot q$\hfill (1), (2), HS
+        \item $(p\to\lnot q)\to\lnot\lnot (p\to\lnot q)$\hfill 第二双重否定律
+        \item $\lnot\lnot (p\to\lnot q)$\hfill (3), (4), MP
+    \end{enumerate}
+    
+    运用上面证明的两个定理, 给出 $\vdash \lnot\lnot (p\to \lnot q)\leftrightarrow(\lnot\lnot p\to\lnot q)$ 的证明如下
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\lnot\lnot (p\to \lnot q)\to(\lnot\lnot p\to\lnot q)$\hfill 已证明
+        \item $(\lnot\lnot (p\to \lnot q)\to(\lnot\lnot p\to\lnot q))\to (((\lnot\lnot p\to\lnot q)\to \lnot\lnot (p\to \lnot q))\to (\lnot\lnot (p\to \lnot q)\leftrightarrow(\lnot\lnot p\to\lnot q)))$
+        
+        \hfill 命题 3-$5^\circ$
+        \item $((\lnot\lnot p\to\lnot q)\to \lnot\lnot (p\to \lnot q))\to (\lnot\lnot (p\to \lnot q)\leftrightarrow(\lnot\lnot p\to\lnot q))$\hfill (1), (2), MP
+        \item $(\lnot\lnot p\to q)\to\lnot\lnot (p\to\lnot q)$\hfill 已证明
+        \item $\lnot\lnot (p\to \lnot q)\leftrightarrow(\lnot\lnot p\to\lnot q)$\hfill (3), (4), MP
+    \end{enumerate}
+    即证明了 $\vdash \lnot (p\land q) \leftrightarrow (\lnot p\lor \lnot q)$.
+\end{solution}
+
+\end{document}
