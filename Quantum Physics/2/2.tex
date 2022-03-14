@@ -1,0 +1,82 @@
+\documentclass[11pt]{homework}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{傅申}
+\newcommand{\hwid}{PB20000051}
+\newcommand{\hwtype}{量子物理作业}
+\newcommand{\hwnum}{2}
+
+\begin{document}
+\maketitle
+\setcounter{questionCounter}{3}
+% Your content
+\question
+设云母片的厚度为 $l$, 则光程差为
+\begin{equation}
+    \delta = \frac{xd}{D} + (n - 1)l
+\end{equation}
+条纹移动了 9 个条纹间距, 说明 $x = 0$ 处为第 9 级明纹, 即
+\begin{equation}
+    \label{eq:4.2}
+    \delta_{x=0}=(n-1)l=9\lambda
+\end{equation}
+由式 \ref{eq:4.2} 得到
+\begin{equation}
+    l=\frac{9\lambda}{n-1}=\frac{9\times550\mathrm{nm}}{1.58-1}=8.53\mathrm{\mu m}
+\end{equation}
+\question
+要使麦克风处消音, 则三个扬声器发出的声波要在麦克风处干涉相消, 那么三个声波之间的相位互成 $\frac{2}{3}\pi$ 角, 即 (上中下三个扬声器分别为 1, 2, 3)
+\begin{gather}
+    \Delta\varphi_{12} = k(r_2-r_1)+\varphi_{2}-\varphi_{1} = \frac{2}{3}\pi\\
+    \Delta\varphi_{23} = k(r_3-r_2)+\varphi_{3}-\varphi_{2} = \frac{2}{3}\pi
+\end{gather}
+其中 (Taylor 展开到 1 阶, 并忽略高阶小量)
+\begin{gather}
+    r_2-r_1=\sqrt{x^2+D^2}-\sqrt{\left(x-d\right)^2+D^2}\approx\frac{xd}{D} - \frac{d^2}{2D^2} \approx d\sin\theta\\
+    r_3-r_2=\sqrt{\left(x+d\right)^2+D^2}-\sqrt{x^2+D^2}\approx\frac{xd}{D} + \frac{d^2}{2D^2} \approx d\sin\theta
+\end{gather}
+记 $\Delta\varphi_0 = \varphi_{2}-\varphi_{1} = \varphi_{3}-\varphi_{2}$, 就有
+\begin{equation}
+\frac{2\pi}{\lambda}d\sin\theta + \Delta\varphi=\frac{2}{3}\pi
+\end{equation}
+所以 $\varphi_1$, $\varphi_2$, $\varphi_3$ 需要满足条件
+\begin{equation}
+    \varphi_3-\varphi_2=\varphi_2-\varphi_1=2\pi\left(\frac{1}{3}-\frac{d\sin\theta}{\lambda}\right)
+\end{equation}
+其中 $\lambda$ 为声波波长.
+
+\question
+设细丝直径为 $d$, 我们有
+\begin{equation}
+    \label{eq:6.1}
+    \theta = \frac{d}{L} \approx \frac{\lambda}{2n\Delta x}
+\end{equation}
+\newpage
+在题设条件下, 我们有 $n = 1, \Delta x = 1.50\mathrm{mm}, L=12.5\mathrm{cm}, \lambda = 546\mathrm{nm}$, 带入至式 \ref{eq:6.1} 得到
+\begin{equation}
+    d = \frac{\lambda L}{2n\Delta x} = \frac{546\times 10^{-9}\times 12.5\times 10^{-2}}{2\times 1\times 1.50\times 10^{-3}}\mathrm{m} = 2.275\times 10^{-5} \mathrm{m} = 22.75 \mathrm{\mu m}
+\end{equation}
+
+\question
+\begin{arabicparts}
+    \questionpart 牛顿环第 $m$ 暗环的半径为 $r_m=\sqrt{mR\lambda}$, 其中 $\lambda$ 为介质中的波长, 在空气中为 589nm. 那么曲率半径 $R$ 为
+    \begin{equation}
+        R=\frac{r_{15}^2-r_{5}^2}{(15-5)\lambda}=\frac{\left(0.85^2-0.35^2\right)\times 10^{-6}}{10\times 589\times 10^{-9}}=0.102\mathrm{m}
+    \end{equation}
+    \questionpart 更换介质后, 波长由 $\lambda$ 变为 $\lambda'=\lambda/1.33$, 那么直径 (半径) 会变成 $d'=d/\sqrt{1.33}$, 即
+    \begin{equation}
+        d_5=\frac{0.70}{\sqrt{1.33}}\mathrm{mm}=0.61\mathrm{mm}\quad d_{15}=\frac{1.70}{\sqrt{1.33}}\mathrm{mm}=1.47\mathrm{mm}
+    \end{equation}
+\end{arabicparts}
+
+\question
+设膜厚为 $d$, 两侧反射都有半波损失, 所以要使反射光干涉相消, 有
+\begin{equation}
+    \Delta L = 2d = \left(k + \frac{1}{2}\right)\frac{\lambda}{n_{\text{膜}}}\quad k=0,1,\cdots
+\end{equation}
+所以
+\begin{equation}
+    d = \left(\frac{k}{2} + \frac{1}{4}\right)\frac{\lambda}{n_{\text{膜}}}=\left(\frac{k}{2} + \frac{1}{4}\right)\times 423\mathrm{nm} = \left(212k+106\right)\mathrm{nm}\quad k=0,1,\cdots
+\end{equation}
+膜最薄为 106nm.
+\end{document}
