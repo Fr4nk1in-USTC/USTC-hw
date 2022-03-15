@@ -1,0 +1,79 @@
+\documentclass[11pt]{homework}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{傅申}
+\newcommand{\hwid}{PB20000051}
+\newcommand{\hwtype}{计算机组成原理作业}
+\newcommand{\hwnum}{2}
+
+\begin{document}
+\maketitle
+% Your content
+\question
+\begin{arabicparts}
+    \questionpart
+    我们有
+    \begin{gather}
+        \label{eq:1.1}\text{时钟周期数} = \text{时间}\times\text{时钟频率}\\
+        \label{eq:1.2}\text{指令数} = \frac{\text{时间}\times\text{时钟频率}}{\text{CPI}}
+    \end{gather}
+    将三个处理器的数据代入至式 (\ref{eq:1.1}), (\ref{eq:1.2}), 得到
+    \begin{enumerate}[label = P\arabic*]
+        \item 时钟周期数: $3\times 10^{10}$, 指令数: $2\times 10^{10}$
+        \item 时钟周期数: $2.5\times 10^{10}$, 指令数: $2.5\times 10^{10}$
+        \item 时钟周期数: $4\times 10^{10}$, 指令数: $1.81\times 10^{10}$
+    \end{enumerate}
+    \questionpart
+    由式 (\ref{eq:1.2}), 指令数不变, 可知时钟频率应变为原来的 $\displaystyle \frac{12}{7}$.
+\end{arabicparts}
+\question
+\begin{arabicparts}
+    \questionpart
+    对于单核处理器, 有
+    \begin{equation}
+        \text{时间} = \frac{\displaystyle\sum_i\text{IC}_i\times \text{CPI}_i}{\text{时钟频率}} 
+    \end{equation}
+    代入数据, 得到单核处理器的执行时间为 9.6s.
+    对于多核处理器, 有
+    \begin{equation}
+        \text{时间} = \frac{\displaystyle\frac{\text{IC}_{\text{arith}}\times \text{CPI}_{\text{arith}}+\text{IC}_{\text{l/s}}\times \text{CPI}_{\text{l/s}}}{0.7p}+\text{IC}_{\text{branch}}\times \text{CPI}_{\text{branch}}}{\text{时钟频率}} 
+    \end{equation}
+    将数据代入, 得到
+    \begin{enumerate}[label = \arabic* 核]
+        \item 执行时间 13.44s, 加速比 0.714. 
+        \item 执行时间 7.04s, 加速比 1.364. 
+        \item 执行时间 3.84s, 加速比 2.5. 
+        \item 执行时间 2.24s, 加速比 4.286. 
+    \end{enumerate}
+    \questionpart
+    将 CPI 加倍后的数据代入, 得到
+    \begin{enumerate}[label = \arabic* 核]
+        \item 执行时间 15.27s 
+        \item 执行时间 7.95s
+        \item 执行时间 4.30s
+        \item 执行时间 2.47s
+    \end{enumerate}
+    \questionpart
+    应降低到 3.
+\end{arabicparts}
+\question
+\begin{arabicparts}
+    \questionpart 这种说法是错误的. CPU 运行时间为
+    \begin{equation}
+        \text{时间} = \frac{\text{指令数}\times \text{CPI}}{\text{时钟频率}}
+    \end{equation}
+    代入数据可知 P1 时间为 1.125s, P2 时间为 0.25s. 可以看到频率更低的 P2 性能更好.
+    \questionpart
+    P1 执行 $1.0\times 10^9$ 条指令需要 0.225s, 同样的时间内 P2 可以执行 $0.9\times 10^9$ 条指令.
+    \questionpart 
+    这种说法错误. P1 的 MIPS 为 4444.4, P2 的 MIPS 为 4000. P2 的 MIPS 更低, 但性能更好.
+    \questionpart
+    P1 的 MFLOPS 为 1777.8, P2 的 MFLOPS 为 1600.
+\end{arabicparts}
+\question
+\begin{arabicparts}
+    \questionpart 减少 5.6\%.
+    \questionpart 减少 90.9\%.
+    \questionpart 不能, 需要减少 50s, 但分支指令只有 40s.
+\end{arabicparts}
+\end{document}
