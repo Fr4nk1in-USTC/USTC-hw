@@ -1,0 +1,104 @@
+\documentclass[boxes]{homework}
+
+% This is a slightly-more-than-minimal document that uses the homework class.
+% See the README at http://git.io/vZWL0 for complete documentation.
+
+\name{傅申 PB20000051}        % Replace (Your Name) with your name.
+\term{2022 春}     % Replace (Current Term) with the current term.
+\course{数理逻辑基础}    % Replace (Course Name) with the course name.
+\hwnum{3}          % Replace (Number) with the number of the homework.
+\hwname{作业}    
+\problemname{练习}    
+\solutionname{解:}
+
+% Load any other packages you need here.
+\usepackage[
+    a4paper,
+    top = 2.54cm,
+    bottom = 2.54cm,
+    left = 1.91cm,
+    right = 1.91cm,
+    includeheadfoot
+]{geometry}
+\fancyfootoffset{0pt} % make fancyhdr work properly
+\setlength{\tabcolsep}{4pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1}
+\usepackage{ctex}
+
+\begin{document}
+\problemnumber{7}
+\begin{problem}
+2. 下面的公式那些恒为永真式?
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{2.3}
+    $(q\lor r)\to(\lnot r\to q)$
+    \part \label{2.4}
+    $(p\land\lnot q)\lor((q\land \lnot r)\land(r\land\lnot p))$
+    \part \label{2.5}
+    $(p\to(q\to r))\to((p\land\lnot q)\lor r)$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{2.3}   $(q\lor r)\to(\lnot r\to q)$ 是永真式, 以下是它的真值表.
+    \begin{center}
+        \begin{tabular}{ccc|c|cccc}
+            $(q$ & $\lor$ & $r)$ & $\to$ & $(\lnot$ & $r$ & $\to$ & $q)$ \\
+            1    & 1      & 1    & 1     & 0        & 1   & 1     & 1    \\
+            1    & 1      & 0    & 1     & 1        & 0   & 1     & 1    \\
+            0    & 1      & 1    & 1     & 0        & 1   & 1     & 0    \\
+            0    & 0      & 0    & 1     & 1        & 0   & 0     & 0
+        \end{tabular}
+    \end{center}
+    \ref{2.4}   $(p\land\lnot q)\lor((q\land \lnot r)\land(r\land\lnot p))$ 不是永真式, 以下是它的真值表.
+    \begin{center}
+        \begin{tabular}{cccc|c|ccccccccc}
+            $(p$ & $\land$ & $\lnot$ & $q)$ & $\lor$ & $((q$ & $\land$ & $\lnot$ & $r)$ & $\land$ & $(r$ & $\land$ & $\lnot$ & $p))$ \\
+            1    & 0       & 0       & 1    & 0      & 1     & 0       & 0       & 1    & 0       & 1    & 0       & 0       & 1     \\
+            1    & 0       & 0       & 1    & 0      & 1     & 1       & 1       & 0    & 0       & 0    & 0       & 0       & 1     \\
+            1    & 1       & 1       & 0    & 1      & 0     & 0       & 0       & 1    & 0       & 1    & 0       & 0       & 1     \\
+            1    & 1       & 1       & 0    & 1      & 0     & 0       & 1       & 0    & 0       & 0    & 0       & 0       & 1     \\
+            0    & 0       & 0       & 1    & 0      & 1     & 0       & 0       & 1    & 0       & 1    & 1       & 1       & 0     \\
+            0    & 0       & 0       & 1    & 0      & 1     & 1       & 1       & 0    & 0       & 0    & 0       & 1       & 0     \\
+            0    & 0       & 1       & 0    & 0      & 0     & 0       & 0       & 1    & 0       & 1    & 1       & 1       & 0     \\
+            0    & 0       & 1       & 0    & 0      & 0     & 0       & 1       & 0    & 0       & 0    & 0       & 1       & 0
+        \end{tabular}
+    \end{center}
+    \ref{2.5} $(p\to(q\to r))\to((p\land\lnot q)\lor r)$ 不是永真式, 以下是它的真值表.
+    \begin{center}
+        \begin{tabular}{ccccc|c|cccccc}
+            $(p$ & $\to$ & $(q$ & $\to$ & $r))$ & $\to$ & $((p$ & $\land$ & $\lnot$ & $q)$ & $\lor$ & $r)$ \\
+            1    & 1     & 1    & 1     & 1     & 1     & 1     & 0       & 0       & 1    & 1      & 1    \\
+            1    & 0     & 1    & 0     & 0     & 1     & 1     & 0       & 0       & 1    & 0      & 0    \\
+            1    & 1     & 0    & 1     & 1     & 1     & 1     & 1       & 1       & 0    & 1      & 1    \\
+            1    & 1     & 0    & 1     & 0     & 1     & 1     & 1       & 1       & 0    & 1      & 0    \\
+            0    & 1     & 1    & 1     & 1     & 1     & 0     & 0       & 0       & 1    & 1      & 1    \\
+            0    & 1     & 1    & 0     & 0     & 0     & 0     & 0       & 0       & 1    & 0      & 0    \\
+            0    & 1     & 0    & 1     & 1     & 1     & 0     & 0       & 1       & 0    & 1      & 1    \\
+            0    & 1     & 0    & 1     & 0     & 0     & 0     & 0       & 1       & 0    & 0      & 0
+        \end{tabular}
+    \end{center}
+\end{solution}
+\problemnumber{7}
+\begin{problem}
+3. 以下结论是否正确? 为什么?
+\begin{parts}[n]
+    \part\label{3.1}
+    $\vDash p(x_1, \cdots, x_n)\ \Leftrightarrow\ \ \vDash p(\lnot x_1, \cdots, \lnot x_n)$
+    \part\label{3.2}
+    $\vDash (p\to q)\leftrightarrow(p'\to q')\ \Rightarrow\ \ \vDash p\leftrightarrow p'\ \text{且}\ \vDash q\leftrightarrow q'$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{3.1} 正确, 证明如下.\\
+    (充分性) 因为 $\vDash p(x_1, \cdots, x_n)$, 用 $\lnot x_1, \cdots, \lnot x_n$ 分别全部替换 $p(x_1, \cdots, x_n)$ 中的 $x_1, \cdots, x_n$, 由代换定理有 $\vDash p(\lnot x_1, \cdots, \lnot x_n)$\\
+    (必要性) 已知 $\vDash p(\lnot x_1, \cdots, \lnot x_n)$, 用反证法, 假设存在 $x_1, \cdots, x_n$ 使得 $v(p(x_1, \cdots, x_n)) = 0$, 则取 $x'_1 = \lnot x_1$, $\cdots$, $x'_n = \lnot x_n$, 因为 $v(\lnot \lnot q) = v(q)$, 所以 $v(\lnot x'_1) = v(x_1), \cdots, v(\lnot x'_n) = v(x_n)$ ,有
+    \begin{equation*}
+        v(p(\lnot x'_1, \cdots, \lnot x'_n)) = p(v(\lnot x'_1), \cdots, v(\lnot x'_n)) = p(v(x_1), \cdots, v(x_n)) = v(p(x_1, \cdots, x_n)) = 0
+    \end{equation*}
+    这与 $\vDash p(\lnot x_1, \cdots, \lnot x_n)$ 矛盾, 所以不存在 $x_1, \cdots, x_n$ 使得 $v(p(x_1, \cdots, x_n)) = 0$, 即 $\vDash p(x_1, \cdots, x_n)$.
+    
+    \ref{3.2} 错误. 取 $p = q = x$, $p' = q' = \lnot x$, 由同一律, $\vDash p\to q$, $\vDash p'\to q'$, 即 $v(p\to q) \equiv 1$, $v(p'\to q') \equiv 1$, 而 $(1\leftrightarrow 1) = 1$, 所以 $\vDash (p\to q)\leftrightarrow(p'\to q')$, 但是显然 $v(p\leftrightarrow p')=v(x\leftrightarrow\lnot x) \equiv 0$, $v(q\leftrightarrow q') \equiv 0$, 与题设不符, 所以题设错误.
+\end{solution}
+\end{document}
