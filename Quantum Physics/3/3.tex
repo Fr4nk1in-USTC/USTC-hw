@@ -1,0 +1,69 @@
+\documentclass[11pt]{homework}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{傅申}
+\newcommand{\hwid}{PB20000051}
+\newcommand{\hwtype}{量子物理作业}
+\newcommand{\hwnum}{3}
+
+\begin{document}
+\maketitle
+% Your content
+\setcounter{questionCounter}{8}
+\question
+对于弗朗禾费单缝衍射, 极小位置为 $\sin\theta_k=\displaystyle \pm k\frac{\lambda}{a}$. 设钠黄光的波长为 $\lambda_1 = 589.3\mathrm{nm}$, 未知光源的波长为 $\lambda_2$.
+钠黄光衍射第二极小到干涉图样中心的距离为
+\begin{equation}
+    \label{eq:1}
+    d_{12} \approx f\sin\theta_{12}=2f\frac{\lambda_1}{a}
+\end{equation}
+未知光衍射第三极小到干涉图样中心的距离为
+\begin{equation}
+    \label{eq:2}
+    d_{23} \approx f\sin\theta_{23}=3f\frac{\lambda_2}{a}
+\end{equation}
+联立式 (\ref{eq:1}) 和 (\ref{eq:2}), 并代入数据, 得到
+\begin{equation}
+    \lambda_2 = \frac{2d_{23}}{3d_{12}}\lambda_1 = 550.0\mathrm{nm}
+\end{equation}
+\question
+手机为小米 10. 手机主摄像头的相关参数如下
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        光圈系数 & 像素               & CMOS 图像传感器尺寸 \\
+        \hline
+        f/1.69   & $12032\times 9024$ & $1/1.33''$ ($9.6 \times 7.2\mathrm{mm}^2$)         \\
+        \hline
+    \end{tabular}
+\end{center}
+求得线分辨极限为
+\begin{equation}
+    \Delta l = f\Delta \theta = \frac{1.22\lambda f}{f/1.69} = 2.06\lambda
+\end{equation}
+对于可见光, $\lambda \in [400,760]\mathrm{nm}$, 则 $\Delta l \in [0.824,1.566]\mathrm{\mu m}$, 
+而单个像素的宽度为
+\begin{equation}
+    \Delta x = \frac{9.6}{12032}\mathrm{mm} = 0.8\mathrm{\mu m}
+\end{equation}
+可以看出手机像素数目超过了镜头的光学衍射极限.
+\question
+要想分辨这两颗星, 则有 $\theta\geq \Delta\theta = 1.22\displaystyle \frac{\lambda}{D}$, 推出 $D\geq 1.22\displaystyle\frac{\lambda}{\theta} = 1.22\frac{0.55\times 10^{-6}}{4.8\times 10^{-6}}\mathrm{m}=14\mathrm{cm}$
+\newpage
+\setcounter{questionCounter}{-1}
+\question*{随堂问题}
+\begin{itemize}
+    \item $I$ 不变, 可能是自然光或圆偏振光
+    \item $I$ 变, 有消光, 是线偏振光
+    \item $I$ 变, 无消光, 可能是椭圆偏振光或部分偏振光
+\end{itemize}
+\setcounter{questionCounter}{13}
+\question
+入射光为自然光, 透过第一个偏振片后变为线偏振光, 光强变为原来的 1/2, 然后透过三个偏振片, 每次透过光强都变为原来的 $\cos^230^\circ = 3/4$, 所以透过此偏振片系统的光强是原来的
+\begin{equation}
+    I=\frac{1}{2}\times\left(\frac{3}{4}\right)^3 I_0=\frac{27}{128}I_0
+\end{equation}
+\question
+两角度互余, 即光从玻璃一侧入射时的布儒斯特角为 $32^\circ$.
+
+\end{document}
