@@ -138,4 +138,112 @@ $\{N(t), t\geq 0\}$ 为一强度是 $\lambda$ 的 Poisson 过程. 对 $s > 0$ �
         f_T(t) = n\lambda \exp(-n\lambda t)
     \end{gather}
 \end{solution}
+\problemnumber{10}
+\begin{problem}
+    到达某加油站的公路上的卡车服从参数为 $\lambda_1$ 的 Poisson 过程 $N_1(t)$, 而到达的小汽车服从 $\lambda_2$ 的 Poisson 过程 $N_2(t)$, 且过程 $N_1$ 与 $N_2$ 独立. 试问随机过程 $N(t)=N_1(t)+N_2(t)$ 是什么过程? 并计算在总车流数 $N(t)$ 中卡车首先到达的概率.
+\end{problem}
+\begin{solution}
+    首先, $N(0)=N_1(0)+N_2(0)=0$.
+
+    其次, 因为 $N_1(t)$ 与 $N_2(t)$ 独立, 所以对任意的 $0\leq t_1<\cdots<t_n$, $\{N_1(t_2) - N_1(t_1),\cdots,N_1(t_n)-N_1(t_{n-1})\}$ 与 $\{N_2(t_2) - N_2(t_1),\cdots,N_2(t_n)-N_2(t_{n-1})\}$ 相互独立, 且它们内部也相互独立, 所以 $\{N(t_2) - N(t_1),\cdots,N(t_n)-N(t_{n-1})\}$ 也相互独立, $N(t)$ 是独立增量过程.
+
+    最后, 有\vspace*{-1em}
+    \begin{align}
+        \begin{aligned}
+            P\{N(s+t) - N(s)=k\} &= \sum_{i = 0}^k P\{N_1(s+t) - N_1(s)=i\}P\{N_2(s+t) - N_2(s)=k-i\}\\
+            &= \sum_{i = 0}^k \frac{(\lambda_1t)^i(\lambda_2t)^{k-i}\exp[-(\lambda_1+\lambda_2)t]}{i!(k-i)!}\\
+            &= \frac{t^k\exp[-(\lambda_1+\lambda_2)t]}{k!}\sum_{i = 0}^k \mathrm{C}_k^i\lambda_1^i\lambda_2^{k-i}\\
+            &= \frac{[(\lambda_1 + \lambda_2)t]^k\exp[-(\lambda_1+\lambda_2)t]}{k!}
+        \end{aligned}
+    \end{align}
+    
+    所以 $N(t)$ 是参数为 $\lambda_1+\lambda_2$ 的 Poisson 过程.
+
+    记 $X, Y$ 分别为过程 $N_1(t)$ 和 $N_2(t)$ 中第一辆车到达的时刻, 则 $X$, $Y$ 独立, 且分别是均值为 $\displaystyle \frac{1}{\lambda_1},\frac{1}{\lambda_2}$ 的指数分布随机变量. $\{X<Y\}$ 对应卡车首先到达, 其概率为 
+    \begin{align}
+        \begin{aligned}
+            P\{X<Y\}&=\iint_{x,y>0, x<y}\lambda_1\exp(-\lambda_1x)\lambda_2\exp(-\lambda_2y)\mathrm{d}x\mathrm{d}y\\
+            &=\lambda_1\int_{0}^\infty\exp(-\lambda_1x)\int_x^\infty\lambda_2\exp(-\lambda_2y)\mathrm{d}y\mathrm{d}x\\
+            &=\lambda_1\int_0^\infty\exp[-(\lambda_1+\lambda_2)x]\mathrm{d}x\\
+            &=\frac{\lambda_1}{\lambda_1+\lambda_2}
+        \end{aligned}
+    \end{align}
+\end{solution}
+\begin{problem}
+    冲击模型 (Shock Model) \quad 记 $N(t)$ 为某系统某时刻 $t$ 收到的冲击次数, 它是参数为 $\lambda$ 的 Poisson 过程. 设第 $k$ 次冲击对系统的损害大小 $Y_k$ 服从参数为 $\mu$ 的指数分布, $Y_k, k=1,2,\cdots$ 独立同分布. 记 $X(t)$ 为系统所受到的总损害. 当损害超过一定极限 $\alpha$ 时系统不能运行, 寿命终止, 记 $T$ 为系统寿命. 试求该系统的平均寿命 $ET$, 并对所得结果做出直观解释.
+\end{problem}
+\begin{solution}
+    显然 $X(t)$ 是一个复合 Poisson 过程, 有 $\displaystyle X(t) = \sum_{k = 1}^{N(t)}Y_k$. 而事件 $\{T>t\}$ 对应 $\{X(t)\leq\alpha\}$. 同时 $Y_k$ 与 $N(t)$ 相互独立, 有
+    \begin{equation}
+        P(T>t)=P\left(\sum_{k = 1}^{N(t)}Y_k\leq\alpha\right)=\sum_{n=1}^\infty P\left(\sum_{k = 1}^{n}Y_k\leq\alpha\right)P(N(t)=n)
+    \end{equation}
+    记 $S_n=\displaystyle\sum_{k = 1}^{n}Y_k$, 则 $S_n\sim \Gamma(n,\mu)$, 即
+    \begin{equation}
+        f_{S_n}(s) = \frac{\mu^n}{(n-1)!}s^{n-1}\exp(-\mu s)
+    \end{equation}
+    因此有
+    \begin{equation}
+        P\left(\sum_{k = 1}^{n}Y_k\leq\alpha\right) = \frac{\mu^n}{(n-1)!}\int_0^\alpha s^{n-1}\exp(-\mu s)\mathrm{d}s
+    \end{equation}
+    所以
+    \begin{gather}
+        P(T>t) = \exp(-\lambda t)\sum_{n = 1}^\infty \frac{(\mu\lambda t)^n}{n!(n-1)!}\int_0^\alpha s^{n-1}\exp(-\mu s)\mathrm{d}s\\
+        \begin{aligned}
+            E(T) &= \int_0^\infty P(T>t)\mathrm{d}t
+            = \int_0^\infty \exp(-\lambda t)\sum_{n = 1}^\infty \frac{(\mu\lambda t)^n}{n!(n-1)!}\int_0^\alpha s^{n-1}\exp(-\mu s)\mathrm{d}s\mathrm{d}t\\
+            &= \sum_{n = 1}^\infty \frac{\mu^n}{n!(n-1)!}\int_0^\infty (\lambda t)^n\exp(-\lambda t)\mathrm{d}t\int_0^\alpha s^{n-1}\exp(-\mu s)\mathrm{d}s\\
+            &= \sum_{n=1}^\infty\frac{\mu^n}{n!(n-1)!}\frac{n!}{\lambda}\int_0^\alpha s^{n-1}\exp(-\mu s)\mathrm{d}s\\
+            &= \frac{1}{\lambda}\int_0^\alpha\exp(-\mu s)\sum_{n=1}^\infty\frac{\mu^n}{(n-1)!}s^{n-1}\mathrm{d}s\\
+            &= \frac{1}{\lambda}\int_0^\alpha \mu\mathrm{d}s\\
+            &= \frac{\mu\alpha}{\lambda}
+        \end{aligned}
+    \end{gather}
+    直观解释: 若冲击越频繁 ($\lambda$ 越大), 每次冲击造成的平均伤害越大 ($\mu$ 越小), 系统能承受的伤害极限越小 ($\alpha$ 越小), 则系统寿命平均越短.
+\end{solution}
+\begin{problem}
+    令 $N(t)$ 是强度函数为 $\lambda(t)$ 的非齐次 Poisson 过程, $X_1, X_2, \cdots$ 为事件间的时间间隔.
+    \begin{parts}[r]
+        \part
+        \label{12.1}
+        $X_i$ 是否独立
+        \part
+        \label{12.2}
+        $X_i$ 是否同分布
+        \part
+        \label{12.3}
+        试求 $X_1$ 及 $X_2$ 的分布函数
+    \end{parts}
+\end{problem}
+\begin{solution}
+    \ref{12.1} $X_i$ 不独立, 例如对 $X_1$ 有
+    \begin{equation}\label{eq:12.1}
+        P(X_1>t)=P(N(t)=0) = \exp\left(-\int_0^t\lambda(u)\mathrm{d}u\right)
+    \end{equation}
+    对 $X_2$ 有
+    \begin{equation}
+        P(X_2>t\vert X_1 = s) = P(N(t+s)-N(s) = 0\vert X_1 = s) = P(N(s+t)-N(s))=\exp\left(-\int_s^{s+t}\lambda(u)\mathrm{d}u\right)
+    \end{equation}
+    即 $P(X_2|X_1)$ 与 $X_1$ 的取值有关, 则 $X_1$ 和 $X_2$ 不独立.
+    \newpage
+    \ref{12.2} $X_i$ 不同分布. 例如 $X_1$ 的分布如式 (\ref{eq:12.1}) 所示, 其密度函数为
+    \begin{equation}\label{eq:12.3}
+        f_{X_1}(x) = \exp\left(-\int_0^x\lambda(u)\mathrm{d}u\right)\lambda(x)
+    \end{equation}
+    而 $X_2$ 的分布如下
+    \begin{equation}\label{eq:12.4}
+        \begin{aligned}
+            P(X_2>t) &= \int_0^\infty P(X_2>t\vert X_1=x)f_{X_1}(x)\mathrm{d}x=\int_0^\infty\exp\left(-\int_0^{x+t}\lambda(u)\mathrm{d}u\right)\lambda(x)\mathrm{d}x\\
+            &= P(X_1>t)\int_0^\infty\exp\left(-\int_x^{x+t}\lambda(u)\mathrm{d}u\right)\lambda(x)\mathrm{d}x\neq P(X_1>t)
+        \end{aligned}
+    \end{equation}
+    所以 $X_1$ 与 $X_2$ 不同分布.
+
+    \ref{12.3} 由式 (\ref{eq:12.1}), (\ref{eq:12.3}), (\ref{eq:12.4}) 可得 $X_1$ 与 $X_2$ 的分布如下.
+    \begin{gather}
+        F_{X_1}(t) = 1-\exp\left(-\int_0^t\lambda(u)\mathrm{d}u\right)\\
+        f_{X_1}(t) = \lambda(t)\exp\left(-\int_0^t\lambda(u)\mathrm{d}u\right)\\
+        F_{X_2}(t) = 1-\int_0^\infty\lambda(s)\exp\left(-\int_0^{s+t}\lambda(u)\mathrm{d}u\right)\mathrm{d}s\\
+        f_{X_2}(t) = \int_0^\infty\lambda(s)\lambda(s+t)\exp\left(-\int_0^{s+t}\lambda(u)\mathrm{d}u\right)\mathrm{d}s
+    \end{gather}
+\end{solution}
 \end{document}
