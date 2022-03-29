@@ -1,0 +1,71 @@
+\documentclass[11pt]{homework}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{傅申}
+\newcommand{\hwid}{PB20000051}
+\newcommand{\hwtype}{计算机组成原理作业}
+\newcommand{\hwnum}{3}
+
+\usepackage{booktabs}
+
+\begin{document}
+\maketitle
+% Your content
+\question
+\begin{center}
+    \begin{tabular}{ccccccccc}
+        \toprule
+        指令                        & 类型 & opcode  & rd    & rs1   & rs2   & Imm          & funct3 & funct7 \\
+        \midrule
+        \texttt{addi x30, x10, 8}   & I 型 & 0010011 & 11110 & 01010 & -     & 000000001000 & 000    & -       \\
+        \texttt{addi x31, x10, 0}   & I 型 & 0010011 & 11111 & 01010 & -     & 000000000000 & 000    & -       \\
+        \texttt{sd   x31, 0(x30)}   & S 型 & 0100011 & -     & 11110 & 11111 & 000000000000 & 011    & -       \\
+        \texttt{ld   x30, 0(x30)}   & I 型 & 0000011 & 11110 & 11110 & -     & 000000000000 & 011    & -       \\
+        \texttt{add  x5,  x30, x31} & R 型 & 0110011 & 00101 & 11110 & 11111 & -            & 000    & 0000000 \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+\question
+\begin{arabicparts}
+    \questionpart $9223372036854775680_{10}\sim 9223372036854775807_{10}$
+    \questionpart $-9223372036854775808_{10}\sim -9223372036854775680_{10}$
+    \questionpart $-9223372036854775808_{10}\sim -9223372036854775681_{10}$
+\end{arabicparts}
+\question
+\begin{arabicparts}
+    \questionpart \texttt{0x1FF80000} $\sim$ \texttt{0x2007FFF}
+    \questionpart \texttt{0x1FFFF800} $\sim$ \texttt{0x20007FF}
+\end{arabicparts}
+\question
+\begin{arabicparts}
+    \questionpart 如下, 其中第一部分是对寄存器变量的定义, 接下来才是翻译后的代码
+    \begin{lstlisting}[language=C]
+// 寄存器定义
+int i;                   // x5
+int result;              // x6
+int addr = &MemArray[0]; // x10
+// 以下是翻译后的 C 代码
+i = 0;
+do {
+    result = result + *addr;
+    addr++;
+    i++;
+} while (i < 100);
+    \end{lstlisting}
+    \questionpart 如下, \texttt{x6} 同时作为索引.
+    \begin{lstlisting}[language={[RISC-V]Assembler}]
+    addi x6,  x10, 0
+    addi x29, x10, 400
+Loop:
+    lw   x7,  0(x6)
+    add  x5,  x5,  x7
+    addi x6,  x6,  4
+    blt  x6,  x29, Loop
+    \end{lstlisting}
+\end{arabicparts}
+\question
+\begin{arabicparts}
+    \questionpart \texttt{11}
+    \questionpart \texttt{88}
+\end{arabicparts}
+\end{document}
