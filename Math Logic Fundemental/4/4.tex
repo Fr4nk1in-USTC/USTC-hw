@@ -1,0 +1,268 @@
+\documentclass[boxes]{homework}
+
+% This is a slightly-more-than-minimal document that uses the homework class.
+% See the README at http://git.io/vZWL0 for complete documentation.
+
+\name{傅申 PB20000051}        % Replace (Your Name) with your name.
+\term{2022 春}     % Replace (Current Term) with the current term.
+\course{数理逻辑基础}    % Replace (Course Name) with the course name.
+\hwnum{4}          % Replace (Number) with the number of the homework.
+\hwname{作业}    
+\problemname{练习}    
+\solutionname{解:}
+
+% Load any other packages you need here.
+\usepackage[
+    a4paper,
+    top = 2.28cm,
+    bottom = 2.28cm,
+    left = 1.91cm,
+    right = 1.91cm,
+    includeheadfoot
+]{geometry}
+\fancyfootoffset{0pt} % make fancyhdr work properly
+\setlength{\tabcolsep}{4pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1}
+\usepackage{ctex}
+\usepackage{amssymb}
+
+\begin{document}
+\setlength\abovedisplayskip{.1em}
+\setlength\belowdisplayskip{.1em}
+\problemnumber{9}
+\begin{problem}
+1. 证明以下各对公式是等值的.
+\begin{parts}[n]
+    \setcounter{enumi}{1}
+    \part
+    \label{9.1.2}
+    $(\lnot p\land \lnot q)\to\lnot r$ 和 $r\to (q\lor p)$
+    \part
+    \label{9.1.3}
+    $(\lnot p\lor q)\to r$ 和 $(p\land\lnot q)\lor r$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{9.1.2} 由 De. Morgan 律有 $\lnot p\land\lnot q$ 与 $\lnot(p\lor q)$ 等值, 而有析取交换律 $\vDash (p\lor q)\leftrightarrow(q\lor p)$, 所以 $\lnot p\land\lnot q$ 与 $q\lor p$ 等值, 进而
+    \begin{equation}\label{eq:9.1.1}
+        \vDash ((\lnot p\land\lnot q)\to \lnot r)\leftrightarrow(\lnot(q\lor p)\to \lnot r)
+    \end{equation}
+    而由两个换位律可得 $\vdash (\lnot p\to\lnot q)\leftrightarrow(q\to p)$, 从而 $\vDash (\lnot p\to\lnot q)\leftrightarrow(q\to p)$, 由代换定理就有
+    \begin{equation}\label{eq:9.1.2}
+        \vDash (\lnot(q\lor p)\to \lnot r)\leftrightarrow(r\to(q\lor p))
+    \end{equation}
+    由式 (\ref{eq:9.1.1}) 和式 (\ref{eq:9.1.2}), 利用等值的可递性可知 $(\lnot p\land \lnot q)\to\lnot r$ 和 $r\to (q\lor p)$ 等值. $\square$
+
+    \ref{9.1.3} 由双重否定律和第二双重否定律有 $\vDash q\leftrightarrow\lnot\lnot q$, 因此 $\lnot p\lor q$ 与 $\lnot p\lor \lnot\lnot q$ 等值. 由 De. Morgan 律有 $\lnot p\lor \lnot\lnot q$ 与 $\lnot (p\land \lnot q)$ 等值, 由等值的可递性可知 $\lnot p\lor q$ 与 $\lnot(p\land \lnot q)$ 等值, 因此
+    \begin{equation}\label{eq:9.1.3}
+        \vDash ((\lnot p\lor q)\to r)\leftrightarrow \lnot(p\land\lnot q)\to r
+    \end{equation}
+    而 $p\lor q = \lnot p\to q$, 即式 (\ref{eq:9.1.3}) 等价为
+    \begin{equation}
+        \vDash ((\lnot p\lor q)\to r)\leftrightarrow (p\land\lnot q)\lor r
+    \end{equation}
+    所以题中两公式等值. $\square$
+\end{solution}
+
+% \begin{solution}
+%     使用真值表进行证明:
+% 
+%     \ref{9.1.2} 两式的真值表如下
+%     \begin{center}
+%         \begin{tabular}{c|c|c}
+%             真值指派                  & $(\lnot p\land \lnot q)\to \lnot r$ & $r\to (q\lor p)$ \\
+%             \hline
+%             \begin{tabular}{ccc}
+%                 $p$ & $q$ & $r$ \\
+%                 1   & 1   & 1   \\
+%                 1   & 1   & 0   \\
+%                 1   & 0   & 1   \\
+%                 1   & 0   & 0   \\
+%                 0   & 1   & 1   \\
+%                 0   & 1   & 0   \\
+%                 0   & 0   & 1   \\
+%                 0   & 0   & 0
+%             \end{tabular} &
+%             \begin{tabular}{ccccc|c|cc}
+%                 $(\lnot$ & $p$ & $\land$ & $\lnot$ & $q)$ & $\to$ & $\lnot$ & $r$ \\
+%                 0        & 1   & 0       & 0       & 1    & 1     & 0       & 1   \\
+%                 0        & 1   & 0       & 0       & 1    & 1     & 1       & 0   \\
+%                 0        & 1   & 0       & 1       & 0    & 1     & 0       & 1   \\
+%                 0        & 1   & 0       & 1       & 0    & 1     & 1       & 0   \\
+%                 1        & 0   & 0       & 0       & 1    & 1     & 0       & 1   \\
+%                 1        & 0   & 0       & 0       & 1    & 1     & 1       & 0   \\
+%                 1        & 0   & 1       & 1       & 0    & 0     & 0       & 1   \\
+%                 1        & 0   & 1       & 1       & 0    & 1     & 1       & 0
+%             \end{tabular} &
+%             \begin{tabular}{c|c|ccc}
+%                 $r$ & $\to$ & $(q$ & $\lor$ & $p)$ \\
+%                 1   & 1     & 1    & 1      & 1    \\
+%                 0   & 1     & 1    & 1      & 1    \\
+%                 1   & 1     & 0    & 1      & 1    \\
+%                 0   & 1     & 0    & 1      & 1    \\
+%                 1   & 1     & 1    & 1      & 0    \\
+%                 0   & 1     & 1    & 1      & 0    \\
+%                 1   & 0     & 0    & 0      & 0    \\
+%                 0   & 1     & 0    & 0      & 0
+%             \end{tabular}
+%         \end{tabular}
+%     \end{center}
+%     可以看出对 $p$, $q$, $r$ 的任何真值指派, 两公式的真值相等, 所以两公式等值.
+% 
+%     \ref{9.1.3} 两式的真值表如下
+%     \begin{center}
+%         \begin{tabular}{c|c|c}
+%             真值指派                  & $(\lnot p\lor q)\to r$ & $(p\land \lnot q)\lor r$ \\
+%             \hline
+%             \begin{tabular}{ccc}
+%                 $p$ & $q$ & $r$ \\
+%                 1   & 1   & 1   \\
+%                 1   & 1   & 0   \\
+%                 1   & 0   & 1   \\
+%                 1   & 0   & 0   \\
+%                 0   & 1   & 1   \\
+%                 0   & 1   & 0   \\
+%                 0   & 0   & 1   \\
+%                 0   & 0   & 0
+%             \end{tabular} &
+%             \begin{tabular}{cccc|c|c}
+%                 $(\lnot$ & $p$ & $\lor$ & $q)$ & $\to$ & $r$ \\
+%                 0        & 1   & 1      & 1    & 1     & 1   \\
+%                 0        & 1   & 1      & 1    & 0     & 0   \\
+%                 0        & 1   & 0      & 0    & 1     & 1   \\
+%                 0        & 1   & 0      & 0    & 1     & 0   \\
+%                 1        & 0   & 1      & 1    & 1     & 1   \\
+%                 1        & 0   & 1      & 1    & 0     & 0   \\
+%                 1        & 0   & 1      & 0    & 1     & 1   \\
+%                 1        & 0   & 1      & 0    & 0     & 0
+%             \end{tabular} &
+%             \begin{tabular}{cccc|c|c}
+%                 $(p$ & $\land$ & $\lnot$ & $q)$ & $\lor$ & $r$ \\
+%                 1    & 0       & 0       & 1    & 1      & 1   \\
+%                 1    & 0       & 0       & 1    & 0      & 0   \\
+%                 1    & 1       & 1       & 0    & 1      & 1   \\
+%                 1    & 1       & 1       & 0    & 1      & 0   \\
+%                 0    & 0       & 0       & 1    & 1      & 1   \\
+%                 0    & 0       & 0       & 1    & 0      & 0   \\
+%                 0    & 0       & 1       & 0    & 1      & 1   \\
+%                 0    & 0       & 1       & 0    & 0      & 0
+%             \end{tabular}
+%         \end{tabular}
+%     \end{center}
+%     可以看出对 $p$, $q$, $r$ 的任何真值指派, 两公式的真值相等, 所以两公式等值.
+% \end{solution}
+
+\problemnumber{9}
+\begin{problem}
+2. 证明 $\lnot (x_1\lor \lnot x_2)\to (x_2\to x_3)$ 与下列公式都等值.
+\begin{parts}[n]
+    \part
+    \label{9.2.1}
+    $\lnot (x_2\to x_1)\to (\lnot x_2\lor x_3)$
+    \part
+    \label{9.2.2}
+    $(\lnot x_1\land x_2)\to \lnot (x_2\land\lnot x_3)$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{9.2.1} 有析取交换律 $\vDash (x_1\lor \lnot x_2)\leftrightarrow(\lnot x_2\lor x_1)$, 而 $p\lor q = \lnot p\to q$, 因此 $x_1\lor \lnot x_2$ 与 $\lnot\lnot x_2\to x_1$ 等值. 而由双重否定律和第二双重否定律有 $\vDash \lnot\lnot x_2\leftrightarrow x_2$, 所以有
+    \begin{equation}\label{eq:9.2.1}
+        \vDash (x_1\lor \lnot x_2)\leftrightarrow(x_2\to x_1)
+    \end{equation}
+    同样由 $\vDash \lnot\lnot x_2\leftrightarrow x_2$, 有 $\lnot\lnot x_2\to x_3$ 与 $x_2\to x_3$ 等值, 即
+    \begin{equation}\label{eq:9.2.2}
+        \vDash (x_2\to x_3)\leftrightarrow(\lnot x_2\lor x_3)
+    \end{equation}
+    由式 (\ref{eq:9.2.1}) 和式 (\ref{eq:9.2.2}), 利用子公式等值可替换性, 得到 $\lnot(x_1\lor\lnot x_2)\to(x_2\to x_3)$ 与 $\lnot (x_2\to x_1)\to (\lnot x_2\lor x_3)$ 等值. $\square$
+
+    \ref{9.2.2} $x_1\lor \lnot x_2$ 的对偶为 $\lnot x_1\land \lnot\lnot x_2$, 由对偶律 $\lnot x_1\land \lnot\lnot x_2$ 与 $\lnot(x_1\lor\lnot x_2)$ 等值. 而 $\vDash \lnot\lnot x_2\leftrightarrow x_2$, 所以
+    \begin{equation}\label{eq:9.2.3}
+        \vDash (\lor x_1\land x_2)\leftrightarrow\lnot(x_1\lor\lnot x_2)
+    \end{equation}
+    $x_2\land\lnot x_3$ 的对偶为 $\lnot x_2\lor \lnot\lnot x_3$, 由对偶律 $\lnot x_2\lor \lnot\lnot x_3$ 与 $\lnot(x_2\land\lnot x_3)$ 等值. 而 $\vDash \lnot\lnot x_3\leftrightarrow x_3$, 所以 $\lnot x_2\lor x_3$ 与 $\lnot(x_2\land\lnot x_3)$ 等值. 由式 (\ref{eq:9.2.2}) 利用等值的可递性有
+    \begin{equation}\label{eq:9.2.4}
+        \vDash \lnot(x_2\land \lnot x_3)\leftrightarrow(x_2\to x_3)
+    \end{equation}
+    由式 (\ref{eq:9.2.1}) 和式 (\ref{eq:9.2.2}), 利用子公式等值可替换性, 得到 $\lnot(x_1\lor\lnot x_2)\to(x_2\to x_3)$ 与 $(\lnot x_1\land x_2)\to \lnot (x_2\land\lnot x_3)$ 等值. $\square$
+\end{solution}
+\problemnumber{10}
+\begin{problem}
+1. 求以下公式的等值主析取范式.
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part\label{10.1.3}
+    $(x_1\land x_2)\lor (\lnot x_2\leftrightarrow x_3)$
+    \part\label{10.1.4}
+    $\lnot ((x_1\to\lnot x_2)\to x_3)$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{10.1.3} $(x_1\land x_2)\lor (\lnot x_2\leftrightarrow x_3)$ 的成真指派是
+    \begin{equation}
+        (1,1,1), (1,1,0), (1,0,1), (0,1,0), (0,0,1)
+    \end{equation}
+    那么 $(x_1\land x_2)\lor (\lnot x_2\leftrightarrow x_3)$ 的等值主析取范式是
+    \begin{equation}
+        (x_1\land x_2\land x_3)\lor (x_1\land x_2\land\lnot x_3)\lor (x_1\land\lnot x_2\land x_3)\lor (\lnot x_1\land x_2\land\lnot x_3)\lor (\lnot x_1\land\lnot x_2\land x_3)
+    \end{equation}
+
+    \ref{10.1.4} $\lnot ((x_1\to\lnot x_2)\to x_3)$ 的成真指派是
+    \begin{equation}
+        (1,0,0), (0,1,0), (0,0,0)
+    \end{equation}
+    那么 $\lnot ((x_1\to\lnot x_2)\to x_3)$ 的等值主析取范式是
+    \begin{equation}
+        (x_1\land\lnot x_2\land\lnot x_3)\lor (\lnot x_1\land x_2\land\lnot x_3) \lor (\lnot x_1\land\lnot x_2\land\lnot x_3)
+    \end{equation}
+\end{solution}
+\problemnumber{10}
+\begin{problem}
+2. 求以下公式的等值主合取范式.
+\setcounter{enumi}{2}
+\begin{parts}[n]
+    \part\label{10.2.3}
+    $(x_1\land x_2\land x_3)\lor(\lnot x_1\land\lnot x_2\land x_3)$
+    \part\label{10.2.4}
+    $((x_1\to x_2)\to x_3)\to x_4$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{10.2.3} 记 $p=(x_1\land x_2\land x_3)\lor(\lnot x_1\land\lnot x_2\land x_3)$, 这是一个主析取范式, 它的成真指派是
+    \begin{equation}
+        (1,1,1),(0,0,1)
+    \end{equation}
+    $\lnot p$ 的成真指派是
+    \begin{equation}
+        (1,1,0),(1,0,1),(1,0,0),(0,1,1),(0,1,0),(0,0,0)
+    \end{equation}
+    $\lnot p$ 的等值主析取范式是
+    \begin{equation}
+        (x_1\land x_2\land\lnot x_3)\lor (x_1\land\lnot x_2\land x_3)\lor (x_1\land\lnot x_2\land\lnot x_3)\lor (\lnot x_1\land x_2\land x_3)\lor (\lnot x_1\land x_2\land\lnot x_3)\lor (\lnot x_1\land\lnot x_2\land\lnot x_3)
+    \end{equation}
+    由此得 $p$ 的等值主合取范式是
+    \begin{equation}
+        (\lnot x_1\lor\lnot x_2\lor x_3)\land(\lnot x_1\lor x_2\lor\lnot x_3)\land(\lnot x_1\lor x_2\lor x_3)\land(x_1\lor\lnot x_2\lor\lnot x_3)\land(x_1\lor\lnot x_2\lor x_3)\land(x_1\lor x_2\lor x_3)
+    \end{equation}
+
+    \ref{10.2.4} 记 $q = ((x_1\to x_2)\to x_3)\to x_4$, $q$ 的成真指派是
+    \begin{equation}
+        \begin{aligned}
+             & (1,1,1,1), (1,1,0,1), (1,1,0,0), (1,0,1,1), (1,0,0,1), (0,1,1,1), \\
+             & (0,1,0,1), (0,1,0,0), (0,0,1,1), (0,0,0,1), (0,0,0,0)
+        \end{aligned}
+    \end{equation}
+    $\lnot q$ 的成真指派是
+    \begin{equation}
+        (1,1,1,0), (1,0,1,0), (1,0,0,0), (0,1,1,0), (0,0,1,0)
+    \end{equation}
+    $\lnot q$ 的等值主析取范式是
+    \begin{equation}
+        (x_1\land x_2\land x_3\land\lnot x_4)\lor (x_1\land\lnot x_2\land x_3\land\lnot x_4)\lor (x_1\land\lnot x_2\land\lnot x_3\land\lnot x_4)\lor (\lnot x_1\land x_2\land x_3\land\lnot x_4)\lor (\lnot x_1\land\lnot x_2\land x_3\land\lnot x_4)
+    \end{equation}
+    由此得 $q$ 的等值主合取范式是
+    \begin{equation}
+        (\lnot x_1\lor\lnot x_2\lor\lnot x_3\lor x_4)\land(\lnot x_1\lor x_2\lor\lnot x_3\lor x_4)\land(\lnot x_1\lor x_2\lor x_3\lor x_4)\land(x_1\lor\lnot x_2\lor\lnot x_3\lor x_4)\land (x_1\lor x_2\lor\lnot x_3\lor x_4)
+    \end{equation}
+\end{solution}
+\end{document}
