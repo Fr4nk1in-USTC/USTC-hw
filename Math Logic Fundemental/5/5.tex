@@ -14,8 +14,8 @@
 % Load any other packages you need here.
 \usepackage[
     a4paper,
-    top = 2.54cm,
-    bottom = 2.54cm,
+    top = 1.84cm,
+    bottom = 1.84cm,
     left = 1.91cm,
     right = 1.91cm,
     includeheadfoot
@@ -26,13 +26,100 @@
 \begin{document}
 \setlength\abovedisplayskip{.125em}
 \setlength\belowdisplayskip{.125em}
-
+\problemnumber{11}
 \begin{problem}
-问题描述
+2. 分别找出只含有运算 $\lnot$ 和 $\land$ 的公式, 使之与以下各公式等值.
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part
+    $(x_1\leftrightarrow \lnot x_2)\leftrightarrow x_3$
+\end{parts}
 \end{problem}
 
 \begin{solution}
-解答
-\end{solution}
+因为 $u\leftrightarrow v = \lnot (u\land \lnot v)\land\lnot (\lnot u\land v)$, 所以有
 
+\begin{equation*}
+    \begin{aligned}
+        (x_1\leftrightarrow \lnot x_2)\leftrightarrow x_3 &= (\lnot (x_1\land x_2)\land\lnot (\lnot x_1\land\lnot x_2))\leftrightarrow x_3\\
+        &=  \lnot(\lnot (x_1\land x_2)\land\lnot (\lnot x_1\land\lnot x_2)\land\lnot x_3)\land\lnot (\lnot(\lnot(x_1\land x_2)\land\lnot(\lnot x_1\land\lnot x_2))\land x_3)
+    \end{aligned}
+\end{equation*}
+\end{solution}
+\problemnumber{11}
+\begin{problem}
+    3. 分别找出只含有运算 $\lnot$ 和 $\lor$ 的公式, 使之与以下各公式等值.
+    \begin{parts}[n]
+        \setcounter{enumi}{1}
+        \part
+        $(\lnot x_1\land\lnot x_2)\to(\lnot x_3\land x_4)$
+    \end{parts}
+\end{problem}
+
+\begin{solution}
+    因为 $u\to v=\lnot u\lor v$, 所以有
+    \begin{equation*}
+        \begin{aligned}
+            (\lnot x_1\land\lnot x_2)\to(\lnot x_3\land x_4) &= \lnot(x_1\lor x_2)\to \lnot(x_3\lor \lnot x_4)\\
+            &= (x_1\lor x_2)\lor \lnot (x_3\lor \lnot x_4)
+        \end{aligned}
+    \end{equation*}
+\end{solution}
+\problemnumber{12}
+\begin{problem}
+    2. $A$, $B$, $C$, $D$ 为四个事件. 已知: $A$ 和 $B$ 不可能同时发生; 若 $A$ 发生, 则 $C$ 不发生而 $D$ 发生; 若 $D$ 发生, 则 $B$ 不发生. 结论: $B$ 和 $C$ 不可能同时发生.
+\end{problem}
+\begin{solution}
+    用 $x_1, x_2, x_3, x_4$ 分别表示 $A$, $B$, $C$, $D$ 发生, 于是题中的论证可形式化为
+    \begin{equation*}
+        \{\lnot(x_1\land x_2), x_1\to (\lnot x_3\land x_4), x_4\to \lnot x_2\}\vdash \lnot (x_2\land x_3)
+    \end{equation*}
+    问题归结为下面的真值方程组 (1)\textasciitilde (4) 是否有解:
+    \begin{enumerate}[label = (\arabic*), parsep = 0pt, itemsep = 0pt, topsep = .25em]
+        \item $\lnot (v_1\land v_2)=1$
+        \item $v_1\to (\lnot v_3\land v_4) = 1$
+        \item $v_4\to \lnot v_2 = 1$
+        \item $\lnot (v_2\land v_3) = 0$\\
+        由 (4) 式可得
+        \item $v_2 = 1$, 且
+        \item $v_3 = 1$\\
+        由 (1) 式和 (5) 式可得
+        \item $v_1 = 0$\\
+        由 (3) 式和 (5) 式可得
+        \item $v_4 = 0$\\
+        将 (5), (6), (7), (8) 式代入 (2) 式的左边, 得
+        $$
+        v_1\to (\lnot v_3\land v_4) = 0\to (0\land 0) = 1
+        $$
+    \end{enumerate}
+    所得结果说明 $(0, 1, 1, 0)$ 是 (1)\textasciitilde (4) 式的解, 它是三个前提的成真指派, 但却是结论的成假指派, 所以题中的论证不合理.
+\end{solution}
+\problemnumber{12}
+\begin{problem}
+    3. 例 3 中如果办案人员作出的判断是: ``$a$, $b$, $c$ 三人中至少有一人未作案'', 判断是否正确?
+\end{problem}
+\begin{solution}
+    用 $x_1$, $x_2$, $x_3$, $x_4$ 分别表示 $a$, $b$, $c$, $d$ 作案, 办案人员的推理可形式化为
+    \begin{align*}
+        &\{(\lnot x_1\land\lnot x_2)\leftrightarrow(\lnot x_3\land \lnot x_4), (x_1\land x_2)\to ((x_3\lor x_4)\land \lnot(x_3\land x_4)), \\
+        &(x_2\land x_3)\to ((x_1\land x_4)\lor (\lnot x_1\land \lnot x_4))\}\vdash \lnot x_1\lor\lnot x_2\lor \lnot x_3
+    \end{align*}
+    解方程组
+    \begin{enumerate}[label = (\arabic*), parsep = 0pt, itemsep = 0pt, topsep = .25em]
+        \item $(\lnot v_1\land\lnot v_2)\leftrightarrow(\lnot v_3\land \lnot v_4)=1$
+        \item $(v_1\land v_2)\to ((v_3\lor v_4)\land \lnot(v_3\land v_4))=1$
+        \item $(v_2\land v_3)\to ((v_1\land v_4)\lor (\lnot v_1\land \lnot v_4))=1$
+        \item $\lnot v_1\lor\lnot v_2\lor \lnot v_3=0$\\
+        由 (4) 式可得
+        \item $v_1=1$, 且
+        \item $v_2=1$, 且
+        \item $v_3=1$\\
+        由 (2), (5), (6), (7) 式可得
+        \item $v_4 = 0$\\
+        将解得值代入 (3) 式的左边, 得
+        \item $(v_2\land v_3)\to ((v_1\land v_4)\lor (\lnot v_1\land \lnot v_4))=(1\land 1)\to ((1\land 0)\lor (0\land 1)) = 1\to (0\lor 0) = 0$\\
+        与 (3) 式矛盾, 因此方程组无解.
+    \end{enumerate}
+    所以判断是正确的.
+\end{solution}
 \end{document}
