@@ -1,0 +1,134 @@
+\documentclass[boxes]{homework}
+
+% This is a slightly-more-than-minimal document that uses the homework class.
+% See the README at http://git.io/vZWL0 for complete documentation.
+
+\name{傅申 PB20000051}        % Replace (Your Name) with your name.
+\term{2022 春}     % Replace (Current Term) with the current term.
+\course{数理逻辑基础}    % Replace (Course Name) with the course name.
+\hwnum{6}          % Replace (Number) with the number of the homework.
+\hwname{作业}    
+\problemname{练习}    
+\solutionname{解:}
+
+% Load any other packages you need here.
+\usepackage[
+    a4paper,
+    top = 2.22cm,
+    bottom = 2.22cm,
+    left = 1.91cm,
+    right = 1.91cm,
+    includeheadfoot
+]{geometry}
+\fancyfootoffset{0pt} % make fancyhdr work properly
+\usepackage{ctex}
+
+\begin{document}
+\setlength\abovedisplayskip{.125em}
+\setlength\belowdisplayskip{.125em}
+\problemnumber{14}
+\begin{problem}
+2. 在以下公式中, 哪些 $x_1$ 的出现是自由的? 哪些 $x_1$ 的出现是约束的? 项 $f_1^2(x_1, x_3)$ 对这些公式中的 $x_2$ 是不是自由的?
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{14.2.3}
+    $\forall x_1 R_1^1(x_1)\to \forall x_2R_1^2(x_1, x_2)$
+    \part \label{14.2.4}
+    $\forall x_2 R_1^2(f_1^2(x_1, x_2), x_1)\to \forall x_1R_2^2(x_3, f_2^2(x_1, x_2))$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+\ref{14.2.3} 第 3 个 $x_1$ 的出现是自由的, 第 1, 2 个 $x_1$ 的出现是约束的.
+
+因为 $x_2$ 在公式中不自由出现, 所以项 $f_1^2(x_1, x_3)$ 对公式中的 $x_2$ 是自由的.
+
+\ref{14.2.4} 第 1, 2 个 $x_1$ 的出现是自由的, 第 3, 4 个 $x_1$ 的出现是约束的.
+
+项 $f_1^2(x_1, x_3)$ 对公式中的 $x_2$ 是不自由的, 因为替换第二个 $x_2$ 后项 $f_1^2(x_1, x_3)$ 中的 $x_1$ 受到约束.
+\end{solution}
+
+\problemnumber{14}
+\begin{problem}
+    3. 设 $t$ 是项 $f_1^2(x_1, x_3)$, $p(x_1)$ 是下面的公式. 确定 $t$ 对 $p(x_1)$ 中的 $x_1$ 是否自由? 如果是自由的, 写出 $p(t)$.
+    \begin{parts}[n]
+        \setcounter{enumi}{2}
+        \part\label{14.3.3}
+        $\forall x_2 R_1^1(f_1^1(x_2))\to \forall x_3 R_1^3(x_1, x_2, x_3)$
+        \part\label{14.3.4}
+        $\forall x_2 R_1^3(x_1, f_1^1(x_1), x_2)\to \forall x_3 R_1^1(f_1^2(x_1, x_3))$
+    \end{parts}
+\end{problem}
+\begin{solution}
+    \ref{14.3.3} $t$ 对 $p(x_1)$ 中的 $x_1$ 不自由, 因为替换后 $t$ 中的 $x_3$ 受到约束.
+
+    \ref{14.3.4} $t$ 对 $p(x_1)$ 中的 $x_1$ 不自由, 因为替换后 $t$ 中的 $x_3$ 受到约束.
+\end{solution}
+\problemnumber{14}
+\begin{problem}
+    5. 设个体变元 $x$ 在公式 $p(x)$ 中自由出现, 个体变元 $y$ 不在公式 $p(x)$ 中自由出现. 试证, 如果 $y$ 对 $p(x)$ 中的 $x$ 是自由的, 那么 $x$ 对 $p(y)$ 中的 $y$ 也是自由的.
+\end{problem}
+\begin{solution}
+    因为 $x$ 在公式 $p(x)$ 中自由出现, 所以所有的 $x$ 都不是在 $\forall x$ 中或在 $\forall x$ 的范围中. 将 $p(y)$ 中的 $y$ 分为两部分:
+    \begin{enumerate}[label = (\alph*), parsep = 0pt, itemsep = 0pt, topsep = .25em]
+        \item $p(x)$ 中原有的 $y$, 它们本身就是不自由出现的.
+        \item $p(x)$ 中 $x$ 被替换后的 $y$, 因为 $y$ 对 $p(x)$ 中的 $x$ 是自由的, 所以这部分 $y$ 都是自由的, 即它们都不是在 $\forall y$ 中或在 $\forall y$ 的范围中.
+    \end{enumerate}
+    而因为 $p(x)$ 中的 $x$ 都不是在 $\forall x$ 中或在 $\forall x$ 的范围中, 所以 $p(y)$ 中自由的 $y$ (即 b 部分) 都不是在 $\forall x$ 中或在 $\forall x$ 的范围中. 因此, 用 $x$ 替换 $p(y)$ 中自由出现的 $y$ 后, 这些 $x$ 都不会出现在 $\forall x$ 中或在 $\forall x$ 的范围中. 因此, $x$ 对 $p(y)$ 中的 $y$ 也是自由的.
+\end{solution}.
+\problemnumber{15}
+\begin{problem}
+    2. 试证对任意公式 $p$ 与 $q$, 有
+    $$
+        \vdash \forall x(p\to q)\to (\forall xp\to \forall xq)
+    $$
+\end{problem}
+\begin{solution}
+    先证明 $\{\forall x(p\to q), \forall x p\}\vdash \forall xq$:
+    \begin{enumerate}[label = (\arabic*), parsep = 0pt, itemsep = 0pt, topsep = .25em]
+        \item $\forall x(p\to q)$\hfill 假定
+        \item $\forall x(p\to q)\to (p\to q)$\hfill (K4)
+        \item $p\to q$ \hfill (1), (2), MP
+        \item $\forall x p$\hfill 假定
+        \item $\forall x p\to p$\hfill (K4)
+        \item $p$\hfill (4), (5), MP
+        \item $q$\hfill (6), (3), MP
+        \item $\forall xp$\hfill (7), Gen
+    \end{enumerate}
+    在上面的证明中, 除了 $x$ 外没有使用其他的 Gen 变元, 而 $x$ 显然不在 $\forall x p$ 和 $\forall x(p\to q)$ 中自由出现, 由演绎定理, 先后有 $\{\forall x(p\to q)\}\vdash \forall xp\to \forall xq$, $\vdash \forall x(p\to q)\to (\forall xp\to \forall xq)$. 公式得证.
+\end{solution}
+\problemnumber{15}
+\begin{problem}
+    3. 求证:
+    \begin{parts}[n]
+        \part\label{15.3.1}
+        $\{\forall x_1\forall x_2 R_1^2(x_1, x_2)\}\vdash \forall x_1 R_1^2(x_1, x_1)$
+        \part\label{15.3.2}
+        $\{\forall x_1\forall x_2 R_1^2(x_1, x_2)\}\vdash \forall x_2\forall x_3 R_1^2(x_2, x_3)$
+    \end{parts}
+\end{problem}
+\begin{solution}
+    \ref{15.3.1} 证明如下:
+    \begin{enumerate}[label = (\arabic*), parsep = 0pt, itemsep = 0pt, topsep = .25em]
+        \item $\forall x_1\forall x_2 R_1^2(x_1, x_2)$ \hfill 假定
+        \item $\forall x_1\forall x_2 R_1^2(x_1, x_2)\to \forall x_2 R_1^2(x_1, x_2)$\hfill (K4)
+        \item $\forall x_2 R_1^2(x_1, x_2)$\hfill (1), (2), MP
+        \item $\forall x_2 R_1^2(x_1, x_2)\to R_1^2(x_1, x_1)$\hfill (K4)
+        \item $R_1^2(x_1, x_1)$\hfill (3), (4), MP
+        \item $\forall x_1 R_1^2(x_1, x_1)$\hfill (5), Gen
+    \end{enumerate}
+    \ref{15.3.2} 证明如下:
+    \begin{enumerate}[label = (\arabic*), parsep = 0pt, itemsep = 0pt, topsep = .25em]
+        \item $\forall x_1\forall x_2 R_1^2(x_1, x_2)$ \hfill 假定
+        \item $\forall x_1\forall x_2 R_1^2(x_1, x_2)\to \forall x_2 R_1^2(x_1, x_2)$\hfill (K4)
+        \item $\forall x_2 R_1^2(x_1, x_2)$\hfill (1), (2), MP
+        \item $\forall x_2 R_1^2(x_1, x_2)\to R_1^2(x_1, x_3)$\hfill (K4)
+        \item $R_1^2(x_1, x_3)$\hfill (3), (4), MP
+        \item $\forall x_3 R_1^2(x_1, x_3)$\hfill (5), Gen
+        \item $\forall x_1\forall x_3 R_1^2(x_1, x_3)$\hfill (6), Gen
+        \item $\forall x_1\forall x_3 R_1^2(x_1, x_3)\to \forall x_3 R_1^2(x_2, x_3)$\hfill (K4)
+        \item $\forall x_3 R_1^2(x_2, x_3)$\hfill (7), (8), MP
+        \item $\forall x_2\forall x_3 R_1^2(x_2, x_3)$\hfill (9), Gen
+    \end{enumerate}
+\end{solution}
+\end{document}
