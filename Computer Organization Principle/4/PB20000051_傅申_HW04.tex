@@ -1,0 +1,41 @@
+\documentclass[11pt]{homework}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{傅申}
+\newcommand{\hwid}{PB20000051}
+\newcommand{\hwtype}{计算机组成原理作业}
+\newcommand{\hwnum}{4}
+
+\begin{document}
+\maketitle
+% Your content
+\question
+$$
+78.75 = (-1)^0 \times 1.00111011_2\times 2^{(133-127)}
+$$
+所以 78.75 的二进制表示为 \texttt{01000010100111011000000000000000}, 十六进制形式为 \texttt{0x429D8000}.
+\question
+\begin{arabicparts}
+    \questionpart $27\% + 12 \% = 39\%$
+    \questionpart 100\%
+    \questionpart $26\% + 27\% + 12\% + 10\% + 2\% = 77\%$
+\end{arabicparts}
+\question
+当前指令为 \texttt{0000000\_01100\_01101\_011\_10100\_0100011}, 即 \texttt{sd x12, 20(x13)}.
+\begin{arabicparts}
+    \questionpart ALUop 为 \texttt{00}, ALU 控制线为 \texttt{0010}.
+    \questionpart 新 PC 地址为 PC + 4, 即 \texttt{0xbfc00390}. 计算出该 PC 值的通路的序号为 $1\to 3\to 12\to 1$.
+    \questionpart ALU 的输入数值为 \texttt{Reg[x13]} 和 \texttt{0x00000014}. \\
+    3 号加法器的输入数值为 \texttt{0xBFC0038C} 和 \texttt{0x00000004}. \\
+    11 号加法器的输入数值为 \texttt{0xBFC0038C} 和 \texttt{0x00000028}.
+\end{arabicparts}
+\question
+\begin{arabicparts}
+    \questionpart $40+235+160+45+230+45+15=770$ ps
+    \questionpart $40+235+160+45+230+235+45+15=1005$ ps
+    \questionpart $40+235+160+45+230+235=945$ ps
+    \questionpart $40+235+160+45+230+10+45+15=780$ ps
+    \questionpart $40+235+160+45+230+45+15=770$ ps
+    \questionpart 1005 ps
+\end{arabicparts}
+\end{document}
