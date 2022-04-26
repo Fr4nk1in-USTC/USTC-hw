@@ -1,0 +1,65 @@
+\documentclass[11pt]{homework}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{傅申}
+\newcommand{\hwid}{PB20000051}
+\newcommand{\hwtype}{计算机组成原理作业}
+\newcommand{\hwnum}{5}
+
+\begin{document}
+\maketitle
+% Your content
+\question
+\begin{arabicparts}
+    \questionpart 流水化: 350 ps, 非流水化: 1250 ps
+    \questionpart 流水化: 1750 ps, 非流水化: 1250 ps
+    \questionpart 拆分 ID 级, 新的周期为 300 ps
+    \questionpart 35\%
+    \questionpart 65\%
+\end{arabicparts}
+\question
+\begin{arabicparts}
+    \questionpart 如下, \texttt{**} 表示停顿
+    \begin{center}
+        \begin{tabular}{lcccccccccccc}
+            \texttt{sd   x29, 12(x16)}  & \texttt{IF} & \texttt{ID} & \texttt{EX} & \texttt{MEM} & \texttt{WB}  &              &             &             &              &              &              &             \\
+            \texttt{ld   x29, 8(x16)}   &             & \texttt{IF} & \texttt{ID} & \texttt{EX}  & \texttt{MEM} & \texttt{WB}  &             &             &              &              &              &             \\
+            \texttt{sub  x17, x15, x14} &             &             & \texttt{IF} & \texttt{ID}  & \texttt{EX}  & \texttt{MEM} & \texttt{WB} &             &              &              &              &             \\
+            \texttt{beqz x17, label}    &             &             &             & \texttt{**}  & \texttt{**}  & \texttt{IF}  & \texttt{ID} & \texttt{EX} & \texttt{MEM} & \texttt{WB}  &              &             \\
+            \texttt{addi x15, x11, x14} &             &             &             &              &              &              & \texttt{IF} & \texttt{ID} & \texttt{EX}  & \texttt{MEM} & \texttt{WB}  &             \\
+            \texttt{sub  x15, x30, x14} &             &             &             &              &              &              &             & \texttt{IF} & \texttt{ID}  & \texttt{EX}  & \texttt{MEM} & \texttt{WB}
+        \end{tabular}
+    \end{center}
+    \questionpart 重排代码不能减少因结构冒险导致的停顿次数. 因为每个指令都需要从存储器中取得, 而指令和数据共享存储器, 所以每次数据访存都会导致一次停顿, 重排代码并不能解决这个问题.
+    \questionpart 在代码中插入 \texttt{NOP} 指令不能消除结构冒险, 因为 \texttt{NOP} 指令也需要从存储器中取得.
+    \questionpart 36\%
+\end{arabicparts}
+\question
+\begin{arabicparts}
+    \questionpart 不会, 因为各个阶段的延迟并没有改变, 因此最慢的延迟也没有改变.
+    \questionpart 可能. 这样的变化或许能减少数据冒险导致的停顿, 从而提高流水线的性能.
+    \questionpart 可能. 指令的变化导致对于同样的程序, 指令数会增加, 进而降低流水线的性能.
+\end{arabicparts}
+\newpage
+\question
+如下, \texttt{**} 表示停顿, 下划线表示没有进行有用操作的流水级.
+
+\resizebox{\textwidth}{!}{
+    \centering
+    \begin{tabular}{lcccc|cccccccc|cccc}
+        \texttt{ld   x10, 0(x13)}   & \texttt{IF} & \texttt{ID} & \texttt{EX} & \texttt{MEM} & \texttt{WB}  &             &                          &                          &                          &                         &              &             &                          &                          &                          &                         \\
+        \texttt{ld   x11, 8(x13)}   &             & \texttt{IF} & \texttt{ID} & \texttt{EX}  & \texttt{MEM} & \texttt{WB} &                          &                          &                          &                         &              &             &                          &                          &                          &                         \\
+        \texttt{add  x12, x10, x11} &             &             & \texttt{IF} & \texttt{ID}  & \texttt{**}  & \texttt{EX} & \underline{\texttt{MEM}} & \texttt{WB}              &                          &                         &              &             &                          &                          &                          &                         \\
+        \texttt{subi x13, x13, 16}  &             &             &             & \texttt{IF}  & \texttt{**}  & \texttt{ID} & \texttt{EX}              & \underline{\texttt{MEM}} & \texttt{WB}              &                         &              &             &                          &                          &                          &                         \\
+        \texttt{bnez x12, LOOP}     &             &             &             &              & \texttt{**}  & \texttt{IF} & \texttt{ID}              & \texttt{EX}              & \underline{\texttt{MEM}} & \underline{\texttt{WB}} &              &             &                          &                          &                          &                         \\
+        \texttt{ld   x10, 0(x13)}   &             &             &             &              &              &             & \texttt{IF}              & \texttt{ID}              & \texttt{EX}              & \texttt{MEM}            & \texttt{WB}  &             &                          &                          &                          &                         \\
+        \texttt{ld   x11, 8(x13)}   &             &             &             &              &              &             &                          & \texttt{IF}              & \texttt{ID}              & \texttt{EX}             & \texttt{MEM} & \texttt{WB} &                          &                          &                          &                         \\
+        \texttt{add  x12, x10, x11} &             &             &             &              &              &             &                          &                          & \texttt{IF}              & \texttt{ID}             & \texttt{**}  & \texttt{EX} & \underline{\texttt{MEM}} & \texttt{WB}              &                          &                         \\
+        \texttt{subi x13, x13, 16}  &             &             &             &              &              &             &                          &                          &                          & \texttt{IF}             & \texttt{**}  & \texttt{ID} & \texttt{EX}              & \underline{\texttt{MEM}} & \texttt{WB}              &                         \\
+        \texttt{bnez x12, LOOP}     &             &             &             &              &              &             &                          &                          &                          &                         & \texttt{**}  & \texttt{IF} & \texttt{ID}              & \texttt{EX}              & \underline{\texttt{MEM}} & \underline{\texttt{WB}} \\
+        有用操作的流水级数          &             &             &             &              & 2            & 4           & 3                        & 4                        & 4                        & 4                       & 2            & 4           &                          &                          &                          &                         \\
+    \end{tabular}
+}
+
+从最后一行可以看出, 当流水线全负荷工作时，所有五个流水级都在进行有用的操作的情况并没有出现.
+\end{document}
