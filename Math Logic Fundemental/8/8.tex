@@ -1,0 +1,147 @@
+\documentclass[boxes]{homework}
+
+% This is a slightly-more-than-minimal document that uses the homework class.
+% See the README at http://git.io/vZWL0 for complete documentation.
+
+\name{傅申 PB20000051}        % Replace (Your Name) with your name.
+\term{2022 春}     % Replace (Current Term) with the current term.
+\course{数理逻辑基础}    % Replace (Course Name) with the course name.
+\hwnum{8}          % Replace (Number) with the number of the homework.
+\hwname{作业}    
+\problemname{练习}    
+\solutionname{解:}
+
+% Load any other packages you need here.
+\usepackage[
+    a4paper,
+    top = 2.54cm,
+    bottom = 2.54cm,
+    left = 1.91cm,
+    right = 1.91cm,
+    includeheadfoot
+]{geometry}
+\fancyfootoffset{0pt} % make fancyhdr work properly
+\usepackage{ctex}
+
+\begin{document}
+\setlength\abovedisplayskip{.125em}
+\setlength\belowdisplayskip{.125em}
+\problemnumber{17}
+\begin{problem}
+2. 设 $\varphi, \psi \in \Phi_M$. 求证: 若对项 $t$ 中的任一变元 $x$ 都有 $\varphi(x)=\psi(x)$, 则 $\varphi(t)=\psi(t)$.
+\end{problem}
+
+\begin{solution}
+    以 $t$ 中出现的个体常元, 个体变元和运算为基础构建项集 $T$, 对 $t$ 在 $T$ 中的层次数 $k$ 进行归纳:
+    \begin{enumerate}[label = $\arabic*^\circ$, parsep = 0pt, itemsep = 0pt, topsep = .25em]
+        \item 当 $k=0$ 时, $t=c_i$ 或 $t=x_i$, 因为 $\varphi(c_i)=\psi(c_i)=\overline{c_i}$ 和 $\varphi(x_i)=\psi(x_i)$, 所以 $\varphi(t)=\psi(t)$.
+        \item 当 $k>0$ 时, 设 $t = f_i^n(t_1, \cdots, t_n)$, 其中 $t_1, \cdots, t_n$ 是较低层次的项. 由归纳假设, 有
+              $$
+                  \varphi(t_1) = \psi(t_1), \cdots, \varphi(t_n) = \psi(t_n)
+              $$
+              因此
+              $$
+                  \varphi(t) = \varphi(f_i^n(t_1, \cdots, t_n)) = \overline{f_i^n}(\varphi(t_1), \cdots, \varphi(t_n)) = \overline{f_i^n}(\psi(t_1), \cdots, \psi(t_n)) = \psi(f_i^n(t_1, \cdots, t_n)) = \psi(t)
+              $$
+    \end{enumerate}
+    由项集 $T$ 的分层性及 $1^\circ$ 和 $2^\circ$ 归纳可知题中命题成立.
+\end{solution}
+
+\problemnumber{17}
+\begin{problem}
+3. 设 $t\in T$, $\varphi$ 和 $\varphi'\in \Phi_M$, $\varphi'$ 是 $\varphi$ 的 $x$ 变通, 且 $\varphi'(x)=\varphi(t)$. 用项 $t$ 代换项 $u(x)$ 中 $x$ 所得的项记为 $u(t)$. 求证 $\varphi'(u(x)) = \varphi(u(t))$.
+\end{problem}
+
+\begin{solution}
+    对 $u(x)$ 在项集 $T$ 中的层次数 $k$ 进行归纳:
+    \begin{enumerate}[label = $\arabic*^\circ$, parsep = 0pt, itemsep = 0pt, topsep = .25em]
+        \item 当 $k=0$ 时, 有三种可能的情况:
+              \begin{enumerate}[label = \arabic*), parsep = 0pt, itemsep = 0pt, topsep = .25em]
+                  \item $u(x) = c_i$, 此时 $u(t) = c_i$, 有 $\varphi'(u(x)) = \varphi'(c_i) = \overline{c_i} = \varphi(c_i) = \varphi(u(t))$.
+                  \item $u(x) = x$, 此时 $u(t) = t$, 由已知条件有 $\varphi'(u(x)) = \varphi'(x) = \varphi(t) = \varphi(u(t))$.
+                  \item $u(x) = y \neq x$, 此时 $u(t) = y$, 因为 $\varphi'$ 是 $\varphi$ 的 $x$ 变通, 所以有 $\varphi'(u(x)) = \varphi'(y) = \varphi(y) = \varphi(u(t))$
+              \end{enumerate}
+        \item 当 $k > 0$ 时, 设 $u(x) = f_i^n(t_1(x), \cdots, t_n(x))$, 其中 $t_1(x), \cdots, t_n(x)$ 是较低层次的项. 这时 $u(t) = f_i^n(t_1(t), \cdots, t_n(t))$. 由归纳假设, 有
+              $$
+                  \varphi'(t_1(x)) = \varphi'(t_1(t)), \cdots, \varphi'(t_n(x)) = \varphi'(t_n(t))
+              $$
+              因此
+              \begin{align*}
+                  \varphi'(u(x)) & = \varphi'(f_i^n(t_1(x), \cdots, t_n(x))) = \overline{f_i^n}(\varphi'(t_1(x)), \cdots, \varphi'(t_n(x)))              \\
+                                 & = \overline{f_i^n}(\varphi(t_1(t)), \cdots, \varphi(t_n(t))) = \varphi(f_i^n(t_1(t), \cdots, t_n(t))) = \varphi(u(t))
+              \end{align*}
+    \end{enumerate}
+    由项集 $T$ 的分层性及 $1^\circ$ 和 $2^\circ$ 归纳可知题中命题成立.
+\end{solution}
+
+\problemnumber{18}
+\begin{problem}
+1. 设 $K$ 中的 $C = \{c_1\}$, $F=\{f_1^1, f_1^2, f_2^2\}$, $R=\{R_1^2\}$. 它的一个解释域是 $\mathbb{N}=\{0, 1, 2, \cdots\}$, $\overline{c_1}=0$, $\overline{f_1^1}$ 是后继函数, $\overline{f_1^2}$ 是 $+$, $\overline{f_2^2}$ 是 $\times$, $\overline{R_1^2}$ 是 $=$. 试对以下公式分别找出 $\varphi, \psi\in\Phi_{\mathbb{N}}$, 使 $\lvert p\rvert(\varphi) = 1$, $\lvert p\rvert(\psi) = 0$, 其中 $p$ 为:
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{18.1.3} $\lnot R_1^2(f_2^2(x_1, x_2), f_2^2(x_2, x_3))$.
+    \part \label{18.1.4} $\forall x_1 R_1^2(f_2^2(x_1, x_2), x_3)$.
+    \part \label{18.1.5} $\forall x_1 R_1^2(f_2^2(x_1, c_1), x_1)\to R_1^2(x_1, x_2)$.
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{18.1.3} 取 $\varphi$ 满足 $\varphi(x_1)\neq\varphi(x_3)$ 且 $\varphi(x_2) = 0$ 即可, 比如 $\varphi(x_1) = 1, \varphi(x_2) = 1, \varphi(x_3) = 2$.
+
+    取 $\psi$ 满足 $\psi(x_1)=\psi(x_3)$ 或 $\psi(x_2) = 0$ 即可, 比如 $\psi(x_1) = 1$, $\psi(x_2) = 0$, $\psi(x_3) = 1$.
+
+    \ref{18.1.4} 取 $\varphi$ 满足 $\varphi(x_2) = \varphi(x_3) = 0$ 即可, 比如 $\varphi(x_1) = \varphi(x_2) = \varphi(x_3) = 0$.
+
+    取 $\psi$ 满足 $\psi(x_2)$ 和 $\psi(x_3)$ 不同时为 0 即可, 比如 $\psi(x_1) = 0, \psi(x_2) = 1, \psi(x_3) = 1$.
+
+    \ref{18.1.5} 公式在该解释域中恒真, 所以对所有的 $\varphi$ 都有 $\lvert p\rvert(\varphi) = 1$, 比如 $\varphi(x_1) = \varphi(x_2) = 0$.
+
+    不存在 $\psi\in\Phi_{\mathbb{N}}$ 使得 $\lvert p\rvert(\psi) = 0$.
+\end{solution}
+
+\problemnumber{18}
+\begin{problem}
+2. 已知 $K$ 中 $C=\{c_1\}$, $F=\{f_1^2\}$, $R=\{R_1^2\}$, 还已知 $K$ 的解释域 $\mathbb{Z}$ (整数集), $\overline{c_1} = 0$, $\overline{f_1^2}$ 是减法, $\overline{R_1^2}$ 是 ``<''. 试给出 $\varphi, \psi\in\Phi_{\mathbb{Z}}$, 使 $\lvert p\rvert(\varphi) = 1$, $\lvert p\rvert(\psi) = 0$, 其中 $p$ 为:
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{19.1.3} $\lnot R_1^2(x_1, f_1^2(x_1, f_1^2(x_1, x_2)))$.
+    \part \label{19.1.4} $\forall x_1 R_1^2(f_1^2(x_1, x_2), x_3)$.
+    \part \label{19.1.5} $\forall x_1 R_1^2(f_1^2(x_1, c_1), x_1)\to R_1^2(x_1, x_2)$.
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{19.1.3} 取 $\varphi$ 满足 $\varphi(x_1)\geq \varphi(x_2)$ 即可, 比如 $\varphi(x_1) = \varphi(x_2) = 0$.
+
+    取 $\psi$ 满足 $\psi(x_1) < \psi(x_2)$ 即可, 比如 $\psi(x_1) = 1, \psi(x_2) = 2$.
+
+    \ref{19.1.4} 公式在该解释域中恒假, 所以不存在 $\varphi\in\Phi_\mathbb{Z}$ 使得 $\lvert p\rvert(\varphi) = 1$.
+
+    对所有的 $\psi$ 都有 $\lvert p\rvert(\psi) = 0$, 比如 $\psi(x_1) = \psi(x_2) = \psi(x_3) = 0$.
+
+    \ref{19.1.5} 公式在该解释域中恒真, 所以对所有的 $\varphi$ 都有 $\lvert p\rvert(\varphi) = 1$, 比如 $\varphi(x_1) = \varphi(x_2) = 0$.
+
+    不存在 $\psi\in\Phi_{\mathbb{N}}$ 使得 $\lvert p\rvert(\psi) = 0$.
+\end{solution}
+
+\problemnumber{20}
+\begin{problem}
+2. 设 $K$ 中 $C = \{c_1\}$, $F=\{f_1^2\}$, $R=\{R_1^2\}$, 还已知 $K$ 的解释域 $\mathbb{Z}$ (整数集), $\overline{c_1} = 0$, $\overline{f_1^2}$ 是减法, $\overline{R_1^2}$ 是 ``<''. 求 $\lvert p\rvert_\mathbb{Z}$, 其中 $p$ 为:
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{20.2.3} $\forall x_1\forall x_2\forall x_3 (R_1^2(x_1, x_2)\to R_1^2(f_1^2(x_1, x_3), f_1^2(x_2, x_3)))$.
+    \part \label{20.2.4} $\forall x_1\exists x_2 R_1^2 (x_1, f_1^2(f_1^2(x_1, x_2), x_2))$.
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{20.2.3} 因为对任意的 $\varphi\in \Phi_\mathbb{Z}$, $\varphi(x_1) < \varphi(x_2)$ 和 $\varphi(x_1) - \varphi(x_3) < \varphi(x_2) - \varphi(x_3)$ 同为真或同为假, 就有 
+    $\lvert R_1^2(x_1, x_2)\to R_1^2(f_1^2(x_1, x_3), f_1^2(x_2, x_3))\rvert(\varphi) = 1$,
+    得到 $\lvert R_1^2(x_1, x_2)\to R_1^2(f_1^2(x_1, x_3), f_1^2(x_2, x_3))\rvert_\mathbb{Z} = 1$, 所以 $\lvert p\rvert_\mathbb{Z} = 1$.
+    
+    \ref{20.2.4} 因为对任意的 $\varphi\in \Phi_\mathbb{Z}$, 总是存在 $\varphi$ 的 $x_2$ 变通 $\varphi': \varphi'(x_2) < 0$ 使得 
+    $$
+        \varphi'(x_1) < (\varphi'(x_1) - \varphi'(x_2)) - \varphi'(x_2) = \varphi'(x_1) - 2\varphi'(x_2)
+    $$
+    即 $\lvert \exists x_2 R_1^2 (x_1, f_1^2(f_1^2(x_1, x_2), x_2))\rvert(\varphi) = 1$, 得到
+    $\lvert \exists x_2 R_1^2 (x_1, f_1^2(f_1^2(x_1, x_2), x_2))\rvert_\mathbb{Z} = 1$, 所以 $\lvert p\rvert_\mathbb{Z} = 1$.
+\end{solution}
+\end{document}
