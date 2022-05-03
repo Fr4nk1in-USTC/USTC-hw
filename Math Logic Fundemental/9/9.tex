@@ -1,0 +1,117 @@
+\documentclass[boxes]{homework}
+
+% This is a slightly-more-than-minimal document that uses the homework class.
+% See the README at http://git.io/vZWL0 for complete documentation.
+
+\name{傅申 PB20000051}        % Replace (Your Name) with your name.
+\term{2022 春}     % Replace (Current Term) with the current term.
+\course{数理逻辑基础}    % Replace (Course Name) with the course name.
+\hwnum{9}          % Replace (Number) with the number of the homework.
+\hwname{作业}    
+\problemname{练习}    
+\solutionname{解:}
+
+% Load any other packages you need here.
+\usepackage[
+    a4paper,
+    top = 2.54cm,
+    bottom = 2.54cm,
+    left = 1.91cm,
+    right = 1.91cm,
+    includeheadfoot
+]{geometry}
+\fancyfootoffset{0pt} % make fancyhdr work properly
+\usepackage{ctex}
+
+\begin{document}
+\setlength\abovedisplayskip{.125em}
+\setlength\belowdisplayskip{.125em}
+\problemnumber{20}
+\begin{problem}
+3. 证明 $K$ 中以下公式都不是有效式.
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{20.3.3} $\forall x_1 (\lnot R_1^1(x_1)\to \lnot R_1^1(c_1))$
+    \part \label{20.3.4} $\forall x_1 R_1^2(x_1, x_1)\to \exists x_2 \forall x_1 R_1^2(x_1, x_2)$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{20.3.3} 取 $M = \mathbb{N}$, $\overline{c_1} = 0$, $\overline{R_1^1}$ 为 ``$=0$'', 则 $\lvert\lnot R_1^1(c_1)\rvert_M = 0$,  对于任一项解释 $\varphi\in\Phi_M$, 存在 $\varphi$ 的 $x_1$ 变通 $\varphi' : \varphi'(x_1)\neq 0$ 使得 $\lvert\lnot R_1^1(x_1)\to \lnot R_1^1(c_1)\rvert(\varphi') = 0$, 所以
+    $$
+        \lvert\forall x_1 (\lnot R_1^1(x_1)\to \lnot R_1^1(c_1))\rvert_M = 0
+    $$
+    所以公式不是有效式.
+
+    \ref{20.3.4} 取 $M = \mathbb{N}$, $\overline{R_1^2}$ 为 ``$=$'', 则 $\lvert R_1^2(x_1, x_1)\rvert_M = 1\ \Rightarrow\ \lvert\forall x_1 R_1^2(x_1, x_1)\rvert_M = 1$, 对任一项解释 $\varphi\in\Phi_M$ 的任一 $x_2$ 变通 $\varphi'$, 都存在 $\varphi'$ 的 $x_1$ 变通 $\varphi'': \varphi''(x_1)\neq\varphi''(x_2)$ 使得 $\lvert R_1^2(x_1, x_2)\rvert(\varphi'') = 0$, 有 $\lvert\forall x_1 R_1^2(x_1, x_2)\rvert(\varphi') = 0$, 所以 $\lvert\exists x_2\forall x_1 R_1^2(x_1, x_2)\rvert_M = 0$, 因此
+    $$
+        \lvert\forall x_1 R_1^2(x_1, x_1)\to \exists x_2 \forall x_1 R_1^2(x_1, x_2)\rvert_M = 0
+    $$
+    所以公式不是有效式.
+\end{solution}
+
+\problemnumber{20}
+\begin{problem}
+4. 在 $K$ 中增加新的个体常元 $b_1, b_2, \cdots$, 其他不变, 得到新的扩大的谓词演算 $K^+$. 设 $M$ 是 $K^+$ 的解释域 (也同时可看成是 $K$ 的解释域). 已知 $\varphi^+$ 和 $\varphi$ 分别是 $K^+$ 和 $K$ 的项解释, 且满足 $\varphi^+(x_i)=\varphi(x_i), i = 1, 2, \cdots$. 求证:
+\begin{parts}[r]
+    \part \label{20.4.1} 对 $K$ 中的任何项 $t$, $\varphi^+(t)=\varphi(t)$
+    \part \label{20.4.2} 对 $K$ 中的任何公式 $p$,  $\lvert p\rvert(\varphi^+)=\lvert p\rvert(\varphi)$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{20.4.1} 对 $t$ 在项集 $T$ 中的层次数 $k$ 进行归纳:
+    \begin{enumerate}[label = $\arabic*^\circ$, parsep = 0pt, itemsep = 0pt, topsep = 0em]
+        \item 当 $k = 0$ 时, $t = c_i$ 或 $t = x_i$, 因为 $\varphi^+(c_i) = \overline{c_i} = \varphi(c_i)$, $\varphi^+(x_i)=\varphi(x_i)$, 所以 $\varphi^+(t) = \varphi(t)$.
+        \item 当 $k > 0$ 时, 设 $t = f_i^n(t_1, \cdots, t_n)$, 其中 $t_1, \cdots, t_n$ 是较低层次的项. 由归纳假设, 有
+              $$
+                  \varphi^+(t_1) = \varphi(t_1), \cdots, \varphi^+(t_n) = \varphi(t_n)
+              $$
+              因此
+              \begin{align*}
+                  \varphi^+(t) & = \varphi^+(f_i^n(t_1, \cdots, t_n)) = \overline{f_i^n}(\varphi^+(t_1), \cdots, \varphi^+(t_n))        \\
+                               & = \overline{f_i^n}(\varphi(t_1), \cdots, \varphi(t_n)) = \varphi(f_i^n(t_1, \cdots, t_n)) = \varphi(t)
+              \end{align*}
+    \end{enumerate}
+    由项集 $T$ 的分层性及 $1^\circ$ 和 $2^\circ$ 归纳可知题中命题成立.
+    \\
+    \ref{20.4.2} 对 $p$ 在公式集 $K(Y)$ 中的层次数 $k$ 进行归纳:
+    \begin{enumerate}[label = $\arabic*^\circ$, parsep = 0pt, itemsep = 0pt, topsep = .1em]
+        \item 当 $k = 0$ 时, 设 $p = R_i^n(t_1, \cdots, t_n)$, 由 \ref{20.4.1} 可知
+        $$
+            \varphi^+(t_1) = \varphi(t_1), \cdots, \varphi^+(t_n) = \varphi(t_n)
+        $$
+        则有
+        $$
+            \lvert\varphi^+\rvert(p) = 1\ \Leftrightarrow\ (\varphi^+(t_1), \cdots, \varphi^+(t_n))\in R_i^n\ \Leftrightarrow\ (\varphi(t_1), \cdots, \varphi(t_n))\in R_i^n\ \Leftrightarrow\ \lvert p\rvert(\varphi) = 1
+        $$
+        \item 当 $k > 0$ 时, 有如下三种可能的情况, 其中 $q$, $r$ 为较低层次的公式.
+        \begin{enumerate}[label = (\arabic*), parsep = 0pt, itemsep = 0pt, topsep = .1em]
+            \item $p = q\to r$. 有 $\lvert p\rvert(\varphi^+) = \lvert q\rvert(\varphi^+)\to \lvert r\rvert(\varphi^+) =\lvert q\rvert(\varphi)\to \lvert r\rvert(\varphi) = \lvert p\rvert(\varphi)$
+            \item $p = \lnot q$. 有 $\lvert p\rvert(\varphi^+) = \lnot \lvert q\rvert(\varphi^+) = \lnot \lvert q\rvert(\varphi) = \lvert p\rvert(\varphi)$
+            \item $p = \forall x_i q$. 若 $\varphi'$ 是 $\varphi$ 的任一 $x_i$ 变通, 且 $\varphi^{+'}$ 是 $K^+$ 的和 $\varphi'$ 有相同变元指派的项解释, 则 $\varphi^{+'}$ 是 $\varphi^+$ 的 $x_i$ 变通. 反之, 若 $\varphi^{+'}$ 是 $\varphi^+$ 的任一 $x_i$ 变通, 且 $\varphi'$ 是 $K$ 的和 $\varphi^{+'}$ 有相同变元指派的项解释, 则 $\varphi'$ 是 $\varphi$ 的 $x_i$ 变通. 于是有
+            \begin{align*}
+                \lvert p\rvert(\varphi^+) = 1\ &\Leftrightarrow\ \text{对任一 $\varphi^+$ 的 $x_i$ 变通 $\varphi^{+'}$, $\lvert q\rvert(\varphi^{+'}) = 1$}\\
+                &\Leftrightarrow\ \text{对任一 $\varphi$ 的 $x_i$ 变通 $\varphi'$, $\lvert q\rvert(\varphi') = 1$}\ \Leftrightarrow\ \lvert x_i q\rvert(\varphi) = 1, \lvert p\rvert(\varphi) = 1
+            \end{align*}
+        \end{enumerate}
+    \end{enumerate}
+    由公式集 $K(Y)$ 的分层性及 $1^\circ$ 和 $2^\circ$ 归纳可知题中命题成立.
+\end{solution}
+
+\problemnumber{21}
+\begin{problem}
+2. $\vdash \exists x_2 R_1^2(x_1, x_2)\to \exists x_2 R_1^2(x_2, x_2)$ 是否成立?
+\end{problem}
+
+\begin{solution}
+    不成立. 假设命题成立, 则有 $\vDash \exists x_2 R_1^2(x_1, x_2)\to \exists x_2 R_1^2(x_2, x_2)$. 
+    
+    取 $M = \mathbb{N}$, $\overline{R_1^2}$ 为 ``$\neq$'', 则 $\lvert R_1^2(x_2, x_2)\rvert_M = 0\ \Rightarrow\ \lvert\exists x_2 R_1^2(x_2, x_2)\rvert_M = 0$. 而对任一项解释 $\varphi\in\Phi_M$, 总存在 $\varphi$ 的 $x_2$ 变通 $\varphi': \varphi'(x_2)\neq\varphi'(x_1)$ 使得 $\lvert R_1^2(x_1, x_2)\rvert(\varphi') = 1$, 所以 $\lvert\exists x_2 R_1^2(x_1, x_2)\rvert_M = 1$. 于是得到
+    $$
+        \lvert\exists x_2 R_1^2(x_1, x_2)\to \exists x_2 R_1^2(x_2, x_2)\rvert_M = 0
+    $$
+    与假设矛盾, 所以命题不成立.
+\end{solution}
+
+\end{document}
