@@ -1,0 +1,118 @@
+\documentclass[11pt]{homework}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{傅申}
+\newcommand{\hwid}{PB20000051}
+\newcommand{\hwtype}{操作系统作业}
+\newcommand{\hwnum}{4}
+
+\usepackage{calc}
+\usepackage{enumitem}
+\begin{document}
+\setlength{\intextsep}{0em}
+\setlength{\belowdisplayskip}{.25em} \setlength{\belowdisplayshortskip}{.25em}
+\setlength{\abovedisplayskip}{.25em} \setlength{\abovedisplayshortskip}{.25em}
+\maketitle
+% Your content
+\question
+\begin{description}[leftmargin = !, labelwidth = \widthof{\bfseries Segmentation Fault}]
+    \item[Segmentation Fault] When you access a memory that is not allowed (e.g., write to read-only
+        segments and access unused or unallocated segments), the OS returns you segmentation fault.
+    \item[TLB] The TLB is a special, small, fast-lookup hardware called translation look-aside buffer.
+        It is associative, high-speed memory. It is used to boost the performance of page table.
+    \item[Page Fault] If a page marked invalid is accessed, the CPU generates an interrupt called
+        page fault, causing the page fault handling routine to be called.
+    \item[Demand Paging] Demand paging is a technique that pages are loaded only as they are needed.
+\end{description}
+\question
+Thrashing refers to an instance of high paging activity. A process is thrashing means it is spending
+more time paging than executing. It results in severe performance problem.
+
+When the total demand for frames is greater than the total number of available frames, thrashing will
+occur, because some processes will not have enough frames. Thus, the process will replace pages that
+will be needed again right away, causing frequent page faults.
+\question
+\begin{alphaparts}
+    \questionpart It takes $50 + 50 = 100$ nanoseconds.
+    \questionpart The effective memory reference time is $75\%\times (2 + 50) + 25\% \times 100 = 64$
+    nanoseconds.
+\end{alphaparts}
+\question
+\begin{description}[leftmargin = !, labelwidth = \widthof{\bfseries TLB miss with no page fault}]
+    \item[TLB miss with no page fault] The page is in the memory but the page table entry is not
+        cached in the TLB.
+    \item[TLB miss and page fault] The page is not in the memory and of course the page table entry
+        is not cached in the TLB.
+    \item[TLB hit and no page fault] The page is in the memory and the page table entry is cached in
+        the TLB.
+    \item[TLB hit and page fault] It cannot occur, since if the page table entry is cached in the
+        TLB, the page must be in the memory, causing no page fault.
+\end{description}
+\question
+Assume the page fault rate is $p$, the effective access time is
+$$
+    (1 - p) \times 100 \mathrm{ns} + p \times (30\% \times 8 \mathrm{ms} + 70\% \times 20 \mathrm{ms})
+    = (100 + 16399900p) \mathrm{ns} \le 200 \mathrm{ns}
+$$
+Which means the maximum acceptable page-fault rate is
+$$
+    \max p = \frac{1}{163999} \approx 6.098\times 10^{-6}
+$$
+
+\question
+The execution of each algorithm is shown in the tables below. The cell with a `-' represents
+an empty page. And the cell with a boxed number represents a page replacement, i.e., a page fault.
+\begin{table}[!htbp]
+    \centering
+    \caption{LRU algorithm}
+    \label{table:lru}
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{c|cccccccccccccccccccc}
+            Page reference & 7        & 2        & 3        & 1        & 2 & 5        & 3        & 4        & 6        & 7        & 7 & 1        & 0        & 5        & 4        & 6        & 2        & 3        & 0        & 1        \\ \hline
+            Page \#1       & \fbox{7} & 7        & 7        & \fbox{1} & 1 & 1        & \fbox{3} & 3        & 3        & \fbox{7} & 7 & 7        & 7        & \fbox{5} & 5        & 5        & \fbox{2} & 2        & 2        & \fbox{1} \\
+            Page \#2       & -        & \fbox{2} & 2        & 2        & 2 & 2        & 2        & \fbox{4} & 4        & 4        & 4 & \fbox{1} & 1        & 1        & \fbox{4} & 4        & 4        & \fbox{3} & 3        & 3        \\
+            Page \#3       & -        & -        & \fbox{3} & 3        & 3 & \fbox{5} & 5        & 5        & \fbox{6} & 6        & 6 & 6        & \fbox{0} & 0        & 0        & \fbox{6} & 6        & 6        & \fbox{0} & 0        \\
+        \end{tabular}%
+    }
+
+\end{table}
+\begin{table}[!htbp]
+    \centering
+    \caption{FIFO algorithm}
+    \label{table:fifo}
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{c|cccccccccccccccccccc}
+            Page reference & 7        & 2        & 3        & 1        & 2 & 5        & 3 & 4        & 6        & 7        & 7 & 1        & 0        & 5        & 4        & 6        & 2        & 3        & 0        & 1        \\ \hline
+            Page \#1       & \fbox{7} & 7        & 7        & \fbox{1} & 1 & 1        & 1 & 1        & \fbox{6} & 6        & 6 & 6        & \fbox{0} & 0        & 0        & \fbox{6} & 6        & 6        & \fbox{0} & 0        \\
+            Page \#2       & -        & \fbox{2} & 2        & 2        & 2 & \fbox{5} & 5 & 5        & 5        & \fbox{7} & 7 & 7        & 7        & \fbox{5} & 5        & 5        & \fbox{2} & 2        & 2        & \fbox{1} \\
+            Page \#3       & -        & -        & \fbox{3} & 3        & 3 & 3        & 3 & \fbox{4} & 4        & 4        & 4 & \fbox{1} & 1        & 1        & \fbox{4} & 4        & 4        & \fbox{3} & 3        & 3        \\
+        \end{tabular}
+    }
+\end{table}
+\begin{table}[!htbp]
+    \centering
+    \caption{Optimal algorithm}
+    \label{table:opt}
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{c|cccccccccccccccccccc}
+            Page reference & 7        & 2        & 3        & 1        & 2 & 5        & 3 & 4        & 6        & 7        & 7 & 1 & 0        & 5 & 4        & 6        & 2        & 3        & 0 & 1 \\ \hline
+            Page \#1       & \fbox{7} & 7        & 7        & \fbox{1} & 1 & 1        & 1 & 1        & 1        & 1        & 1 & 1 & 1        & 1 & 1        & 1        & 1        & 1        & 1 & 1 \\
+            Page \#2       & -        & \fbox{2} & 2        & 2        & 2 & \fbox{5} & 5 & 5        & 5        & 5        & 5 & 5 & 5        & 5 & \fbox{4} & \fbox{6} & \fbox{2} & \fbox{3} & 3 & 3 \\
+            Page \#3       & -        & -        & \fbox{3} & 3        & 3 & 3        & 3 & \fbox{4} & \fbox{6} & \fbox{7} & 7 & 7 & \fbox{0} & 0 & 0        & 0        & 0        & 0        & 0 & 0 \\
+        \end{tabular}
+    }
+\end{table}
+
+The number of page fault is:
+\begin{description}[leftmargin = !, labelwidth = \widthof{\bfseries Optimal}, topsep = 0pt, itemsep = 0pt, parsep = 0pt]
+    \item[LRU] 18 page faults.
+    \item[FIFO] 17 page faults.
+    \item[Optimal] 13 page faults.
+\end{description}
+\question
+The Belady's anomaly is: for some page-replacement algorithms, the page fault rate may increase
+as the number of frames increases.
+
+The feature of stack algorithms which never exhibit is: the set of pages in memory for $n$ frames is
+always a subset of the set of pages in memory for $n + 1$ frames.
+\end{document}
