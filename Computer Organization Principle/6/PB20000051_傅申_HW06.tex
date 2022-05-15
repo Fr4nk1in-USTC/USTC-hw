@@ -1,0 +1,102 @@
+\documentclass[11pt]{homework}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{傅申}
+\newcommand{\hwid}{PB20000051}
+\newcommand{\hwtype}{计算机组成原理作业}
+\newcommand{\hwnum}{6}
+
+\begin{document}
+\setlength{\intextsep}{0em}
+\setlength{\belowdisplayskip}{0pt} \setlength{\belowdisplayshortskip}{0pt}
+\setlength{\abovedisplayskip}{0pt} \setlength{\abovedisplayshortskip}{0pt}
+\maketitle
+% Your content
+\question
+\begin{table}[h]
+    \centering
+    \label{tab:1.1}
+    \caption{16 个基本块, 每块大小为 1 个字}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        Word Address  & Binary Address     & Index         & Tag           & Hit/Miss \\ \hline
+        \texttt{0x03} & \texttt{0000 0011} & \texttt{0011} & \texttt{0000} & Miss     \\ \hline
+        \texttt{0xb4} & \texttt{1011 0100} & \texttt{0100} & \texttt{1011} & Miss     \\ \hline
+        \texttt{0x2b} & \texttt{0010 1011} & \texttt{1011} & \texttt{0010} & Miss     \\ \hline
+        \texttt{0x02} & \texttt{0000 0010} & \texttt{0010} & \texttt{0000} & Miss     \\ \hline
+        \texttt{0xbf} & \texttt{1011 1111} & \texttt{1111} & \texttt{1011} & Miss     \\ \hline
+        \texttt{0x58} & \texttt{0101 1000} & \texttt{1000} & \texttt{0101} & Miss     \\ \hline
+        \texttt{0xbe} & \texttt{1011 1110} & \texttt{1110} & \texttt{1011} & Miss     \\ \hline
+        \texttt{0x0e} & \texttt{0000 1110} & \texttt{1110} & \texttt{0000} & Miss     \\ \hline
+        \texttt{0xb5} & \texttt{1011 0101} & \texttt{0101} & \texttt{1011} & Miss     \\ \hline
+        \texttt{0x2c} & \texttt{0010 1100} & \texttt{1100} & \texttt{0010} & Miss     \\ \hline
+        \texttt{0xba} & \texttt{1011 1010} & \texttt{1010} & \texttt{1011} & Miss     \\ \hline
+        \texttt{0xfd} & \texttt{1111 1101} & \texttt{1101} & \texttt{1111} & Miss     \\ \hline
+    \end{tabular}
+\end{table}
+\begin{table}[!htbp]
+    \centering
+    \label{tab:1.2}
+    \caption{8 个基本块, 每块大小为 2 个字}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        Word Address  & Binary Address     & Index        & Tag           & Hit/Miss \\ \hline
+        \texttt{0x03} & \texttt{0000 0011} & \texttt{001} & \texttt{0000} & Miss     \\ \hline
+        \texttt{0xb4} & \texttt{1011 0100} & \texttt{010} & \texttt{1011} & Miss     \\ \hline
+        \texttt{0x2b} & \texttt{0010 1011} & \texttt{101} & \texttt{0010} & Miss     \\ \hline
+        \texttt{0x02} & \texttt{0000 0010} & \texttt{001} & \texttt{0000} & Hit      \\ \hline
+        \texttt{0xbf} & \texttt{1011 1111} & \texttt{111} & \texttt{1011} & Miss     \\ \hline
+        \texttt{0x58} & \texttt{0101 1000} & \texttt{100} & \texttt{0101} & Miss     \\ \hline
+        \texttt{0xbe} & \texttt{1011 1110} & \texttt{111} & \texttt{1011} & Hit      \\ \hline
+        \texttt{0x0e} & \texttt{0000 1110} & \texttt{111} & \texttt{0000} & Miss     \\ \hline
+        \texttt{0xb5} & \texttt{1011 0101} & \texttt{010} & \texttt{1011} & Hit      \\ \hline
+        \texttt{0x2c} & \texttt{0010 1100} & \texttt{110} & \texttt{0010} & Miss     \\ \hline
+        \texttt{0xba} & \texttt{1011 1010} & \texttt{101} & \texttt{1011} & Miss     \\ \hline
+        \texttt{0xfd} & \texttt{1111 1101} & \texttt{110} & \texttt{1111} & Miss     \\ \hline
+    \end{tabular}
+\end{table}
+\newpage
+\question
+\begin{arabicparts}
+    \questionpart 下面对各种操作在一个周期内产生的数据传输量的期望进行讨论.
+    \begin{description}
+        \item[指令访问] $0.5\times 0.30\% \times 64 = 0.096$ 字节/周期的读数据传输.
+        \item[数据读] $0.5\times \frac{250}{1000} \times 2\% \times 64 = 0.16$ 字节/周期的读数据传输.
+        \item[数据写] 每次写入都会写回主存, 产生 $0.5\times \frac{100}{1000}\times 4 = 0.2$ 字节/周期的写数据传输.
+            而 Cache 是写分配的, 所以每次写失效都会将主存的对应块取入 Cache 中, 产生
+            $0.5\times \frac{100}{1000} \times 2\% \times 64 = 0.064$ 字节/周期的读数据传输.
+    \end{description}
+    因此, 读带宽为 $0.096 + 0.16 + 0.064 = 0.32$ 字节/周期, 写带宽为 $0.2$ 字节/周期.
+    \questionpart 读数据传输情况与上一问相同, 所以读带宽仍为 0.32 字节/周期.
+
+    在数据读写时, 如果 Cache 失效并且替换出的数据块是脏块, 就会将数据块写回内存, 产生
+    $0.5\times\frac{250 + 100}{1000}\times 2\%\times 30\%\times 64 = 0.672$ 字节/周期的写数据传输. 因此
+    写带宽为 0.672 字节/周期.
+\end{arabicparts}
+\question
+\begin{description}
+    \item[命中率] $\displaystyle \frac{2000}{2050} = \frac{40}{41} \approx 97.56\% $
+    \item[平均访问时间] $\displaystyle \frac{2000 \times 50 + 50 \times 200}{2000 + 50} \mathrm{ns} = \frac{2200}{41}\mathrm{ns} \approx 53.66 \mathrm{ns}$
+\end{description}
+\question
+\begin{arabicparts}
+    \questionpart 主存访问需要 $\displaystyle \frac{100\mathrm{ns}}{(2\mathrm{GHz})^{-1}} = 200$ 周期.
+    \begin{description}
+        \item[仅有 L1 Cache] CPI 为 $1.5 + 200\times 7\% = 15.5$
+        \item[使用 L2 直接映射 Cache] CPI 为 $1.5 + 12\times 7\% + 200 \times 3.5\% = 9.34$
+        \item[使用 L2 八路组相联 Cache] CPI 为 $1.5 + 28\times 7\% + 200 \times 1.5\% = 6.46$
+    \end{description}
+    \questionpart 假设 13\% 为 L3 Cache 的局部失效率, 此处理器的 CPI 为 $1.5 + 12\times 7\% + (200\times 13\% + 50)\times 3.5\% = 5$
+    \questionpart 如果假设 4\% 为 512 KiB 片外 L2 Cache 的全局失效率. 设我们最终得到的 L2 片外 Cache 的失效率为 $k$, 则有下面的方程:
+    $$
+        1.5 + 50 \times 7\% + 200 \times k = 9.34
+    $$
+    解得 $k$ 为 $2.17\%$, 说明我们片外 L2 Cache 的大小应该为 2048 KiB.
+
+    如果假设 4\% 为 512 KiB 片外 L2 Cache 的局部失效率, 同样有
+    $$
+        1.5 + (200\times k + 50)\times 7\% = 9.34
+    $$
+    解得 $k$ 为 $31\%$, 这时就只需要片外 L2 Cache 的大小为 512 KiB.
+\end{arabicparts}
+\end{document}
