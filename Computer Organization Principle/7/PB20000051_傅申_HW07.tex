@@ -1,0 +1,352 @@
+\documentclass[11pt]{homework}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{傅申}
+\newcommand{\hwid}{PB20000051}
+\newcommand{\hwtype}{计算机组成原理作业}
+\newcommand{\hwnum}{7}
+
+\usepackage{multirow}
+\usepackage{pifont}
+\usepackage{amssymb}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows,shapes,chains}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\begin{document}
+\maketitle
+% Your content
+\question
+LRU Order 越小表示访问越晚, 比如 0 表示刚刚被访问.
+\begin{arabicparts}
+    \questionpart
+    \resizebox*{!}{.78\textheight}{
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            \multirow{2}{*}{Address} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Virtual\\Page\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}TLB\\H/M\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Page\\H/M\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Page\\Fault\end{tabular}} & \multicolumn{4}{c|}{TLB}                                   \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & Valid                    & LRU Order & Tag & Physical Page \\
+            \hline
+            \multirow{4}{*}{0x123d}  & \multirow{4}{*}{1}                                                     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{M}                                                 & \multirow{4}{*}{\cmark}                                              & 1                        & 3         & 0xb & 12            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 1         & 0x7 & 4             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 2         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 0         & 0x1 & 13            \\
+            \hline
+            \multirow{4}{*}{0x08b3}  & \multirow{4}{*}{0}                                                     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{H}                                                 & \multirow{4}{*}{\xmark}                                              & 1                        & 0         & 0x0 & 1             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 2         & 0x7 & 4             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 3         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 1         & 0x1 & 13            \\
+            \hline
+            \multirow{4}{*}{0x365c}  & \multirow{4}{*}{3}                                                     & \multirow{4}{*}{H}                                                & \multirow{4}{*}{}                                                  & \multirow{4}{*}{}                                                    & 1                        & 1         & 0x0 & 1             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 3         & 0x7 & 4             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 0         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 2         & 0x1 & 13            \\
+            \hline
+            \multirow{4}{*}{0x871b}  & \multirow{4}{*}{8}                                                     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{M}                                                 & \multirow{4}{*}{\cmark}                                              & 1                        & 2         & 0x0 & 1             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 0         & 0x8 & 14            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 1         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 3         & 0x1 & 13            \\
+            \hline
+            \multirow{4}{*}{0xbee6}  & \multirow{4}{*}{b}                                                     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{H}                                                 & \multirow{4}{*}{\xmark}                                              & 1                        & 3         & 0x0 & 1             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 1         & 0x8 & 14            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 2         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 0         & 0xb & 12            \\
+            \hline
+            \multirow{4}{*}{0x3140}  & \multirow{4}{*}{3}                                                     & \multirow{4}{*}{H}                                                & \multirow{4}{*}{}                                                  & \multirow{4}{*}{}                                                    & 1                        & 3         & 0x0 & 1             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 2         & 0x8 & 14            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 0         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 1         & 0xb & 12            \\
+            \hline
+            \multirow{4}{*}{0xc049}  & \multirow{4}{*}{c}                                                     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{M}                                                 & \multirow{4}{*}{\cmark}                                              & 1                        & 0         & 0xc & 15            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 3         & 0x8 & 14            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 1         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 2         & 0xb & 12            \\
+            \hline
+        \end{tabular}
+    }
+    \questionpart 拥有更大页大小可以提高 TLB hit 的概率, 但是会提高碎片化程度并且降低物理内存的利用率.
+
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+            \hline
+            \multirow{2}{*}{Address} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Virtual\\Page\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}TLB\\H/M\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Page\\H/M\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Page\\Fault\end{tabular}} & \multicolumn{4}{c|}{TLB}                                   \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & Valid                    & LRU Order & Tag & Physical Page \\
+            \hline
+            \multirow{4}{*}{0x123d}  & \multirow{4}{*}{0}                                                     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{H}                                                 & \multirow{4}{*}{\xmark}                                              & 1                        & 3         & 0xb & 12            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 1         & 0x7 & 4             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 2         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 0         & 0x0 & 5             \\
+            \hline
+            \multirow{4}{*}{0x08b3}  & \multirow{4}{*}{0}                                                     & \multirow{4}{*}{H}                                                & \multirow{4}{*}{}                                                  & \multirow{4}{*}{}                                                    & 1                        & 3         & 0xb & 12            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 1         & 0x7 & 4             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 2         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 0         & 0x0 & 5             \\
+            \hline
+            \multirow{4}{*}{0x365c}  & \multirow{4}{*}{0}                                                     & \multirow{4}{*}{H}                                                & \multirow{4}{*}{}                                                  & \multirow{4}{*}{}                                                    & 1                        & 3         & 0xb & 12            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 1         & 0x7 & 4             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 2         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 0         & 0x0 & 5             \\
+            \hline
+            \multirow{4}{*}{0x871b}  & \multirow{4}{*}{2}                                                     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{M}                                                 & \multirow{4}{*}{\cmark}                                              & 1                        & 0         & 0x2 & 13            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 2         & 0x7 & 4             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 3         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 1         & 0x0 & 5             \\
+            \hline
+            \multirow{4}{*}{0xbee6}  & \multirow{4}{*}{2}                                                     & \multirow{4}{*}{H}                                                & \multirow{4}{*}{}                                                  & \multirow{4}{*}{}                                                    & 1                        & 0         & 0x2 & 13            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 2         & 0x7 & 4             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 3         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 1         & 0x0 & 5             \\
+            \hline
+            \multirow{4}{*}{0x3140}  & \multirow{4}{*}{0}                                                     & \multirow{4}{*}{H}                                                & \multirow{4}{*}{}                                                  & \multirow{4}{*}{}                                                    & 1                        & 1         & 0x2 & 13            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 2         & 0x7 & 4             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 3         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 0         & 0x0 & 5             \\
+            \hline
+            \multirow{4}{*}{0xc049}  & \multirow{4}{*}{3}                                                     & \multirow{4}{*}{H}                                                & \multirow{4}{*}{}                                                  & \multirow{4}{*}{}                                                    & 1                        & 2         & 0x2 & 13            \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 3         & 0x7 & 4             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 0         & 0x3 & 6             \\
+            \cline{6-9}
+                                     &                                                                        &                                                                   &                                                                    &                                                                      & 1                        & 1         & 0x0 & 5             \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \newpage
+    \questionpart 如下
+
+    \resizebox{\linewidth}{!}{
+        \centering
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+            \hline
+            \multirow{2}{*}{Address} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Virtual\\Page\end{tabular}} & \multirow{2}{*}{Tag, Index} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}TLB\\H/M\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Page\\H/M\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Page\\Fault\end{tabular}} & \multicolumn{5}{c|}{TLB}                                           \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & Valid                    & Index & LRU Order & Tag & Physical Page \\
+            \hline
+            \multirow{4}{*}{0x123d}  & \multirow{4}{*}{1}                                                     & \multirow{4}{*}{0x0, 1}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{M}                                                 & \multirow{4}{*}{\cmark}                                              & 1                        & 0     & 1         & 0xb & 12            \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 0     & 0         & 0x7 & 4             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 1         & 0x3 & 6             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0         & 0x0 & 13            \\
+            \hline
+            \multirow{4}{*}{0x08b3}  & \multirow{4}{*}{0}                                                     & \multirow{4}{*}{0x0, 0}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{H}                                                 & \multirow{4}{*}{\xmark}                                              & 1                        & 0     & 0         & 0x0 & 5             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 0     & 1         & 0x7 & 4             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 1         & 0x3 & 6             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0         & 0x0 & 13            \\
+            \hline
+            \multirow{4}{*}{0x365c}  & \multirow{4}{*}{3}                                                     & \multirow{4}{*}{0x1, 1}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{H}                                                 & \multirow{4}{*}{\xmark}                                              & 1                        & 0     & 0         & 0x0 & 5             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 0     & 1         & 0x7 & 4             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0         & 0x1 & 6             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 1         & 0x0 & 13            \\
+            \hline
+            \multirow{4}{*}{0x871b}  & \multirow{4}{*}{8}                                                     & \multirow{4}{*}{0x4, 0}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{M}                                                 & \multirow{4}{*}{\cmark}                                              & 1                        & 0     & 1         & 0x0 & 5             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 0     & 0         & 0x4 & 14            \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0         & 0x1 & 6             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 1         & 0x0 & 13            \\
+            \hline
+            \multirow{4}{*}{0xbee6}  & \multirow{4}{*}{b}                                                     & \multirow{4}{*}{0x5, 1}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{H}                                                 & \multirow{4}{*}{\xmark}                                              & 1                        & 0     & 1         & 0x0 & 5             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 0     & 0         & 0x4 & 14            \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 1         & 0x1 & 6             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0         & 0x5 & 12            \\
+            \hline
+            \multirow{4}{*}{0x3140}  & \multirow{4}{*}{3}                                                     & \multirow{4}{*}{0x1, 1}     & \multirow{4}{*}{H}                                                & \multirow{4}{*}{}                                                  & \multirow{4}{*}{}                                                    & 1                        & 0     & 1         & 0x0 & 5             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 0     & 0         & 0x4 & 14            \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0         & 0x1 & 6             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 1         & 0x5 & 12            \\
+            \hline
+            \multirow{4}{*}{0xc049}  & \multirow{4}{*}{c}                                                     & \multirow{4}{*}{0x6, 0}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{M}                                                 & \multirow{4}{*}{\cmark}                                              & 1                        & 0     & 0         & 0x6 & 15            \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 0     & 1         & 0x4 & 14            \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0         & 0x1 & 6             \\
+            \cline{7-11}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 1         & 0x5 & 12            \\
+            \hline
+        \end{tabular}
+    }
+    \newpage
+    \questionpart 如下
+
+    \resizebox{\linewidth}{!}{
+        \centering
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+            \hline
+            \multirow{2}{*}{Address} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Virtual\\Page\end{tabular}} & \multirow{2}{*}{Tag, Index} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}TLB\\H/M\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Page\\H/M\end{tabular}} & \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Page\\Fault\end{tabular}} & \multicolumn{4}{c|}{TLB}                               \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & Valid                    & Index & Tag & Physical Page \\
+            \hline
+            \multirow{4}{*}{0x123d}  & \multirow{4}{*}{1}                                                     & \multirow{4}{*}{0x0, 1}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{M}                                                 & \multirow{4}{*}{\cmark}                                              & 1                        & 0     & 0xb & 12            \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0x0 & 13            \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 2     & 0x3 & 6             \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 0                        & 3     & 0x4 & 9             \\
+            \hline
+            \multirow{4}{*}{0x08b3}  & \multirow{4}{*}{0}                                                     & \multirow{4}{*}{0x0, 0}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{H}                                                 & \multirow{4}{*}{\xmark}                                              & 1                        & 0     & 0x0 & 5             \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0x0 & 13            \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 2     & 0x3 & 6             \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 0                        & 3     & 0x4 & 9             \\
+            \hline
+            \multirow{4}{*}{0x365c}  & \multirow{4}{*}{3}                                                     & \multirow{4}{*}{0x0, 3}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{H}                                                 & \multirow{4}{*}{\xmark}                                              & 1                        & 0     & 0x0 & 5             \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0x0 & 13            \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 2     & 0x3 & 6             \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 3     & 0x0 & 6             \\
+            \hline
+            \multirow{4}{*}{0x871b}  & \multirow{4}{*}{8}                                                     & \multirow{4}{*}{0x2, 0}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{M}                                                 & \multirow{4}{*}{\cmark}                                              & 1                        & 0     & 0x2 & 14            \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0x0 & 13            \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 2     & 0x3 & 6             \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 3     & 0x0 & 6             \\
+            \hline
+            \multirow{4}{*}{0xbee6}  & \multirow{4}{*}{b}                                                     & \multirow{4}{*}{0x2, 3}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{H}                                                 & \multirow{4}{*}{\xmark}                                              & 1                        & 0     & 0x2 & 14            \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0x0 & 13            \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 2     & 0x3 & 6             \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 3     & 0x2 & 12            \\
+            \hline
+            \multirow{4}{*}{0x3140}  & \multirow{4}{*}{3}                                                     & \multirow{4}{*}{0x0, 3}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{H}                                                 & \multirow{4}{*}{\xmark}                                              & 1                        & 0     & 0x2 & 14            \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0x0 & 13            \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 2     & 0x3 & 6             \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 3     & 0x0 & 6             \\
+            \hline
+            \multirow{4}{*}{0xc049}  & \multirow{4}{*}{c}                                                     & \multirow{4}{*}{0x3, 0}     & \multirow{4}{*}{M}                                                & \multirow{4}{*}{M}                                                 & \multirow{4}{*}{\cmark}                                              & 1                        & 0     & 0x3 & 15            \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 1     & 0x0 & 13            \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 2     & 0x3 & 6             \\
+            \cline{7-10}
+                                     &                                                                        &                             &                                                                   &                                                                    &                                                                      & 1                        & 3     & 0x0 & 6             \\
+            \hline
+        \end{tabular}
+    }
+    \questionpart 如果没有 TLB, 每次虚拟内存访问至少需要两次访问: 第一次获得物理地址, 第二次获得数据. TLB 可以利用
+    页表的访问局部性来提升性能.
+\end{arabicparts}
+
+\question
+\begin{arabicparts}
+    \questionpart cache 能立即完成这一请求, 因为将块从写缓冲区写回主存时, cache 的状态应该是空闲的.
+    \questionpart cache 需要等待写回操作结束后才能完成请求, 因为写回时存储器是被占用的, 无法处理 cache 失效的请求.
+    \questionpart 如下
+
+    \resizebox{\linewidth}{!}{
+        \centering
+        \begin{tikzpicture}[->,>=stealth', align = center, auto, node distance=6.85cm, node/.style = {draw, circle, fill = none, minimum size = 2cm}]
+            \node[node] (0) {空闲};
+            \node[node, right of = 0] (1) {标签比较};
+            \node[node, below of = 1] (2) {等待};
+            \node[node, left of = 2] (3) {写缓冲区\\并分配};
+            \node[node, right of = 1] (4) {分配};
+
+            \path[]
+            (0) edge [bend right = 10] node [below] {有效 CPU 请求} (1)
+            (1) edge [bend right = 10] node [above] {cache 命中 \\ 标记 cache 就绪} (0)
+            (1) edge node [right] {cache 失效且\\缓冲区在写回} (2)
+            (2) edge [in = 225, out = 315, looseness = 3] node [below] {缓冲区在写回} (2)
+            (2) edge node [below] {缓冲区写回完成\\且旧块已被重写} (3)
+            (3) edge [in = 225, out = 315, looseness = 3] node [below] {读取未完成} (3)
+            (3) edge [bend right = 10] node [below right] {读取完成} (1)
+            (1) edge [bend right = 10] node [above left] {cache 失效且\\缓冲区完成写回\\且旧块已被重写} (3)
+            (1) edge [bend right = 10] node [below] {cache 失效且\\缓冲区完成写回\\且旧块未被重写} (4)
+            (4) edge [bend right = 10] node [above] {读取完成} (1)
+            (2) edge [bend right = 10] node [below right] {缓冲区写回完成\\且旧块未被重写} (4)
+            (4) edge [in = 45, out = 315, looseness = 3] node [right] {读取未完成} (4);
+
+        \end{tikzpicture}
+    }
+\end{arabicparts}
+\question
+\begin{arabicparts}
+    \questionpart \texttt{1100} 的海明码是 \texttt{0111100}, \texttt{1101} 的海明码是 \texttt{1010101},
+    \texttt{1110} 的海明码是 \texttt{0010110}, \texttt{1111} 的海明码是 \texttt{1111111}.
+
+    \questionpart \texttt{1100100} 的三个校验位中 $p_4 = 0$, $p_2 = 1$ 不正确, $p_1 = 1$ 正确, 因为
+    $(110)_2 = 6$, 所以第 6 位出错, 正确的海明码为 \texttt{1100110}.
+
+    \texttt{1100111} 的三个校验位中 $p_4 = 0$, $p_2 = 1$, $p_1 = 1$ 均不正确, 因为 $(111)_2 = 7$,
+    所以第 7 位出错, 正确的海明码为 \texttt{1100110}.
+
+    \texttt{1100000} 的三个校验位中, $p_2 = 1$, $p_1 = 1$ 不正确, $p_4 = 0$ 正确, 因为 $(011)_2 = 3$, 所以
+    第 3 位出错, 正确的海明码为 \texttt{1110000}.
+
+    \texttt{1100001} 的三个校验位中, $p_4 = 0$ 不正确, $p_2 = 1$, $p_1 = 1$ 正确, 因为 $(100)_2 = 4$, 所以
+    第 4 位出错, 正确的海明码为 \texttt{1101001}.
+\end{arabicparts}
+\question
+平均寻道时间 6ms, 平均旋转延迟 $\displaystyle\frac{0.5 \text{r}}{10000\text{rpm}} = 3 \text{ms}$, 控制器延
+迟 0.2ms, 传输时间 $\displaystyle \frac{4\text{KB}}{20\text{MB/s}} = 0.2\text{ms}$, 共计 9.4ms, 即为读取
+一个 4KB 的扇区所需平均时间.
+\end{document}
