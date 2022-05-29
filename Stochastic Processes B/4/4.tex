@@ -1,0 +1,338 @@
+\documentclass[boxes]{homework}
+
+% This is a slightly-more-than-minimal document that uses the homework class.
+% See the README at http://git.io/vZWL0 for complete documentation.
+
+\name{傅申 PB20000051}        % Replace (Your Name) with your name.
+\term{2022 春}     % Replace (Current Term) with the current term.
+\course{随机过程 B}    % Replace (Course Name) with the course name.
+\hwnum{4}          % Replace (Number) with the number of the homework.
+\hwname{作业}    
+\problemname{习题}    
+\solutionname{解:}
+
+% Load any other packages you need here.
+\usepackage[
+    a4paper,
+    top = 2.54cm,
+    bottom = 2.54cm,
+    left = 1.91cm,
+    right = 1.91cm,
+    includeheadfoot
+]{geometry}
+\fancyfootoffset{0pt} % make fancyhdr work properly
+\usepackage{ctex}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problemnumber{1}
+\begin{problem}
+设 $X(t) = \sin Ut$, 这里 $U$ 为 $(0, 2\pi)$ 上的均匀分布.
+\begin{parts}[a]
+    \part \label{1.a} 若 $t = 1, 2, \cdots$, 证明 $\{X(t), t = 1, 2, \cdots\}$ 是宽平稳但不是严平稳过程,
+    \part \label{1.b} 设 $t\in [0, \infty)$, 证明 $\{X(t), t \geq 0\}$ 既不是宽平稳也不是严平稳过程.
+\end{parts}
+\end{problem}
+\begin{solution}
+    $X(t)$ 的均值为
+    \begin{equation}
+        E[X(t)] = \frac{1}{2\pi}\int_0^{2\pi}\sin ut\mathrm{d}u = 0
+    \end{equation}
+    $X(t)$ 的方差为
+    \begin{equation}
+        \mathrm{Var}[X(t)] = E[X^2(t)] = \frac{1}{2\pi}\int_0^{2\pi}\sin^2 ut\mathrm{d}u = \frac{1}{2t}
+    \end{equation}
+
+    \ref{1.a} 因为 $X(t)$ 的方差函数不是常数, 所以其不是严平稳过程. 而 $X(t)$ 的协方差函数为
+    \begin{equation} \label{eq:1.3}
+        \begin{aligned}
+            R_X(h) & = R_X(t, t+h) = E[X(t+h)X(t)]                                                                                                           \\
+                   & = \frac{1}{2\pi}\int_0^{2\pi} \sin u(t + h) \sin ut\mathrm{d} u                                                                         \\
+                   & = \frac{1}{4\pi}\int_0^{2\pi} [\cos u(2t+h) - \cos uh]\mathrm{d} u                                                                      \\
+                   & = \begin{cases}
+                           \frac{1}{2}                                                                                      & h = 0   \\
+                           \displaystyle\frac{1}{4\pi}\left[\frac{1}{2t + h}\sin (4t+2h)\pi - \frac{1}{h}\sin 2h\pi\right], & h\neq 0
+                       \end{cases}
+        \end{aligned}
+    \end{equation}
+    因为 $t$, $h$ 都是整数, 所以 $\sin (4t+2h)\pi = 0$, $\sin 2h\pi = 0$, 就有 $R_X(h) = 0$, 所以
+    $\{X(t), t = 1, 2, \cdots\}$ 是宽平稳过程.
+
+    \ref{1.b} 因为 $X(t)$ 的方差函数不是常数, 所以其不是严平稳过程. 而由式 \ref{eq:1.3} 可知, 当 $h\neq 0$ 时,
+    \begin{equation}
+        R_X(t+h, t) = \frac{1}{4\pi}\left[\frac{1}{2t + h}\sin (4t+2h)\pi - \frac{1}{h}\sin 2h\pi\right]
+    \end{equation}
+    因为 $t\in [0, \infty)$, 所以上面的式子与 $t$ 有关, $\{X(t), t \geq 0\}$ 不是宽平稳过程.
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problemnumber{3}
+\begin{problem}
+设 $\displaystyle X_n = \sum_{k = 1}^N\sigma_k\sqrt{2}\cos\left(a_k n-U_k\right)$, 这里 $\sigma_k$ 和 $a_k$ 为正常数,
+$k = 1, \cdots, N$; $U_1, \cdots, U_n$ 是 $(0, 2\pi)$ 上均匀分布的随机变量, 证明
+$\{X_n, n = 0, \pm 1, \cdots\}$ 是平稳过程.
+\end{problem}
+\begin{solution}
+    $X_n$ 的均值为
+    \begin{equation}
+        E[X_n] = \frac{1}{2\pi} \sum_{k = 1}^N\sigma_k\sqrt{2}\int_0^{2\pi}\cos\left(a_k n-u_k\right)\mathrm{d}u_k = 0
+    \end{equation}
+    而其协方差函数为
+    \begin{equation}
+        \begin{aligned}
+            R_X(t+h, t) = E[X(t+h)X(t)] & = E\left[\left(\sum_{k = 1}^N\sigma_k\sqrt{2}\cos\left(a_k (t+h)-U_k\right)\right)
+            \left(\sum_{k = 1}^N\sigma_k\sqrt{2}\cos\left(a_k t -U_k\right)\right)\right]                                                                              \\
+                                        & = E\left[\sum_{k = 1}^N2\sigma^2_k\cos\left(a_k (t+h)-U_k\right)\cos\left(a_k t -U_k\right)\right]                           \\
+                                        & = \frac{1}{2\pi}\sum_{k = 1}^N2\sigma^2_k\int_0^{2\pi}\cos\left(a_k (t+h)-u_k\right)\cos\left(a_k t -u_k\right)\mathrm{d}u_k \\
+                                        & = \frac{1}{2\pi}\sum_{k = 1}^N\sigma^2_k\int_0^{2\pi}\left[\cos(a_k (2t+h)-2u_k) + \cos(a_k h)\right]\mathrm{d}u_k           \\
+                                        & = \sum_{k = 1}^N\sigma^2_k \cos(a_k h) = R_X(h)                                                                              \\
+        \end{aligned}
+    \end{equation}
+    即协方差函数仅与 $h$ 有关, 故 $\{X_n, n = 0, \pm 1, \cdots\}$ 是平稳过程.
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problemnumber{4}
+\begin{problem}
+设 $A_k, k = 1, 2, \cdots, n$ 是 $n$ 个实随机变量; $\omega_k, k = 1, 2, \cdots, n$ 是 $n$ 个实数. 试问
+$A_k$ 以及 $A_k$ 之间应满足做怎样的条件才能使
+\begin{equation}
+    Z(t) = \sum_{k = 1}^n A_k\mathrm{e}^{j\omega_k t}
+\end{equation}
+是一个复的平稳过程.
+\end{problem}
+\begin{solution}
+    首先, $Z(t)$ 的均值为
+    \begin{equation}
+        E[Z(t)] = \sum_{k = 1}^n E[A_k]\mathrm{e}^{j\omega_k t} \equiv m
+    \end{equation}
+    说明 $E[A_k] = 0$, 否则无法为常数.
+
+    其次, $Z(t)$ 的协方差函数为
+    \begin{equation}
+        R_Z(t+h, t) = E[Z(t+h)\overline{Z}(t)] = \sum_{k = 1}^n\sum_{l = 1}^n E\left[A_kA_l\right]\mathrm{e}^{j(\omega_k (t+h) - \omega_l t)}
+    \end{equation}
+    则要求 $k\neq l$ 时, $E\left[A_kA_l\right] = 0$, 否则协方差函数与 $t$ 有关.
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problemnumber{16}
+\begin{problem}
+设 $X_0$ 为随机变量, 其概率密度为
+\begin{equation}
+    f(x) = \begin{cases}
+        2x, & 0\leq x\leq 1, \\
+        0,  & \text{其他},
+    \end{cases}
+\end{equation}
+设 $X_{n + 1}$ 在给定 $X_0, X_1, \cdots, X_n$ 下是 $(1-X_n, 1]$ 上的均匀分布, $n = 0, 1, 2, \cdots$,
+证明 $\{X_n, n = 0, 1, \cdots\}$ 的均值有遍历性.
+\end{problem}
+\begin{solution}
+    $X_0$ 的均值为
+    \begin{equation}
+        E[X_0] = \int_0^1 2x^2\mathrm{d}x = \frac{2}{3}
+    \end{equation}
+    而对于 $n = 0, 1, \cdots$, $X_{n+1}$ 的均值为
+    \begin{equation}
+        E[X_{n+1}] = E[E(X_{n+1}|X_n)] = E\left[1-\frac{1}{2}X_n\right]=1-\frac{1}{2}E[X_n]
+    \end{equation}
+    因为 $E[X_0] = 2/3$, 所以有 $E[X_n]\equiv 2/3$.
+
+    $X_0$ 的二阶矩为
+    \begin{equation}
+        E[X^2_0] = \int_0^1 2x^4\mathrm{d}x = \frac{1}{2}
+    \end{equation}
+    而对于 $n = 0, 1, \cdots$, $X_{n+1}$ 的二阶矩为
+    \begin{equation}
+        E[X^2_{n+1}] = E[E(X^2_{n+1}|X_n)] = E\left[\frac{1-(1-X_n)^3}{3X_n}\right] = E\left[1-X_n+\frac{X_n^2}{3}\right] = 1 - E[X_n] + \frac{1}{3}E[X^2_n]
+    \end{equation}
+    因为 $E[X_n] \equiv 2/3, E[X^2_0] = 1/2$, 所以 $E[X^2_n] \equiv 1/2$.
+
+    而我们有下面的递推公式
+    \begin{equation}
+        \begin{aligned}
+            E[X_nX_{n+m}] & = E\left[E\left(X_nX_{n+m}\vert X_n\right)\right] = E\left[X_nE\left(X_{n+m}\vert X_n\right)\right] \\
+                          & = E\left[X_nE\left(\left. 1-\frac{1}{2}X_{n+m-1}\right\rvert X_n\right)\right]                      \\
+                          & = E[X_n] - \frac{1}{2}E[E\left(X_nX_{n+m-1}\vert X_n\right)]                                        \\
+                          & = \frac{2}{3} - \frac{1}{2}E[X_nX_{n+m-1}]
+        \end{aligned}
+    \end{equation}
+    就可以推出
+    \begin{equation}
+        E[X_nX_{n+m}] = \frac{4}{9} + (-1)^m\frac{1}{2^m\cdot 18}
+    \end{equation}
+    因此
+    \begin{equation}
+        R_X(m) = R_X(n+m,n) = E[X_nX_{n+m}] - E[X_n]E[X_{n+m}] = (-1)^m\frac{1}{2^m\cdot 18}
+    \end{equation}
+    所以 $X_n$ 是平稳序列, 又因为
+    \begin{equation}
+        \lim_{N \to \infty} \frac{1}{N}\sum_{k = 0}^NR_X(k) = 0
+    \end{equation}
+    所以 $X_n$ 的均值有遍历性.
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problemnumber{17}
+\begin{problem}
+设 $\{\varepsilon_n, n = 0, \pm 1, \cdots\}$ 为白噪声序列, 令
+\begin{equation}
+    X_n = \alpha X_{n - 1} + \varepsilon_n, \quad \left\lvert \alpha \right\rvert < 1, \quad
+    n = \cdots, -1, 0, 1, \cdots,
+\end{equation}
+则 $\displaystyle X_n = \sum_{k = 0}^\infty \alpha^k\varepsilon_{n - k}$, 从而证明
+$\{X_n, n = \cdots, -1, 0, 1, \cdots\}$ 为平稳序列. 试给出该序列的协方差函数. 此序列是否具有均值遍历性?
+\end{problem}
+\begin{solution}
+    $X_n$ 的均值为
+    \begin{equation}
+        E[X_n] = \sum_{k = 0}^\infty \alpha^k E[\varepsilon_{n-k}] = 0
+    \end{equation}
+    协方差函数为
+    \begin{equation}
+        \begin{aligned}
+            R_X(n+m, n) & = E[X_{n+m}X_n] = \sum_{k = 0}^\infty\sum_{l = 0}^\infty \alpha^{k + m + l} E[\varepsilon_{n+m-k}\varepsilon_{n-l}] \\
+                        & = \sum_{k = m}^\infty \alpha^{2k}E[\varepsilon^2_{n+m-k}] = \sum_{k = m}^\infty \alpha^{2k}\sigma^2                 \\
+                        & = \frac{\alpha^{2m}\sigma^2}{1-\alpha^2} = R_X(m)
+        \end{aligned}
+    \end{equation}
+    因此 $X_n$ 是平稳序列, 又因为
+    \begin{equation}
+        \lim_{N \to \infty} \frac{1}{N}\sum_{k = 0}^NR_X(k) = \lim_{N\to\infty}\frac{1}{N}\frac{\sigma^2}{(1-\alpha^2)}\frac{1-\alpha^{2N}}{1-\alpha^2} = 0
+    \end{equation}
+    所以 $X_n$ 的均值有遍历性.
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problemnumber{20}
+\begin{problem}
+设 $\{X(t)\}$ 为平稳过程, 令 $Y(t) = X(t + a) - X(t - a)$. 分别以 $R_X$, $S_X$ 和 $R_Y$, $S_Y$ 记为随机
+过程 $X$ 和 $Y$ 的协方差函数和功率谱密度函数, 证明
+\begin{align}
+     & R_Y(\tau) = 2R_X(\tau) - R_X(\tau + 2a) - R_X(\tau - 2a), \\
+     & S_Y(\omega) = 4 S_X(\omega)\sin^2 a\omega
+\end{align}
+\end{problem}
+\begin{solution}
+    首先有 $E[Y] = E[X(t+a)] - E[X(t-a)] = 0$, 证明 $R_Y(\tau)$
+    \begin{equation}
+        \begin{aligned}
+            R_Y(\tau) & = E\{[X(t+\tau+a)-X(t+\tau-a)][X(t+a)-X(t-a)]\}           \\
+                      & = E[X(t+\tau+a)X(t+a)]-E[X(t+\tau+a)X(t-a)]               \\
+                      & \quad - E[X(t+\tau-a)X(t+a)]+E[X(t+\tau-a)X(t-a)]         \\
+                      & = R_X(\tau) - R_X(\tau + 2a) - R_X(\tau - 2a) + R_X(\tau) \\
+                      & = 2R_X(\tau) - R_X(\tau + 2a) - R_X(\tau - 2a)            \\
+        \end{aligned}
+    \end{equation}
+    然后证明 $S_Y(\omega)$
+    \begin{equation}
+        \begin{aligned}
+            S_Y(\omega) & = \int R_Y(\tau)\mathrm{e}^{-j\omega\tau}\mathrm{d}\tau                                                                                                                            \\
+                        & = \int \left[2R_X(\tau) - R_X(\tau + 2a) - R_X(\tau - 2a)\right]\mathrm{e}^{-j\omega\tau}\mathrm{d}\tau                                                                            \\
+                        & = \int 2R_X(\tau)\mathrm{e}^{-j\omega\tau}\mathrm{d}\tau - \int R_X(\tau + 2a)\mathrm{e}^{-j\omega\tau}\mathrm{d}\tau - \int R_X(\tau - 2a)\mathrm{e}^{-j\omega\tau}\mathrm{d}\tau \\
+                        & = 2S_X(\omega) - S_X(\omega)e^{2j\omega a} - S_X(\omega)e^{-2j\omega a}                                                                                                            \\
+                        & = S_X(\omega)(2 - 2\cos(2a\omega))                                                                                                                                                 \\
+                        & = 4S_X(\omega)\sin^2 a\omega
+        \end{aligned}
+    \end{equation}
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problemnumber{21}
+\begin{problem}
+设平稳过程 $X$ 的协方差函数 $R(\tau) = \sigma^2\mathrm{e}^{-\tau^2}$, 试研究其功率谱密度函数的性质.
+\end{problem}
+\begin{solution}
+    功率谱密度函数为
+    \begin{equation}
+        S(\omega)=\int_{-\infty}^\infty \sigma^2\mathrm{e}^{-\tau^2}\mathrm{e}^{-j\omega\tau}\mathrm{d}\tau =
+        \sigma^2\mathrm{e}^{-\omega^2/4}\int_{-\infty}^{\infty}\mathrm{e}^{-(\tau+\frac{j\omega}{2})^2}\mathrm{d}\tau =
+        \sigma^2\sqrt{\pi}\mathrm{e}^{-\omega^2/4}
+    \end{equation}
+    $S(\omega)$ 为 $\mathbb{R}$ 上的实的, 非负且可积的偶函数.
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problemnumber{25}
+\begin{problem}
+已知平稳过程 $\{X(t)\}$ 的功率谱密度为
+$\displaystyle S(\omega) = \frac{\omega^2 + 1}{\omega^4 + 4\omega^2 + 3}$, 求 $X(t)$ 的均方差.
+\end{problem}
+\begin{solution}
+    可将 $S(\omega)$ 改写为
+    \begin{equation}
+        S(\omega) = \frac{\omega^2+1}{(\omega^2+3)(\omega^2+1)}
+    \end{equation}
+    显然它是偶函数, 由此求得协方差函数
+    \begin{equation}
+        \begin{aligned}
+            R(\tau) & = \frac{1}{\pi}\int_0^{\infty}\frac{\omega^2+1}{(\omega^2+3)(\omega^2+1)}\cos \omega\tau\mathrm{d}\omega \\
+                    & = \frac{1}{\pi} \int_0^\infty \frac{\cos \omega\tau}{\omega^2+3} \mathrm{d}\omega                        \\
+                    & = \frac{1}{2\sqrt{3}}\mathrm{e}^{-\sqrt{3}\lvert\tau\rvert}
+        \end{aligned}
+    \end{equation}
+    由此得到 $X(t)$ 的均方差为
+    \begin{equation}
+        \sigma_X = \sqrt{\mathrm{Var}(X)} = \sqrt{R(0)} = \frac{1}{\sqrt{2\sqrt{3}}}
+    \end{equation}
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problemnumber{27}
+\begin{problem}
+求下列协方差函数对应的功率谱密度函数:
+\begin{parts}[n]
+    \part \label{27.1}
+    $R(\tau) = \sigma^2 \mathrm{e}^{-a\lvert\tau\rvert}\cos b\tau$;
+    \part \label{27.2}
+    $R(\tau) = \sigma^2 \mathrm{e}^{-a\lvert\tau\rvert}(\cos b\tau - a b^{-1} \sin b\lvert \tau\rvert)$;
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{27.1} $R(\tau)$ 为偶函数, 有
+    \begin{equation}
+        \begin{aligned}
+            S(\omega) & = 2\sigma^2\int_0^\infty \mathrm{e}^{-a\tau}\cos b \tau\cos\omega\tau\mathrm{d}\tau                                  \\
+                      & = \sigma^2 \int_0^\infty \mathrm{e}^{-a\tau}\left(\cos (b + \omega)\tau + \cos (b - \omega)\tau\right)\mathrm{d}\tau \\
+                      & = a\sigma^2 \left[\frac{1}{a^2 + (b + \omega)^2} + \frac{1}{a^2 + (b - \omega)^2}\right]
+        \end{aligned}
+    \end{equation}
+
+    \ref{27.2} $R(\tau)$ 为偶函数, 有
+    \begin{equation}
+        S(\omega) = 2\sigma^2\int_0^\infty \mathrm{e}^{-a\tau}(\cos b\tau - a b^{-1} \sin b\tau)\cos\omega\tau\mathrm{d}\tau
+    \end{equation}
+    下面先计算
+    \begin{equation}
+        \begin{aligned}
+            2\sigma^2\int_0^\infty \mathrm{e}^{-a\tau}\sin b\tau\cos\omega\tau\mathrm{d}\tau
+             & = \sigma^2\int_0^\infty \mathrm{e}^{-a\tau}(\sin (b+\omega)\tau+\sin (b-\omega)\tau)\mathrm{d}\tau \\
+             & = \sigma^2\left[\frac{b+\omega}{a^2+(b+\omega)^2} + \frac{b-\omega}{a^2+(b-\omega)^2}\right]
+        \end{aligned}
+    \end{equation}
+    所以有
+    \begin{equation}
+        \begin{aligned}
+            S(\omega) & = a\sigma^2 \left[\frac{1}{a^2 + (b + \omega)^2} + \frac{1}{a^2 + (b - \omega)^2}\right]
+            - \frac{a\sigma^2}{b}\left[\frac{b+\omega}{a^2+(b+\omega)^2} + \frac{b-\omega}{a^2+(b-\omega)^2}\right]       \\
+                      & = \frac{a\omega\sigma^2}{b}\left[- \frac{1}{a^2+(b+\omega)^2} + \frac{1}{a^2+(b-\omega)^2}\right]
+        \end{aligned}
+    \end{equation}
+\end{solution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\problemnumber{28}
+\begin{problem}
+求下列功率谱密度对应的协方差函数:
+\begin{parts}[n]\setcounter{enumi}{1}
+    \part \label{28.2} $\displaystyle S(\omega) = \frac{1}{(1 + \omega^2)^2}$;
+    \part \label{28.3} $\displaystyle S(\omega) = \sum_{k = 1}^N \frac{a_k}{\omega^2 + b_k^2}$,
+    $N$ 为固定的正整数.
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{28.2}
+    \begin{equation}
+        R(\tau) = \frac{1}{2\pi}\int_{-\infty}^\infty \frac{1}{(1 + \omega^2)^2}\cos(\omega\tau)\mathrm{d}\omega
+        = \frac{1}{2\pi}\times\frac{1}{2}\pi \mathrm{e}^{-|\tau|}(|\tau|+1) = \frac{\mathrm{e}^{-|\tau|}}{4}(|\tau|+1)
+    \end{equation}
+
+    \ref{28.3}
+    \begin{equation}
+        R(\tau) = \frac{1}{2\pi}\int_{-\infty}^\infty \sum_{k = 1}^N \frac{a_k\cos \omega\tau}{\omega^2 + b_k^2}\mathrm{d}\omega
+        = \frac{1}{2\pi}\sum_{k = 1}^N\frac{a_k\mathrm{e}^{-|b_k\tau|}\pi}{|b_k|} = \frac{1}{2} \sum_{k = 1}^N\frac{a_k\mathrm{e}^{-|b_k\tau|}}{|b_k|}
+    \end{equation}
+\end{solution}
+\end{document}
