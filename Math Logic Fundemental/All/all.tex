@@ -1,0 +1,1140 @@
+\documentclass[boxes]{homework}
+
+% This is a slightly-more-than-minimal document that uses the homework class.
+% See the README at http://git.io/vZWL0 for complete documentation.
+
+\name{傅申 PB20000051}        % Replace (Your Name) with your name.
+\term{2022 春}     % Replace (Current Term) with the current term.
+\course{数理逻辑基础}    % Replace (Course Name) with the course name.
+\hwnum{汇总}          % Replace (Number) with the number of the homework.
+\hwname{作业}    
+\problemname{练习}    
+\solutionname{解:}
+
+% Load any other packages you need here.
+\usepackage[
+    a4paper,
+    top = 2.54cm,
+    bottom = 2.54cm,
+    left = 1.91cm,
+    right = 1.91cm,
+    includeheadfoot
+]{geometry}
+\fancyfootoffset{0pt} % make fancyhdr work properly
+\setlength{\tabcolsep}{4pt} % Default value: 6pt
+\renewcommand{\arraystretch}{1}
+\usepackage{ctex}
+\usepackage{amssymb}
+
+\begin{document}
+\setlength\abovedisplayskip{.125em}
+\setlength\belowdisplayskip{.125em}
+
+\begin{problem}
+1. 列出以下复合命题的真值表. (其中支命题 $p,q,r,s$ 视为问题变元.)
+\begin{parts}[n]
+    \setcounter{enumi}{6}
+    \part
+    \label{1.1.7}
+    $(\lnot p\land q)\to (\lnot q\land r)$
+    \part
+    \label{1.1.8}
+    $(p\to q)\to (p\to r)$
+    \part
+    \label{1.1.9}
+    $\lnot (p\lor (q\land r))\leftrightarrow ((p\lor q)\land (p\lor r))$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{1.1.7}
+    \begin{center}
+        \begin{tabular}{cccc|c|cccc}
+            $(\lnot$ & $p$ & $\land$ & $q)$ & $\to$ & $(\lnot$ & $q$ & $\land$ & $r)$ \\
+            \hline
+            1        & 0   & 0       & 0    & 1     & 1        & 0   & 0       & 0    \\
+            1        & 0   & 0       & 0    & 1     & 1        & 0   & 1       & 1    \\
+            1        & 0   & 1       & 1    & 0     & 0        & 1   & 0       & 0    \\
+            1        & 0   & 1       & 1    & 0     & 0        & 1   & 0       & 1    \\
+            0        & 1   & 0       & 0    & 1     & 1        & 0   & 0       & 0    \\
+            0        & 1   & 0       & 0    & 1     & 1        & 0   & 1       & 1    \\
+            0        & 1   & 0       & 1    & 1     & 0        & 1   & 0       & 0    \\
+            0        & 1   & 0       & 1    & 1     & 0        & 1   & 0       & 1
+        \end{tabular}
+    \end{center}
+    \ref{1.1.8}
+    \begin{center}
+        \begin{tabular}{ccc|c|ccc}
+            $(p$ & $\to$ & $q)$ & $\to$ & $(p$ & $\to$ & $r)$ \\
+            \hline
+            0    & 1     & 0    & 1     & 0    & 1     & 0    \\
+            0    & 1     & 0    & 1     & 0    & 1     & 1    \\
+            0    & 1     & 1    & 1     & 0    & 1     & 0    \\
+            0    & 1     & 1    & 1     & 0    & 1     & 1    \\
+            1    & 0     & 0    & 1     & 1    & 0     & 0    \\
+            1    & 0     & 0    & 1     & 1    & 1     & 1    \\
+            1    & 1     & 1    & 0     & 1    & 0     & 0    \\
+            1    & 1     & 1    & 1     & 1    & 1     & 1
+        \end{tabular}
+    \end{center}
+    \ref{1.1.9}
+    \begin{center}
+        \begin{tabular}{cccccc|c|ccccccc}
+            $\lnot$ & $(p$ & $\lor$ & $(q$ & $\land$ & $r))$ & $\leftrightarrow$ & $((p$ & $\lor$ & $q)$ & $\land$ & $(p$ & $\lor$ & $r))$ \\
+            \hline
+            1       & 0    & 0      & 0    & 0       & 0     & 0                 & 0     & 0      & 0    & 0       & 0    & 0      & 0     \\
+            1       & 0    & 0      & 0    & 0       & 1     & 0                 & 0     & 0      & 0    & 0       & 0    & 1      & 1     \\
+            1       & 0    & 0      & 1    & 0       & 0     & 0                 & 0     & 1      & 1    & 0       & 0    & 0      & 0     \\
+            0       & 0    & 1      & 1    & 1       & 1     & 0                 & 0     & 1      & 1    & 1       & 0    & 1      & 1     \\
+            0       & 1    & 1      & 0    & 0       & 0     & 0                 & 1     & 1      & 0    & 1       & 1    & 1      & 0     \\
+            0       & 1    & 1      & 0    & 0       & 1     & 0                 & 1     & 1      & 0    & 1       & 1    & 1      & 1     \\
+            0       & 1    & 1      & 1    & 0       & 0     & 0                 & 1     & 1      & 1    & 1       & 1    & 1      & 0     \\
+            0       & 1    & 1      & 1    & 1       & 1     & 0                 & 1     & 1      & 1    & 1       & 1    & 1      & 1     \\
+        \end{tabular}
+    \end{center}
+\end{solution}
+
+\begin{problem}
+2. 写出由 $X_2=\{x_1, x_2\}$ 生成的公式集 $L(X_2)$ 的三个层次: $L_0$, $L_1$ 和 $L_2$.
+\end{problem}
+\begin{solution}
+    \begin{gather}
+        \begin{aligned}
+            L_0=X_2=\{x_1, x_2\}
+        \end{aligned}\\
+        \begin{aligned}
+            L_1=\{ & \lnot x_1, \lnot x_2, x_1\to x_1, x_1 \to x_2, x_2\to x_1, x_2\to x_2\}
+        \end{aligned}\\
+        \begin{aligned}
+            L_2=\{ & \lnot(\lnot x_1), \lnot(\lnot x_2),                                                  \\
+                   & \lnot(x_1\to x_1), \lnot(x_1\to x_2), \lnot(x_2\to x_1), \lnot(x_2\to x_2),          \\
+                   & x_1\to(\lnot x_1), x_1\to (\lnot x_2), x_2\to (\lnot x_1), x_2\to (\lnot x_2),       \\
+                   & (\lnot x_1)\to x_1, (\lnot x_1)\to x_2, (\lnot x_2)\to x_1, (\lnot x_2)\to x_2,      \\
+                   & x_1\to(x_1\to x_1), x_1\to(x_1\to x_2), x_1\to(x_2\to x_1), x_1\to(x_2\to x_2),      \\
+                   & x_2\to(x_1\to x_1), x_2\to(x_1\to x_2), x_2\to(x_2\to x_1), x_2\to(x_2\to x_2),      \\
+                   & (x_1\to x_1)\to x_1, (x_1\to x_2)\to x_1, (x_2\to x_1)\to x_1, (x_2\to x_2)\to x_1,  \\
+                   & (x_1\to x_1)\to x_2, (x_1\to x_2)\to x_2, (x_2\to x_1)\to x_2, (x_2\to x_2)\to x_2\}
+        \end{aligned}
+    \end{gather}
+\end{solution}
+\begin{problem}
+2. 写出以下公式在 $L$ 中的 ``证明''
+\begin{parts}[n]
+    \part
+    \label{3.2.1}
+    $(x_1\to x_2)\to((\lnot x_1\to \lnot x_2)\to (x_2\to x_1))$
+    \part
+    \label{3.2.2}
+    $((x_1\to(x_2\to x_3))\to (x_1\to x_2))\to ((x_1\to(x_2\to x_3))\to (x_1\to x_3))$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{3.2.1} 证明如下
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $(\lnot x_1\to \lnot x_2)\to (x_2\to x_1)$\hfill (L3)
+        \item $((\lnot x_1\to \lnot x_2)\to (x_2\to x_1))\to ((x_1\to x_2)\to ((\lnot x_1\to \lnot x_2)\to (x_2\to x_1)))$ \hfill (L1)
+        \item $(x_1\to x_2)\to ((\lnot x_1\to \lnot x_2)\to (x_2\to x_1))$\hfill (1), (2), MP
+    \end{enumerate}
+    \ref{3.2.2} 证明如下
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $(x_1\to (x_2\to x_3))\to ((x_1\to x_2)\to (x_1\to x_3))$\hfill (L2)
+        \item $(x_1\to (x_2\to x_3))\to ((x_1\to x_2)\to (x_1\to x_3))\to (((x_1\to (x_2\to x_3))\to (x_1\to x_2))\to ((x_1\to (x_2\to x_3))\to (x_1\to x_3)))$\hfill (L2)
+        \item $((x_1\to (x_2\to x_3))\to (x_1\to x_2))\to ((x_1\to (x_2\to x_3))\to (x_1\to x_3))$\hfill (1), (2), MP
+    \end{enumerate}
+\end{solution}
+\problemnumber{3}
+\begin{problem}
+3. 证明下面的结论
+\begin{parts}[n]
+    \setcounter{enumi}{1}
+    \part
+    \label{3.3.2}
+    $\{\lnot\lnot p\}\vdash p$
+    \part
+    \label{3.3.3}
+    $\{p\to q, \lnot (q\to r)\to \lnot p\}\vdash p\to r$
+    \part
+    \label{3.3.4}
+    $\{p\to (q\to r)\}\vdash q\to (p\to r)$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{3.3.2}
+    证明如下
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]\label{sol:4.1}
+        \item $\lnot\lnot p$\hfill 假定
+        \item $\lnot\lnot p\to (\lnot\lnot\lnot\lnot p\to \lnot\lnot p)$\hfill (L1)
+        \item $\lnot\lnot\lnot\lnot p\to \lnot\lnot p$\hfill (1), (2), MP
+        \item $(\lnot\lnot\lnot\lnot p\to \lnot\lnot p)\to (\lnot p\to \lnot\lnot\lnot p)$\hfill (L3)
+        \item $\lnot p\to \lnot\lnot\lnot p$\hfill (3), (4), MP
+        \item $(\lnot p\to \lnot\lnot\lnot p)\to (\lnot\lnot p\to p)$\hfill (L3)
+        \item $\lnot\lnot p\to p$\hfill (5), (6), MP
+        \item $p$\hfill (1), (7), MP
+    \end{enumerate}
+    \ref{3.3.3}
+    证明如下
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\lnot (q\to r)\to \lnot p$\hfill 假定
+        \item $(\lnot (q\to r)\to \lnot p)\to(p\to(q\to r))$\hfill (L3)
+        \item $p\to(q\to r)$\hfill (1), (2), MP
+        \item $(p\to(q\to r))\to((p\to q)\to (p\to r))$\hfill (L2)
+        \item $(p\to q)\to (p\to r)$\hfill (3), (4), MP
+        \item $p\to q$\hfill 假定
+        \item $p\to r$\hfill (5), (6), MP
+    \end{enumerate}
+    \ref{3.3.4}
+    证明如下
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $p\to (q\to r)$\hfill 假定
+        \item $(p\to (q\to r))\to((p\to q)\to(p\to r))$\hfill (L2)
+        \item $(p\to q)\to(p\to r)$\hfill (1), (2), MP
+        \item $((p\to q)\to(p\to r))\to(q\to ((p\to q)\to (p\to r)))$\hfill (L1)
+        \item $q\to ((p\to q)\to (p\to r))$\hfill (3), (4), MP
+        \item $(q\to ((p\to q)\to (p\to r)))\to (q\to (p\to q))\to (q\to (p\to r))$ \hfill (L2)
+        \item $(q\to (p\to q))\to (q\to (p\to r))$\hfill (5), (6), MP
+        \item $q\to (p\to q)$\hfill (L1)
+        \item $q\to (p\to r)$\hfill (7), (8), MP
+    \end{enumerate}
+\end{solution}
+\begin{problem}
+2. 利用演绎定律证明以下公式是 $L$ 的定理.
+\begin{parts}[n]
+    \setcounter{enumi}{1}
+    \part
+    \label{4.2.2}
+    $(q\to p)\to(\lnot p\to \lnot q)$. (换位律)
+    \part
+    \label{4.2.3}
+    $((p\to q)\to p)\to p$. (Peirce 律)
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{4.2.2}
+    根据演绎定理, 只需要证明 $\{q\to p\}\vdash \lnot p\to \lnot q$. 下面是 $\lnot p\to \lnot q$ 从 $\{q\to p\}$ 的证明:
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $q\to p$\hfill 假定
+        \item $\lnot \lnot q\to q$\hfill 双重否定律
+        \item $\lnot \lnot q\to p$\hfill (1), (2), HS
+        \item $p\to \lnot \lnot p$\hfill 第二双重否定律
+        \item $\lnot \lnot q\to \lnot \lnot p$\hfill (3), (4), HS
+        \item $(\lnot \lnot q\to \lnot \lnot p)\to(\lnot p\to \lnot q)$\hfill (L3)
+        \item $\lnot p\to \lnot q$\hfill (5), (6), MP
+    \end{enumerate}
+    \ref{4.2.3}
+    根据演绎定理, 只需要证明 $\{(p\to q)\to p\}\vdash p$.
+    下面是 $p$ 从 $\{(p\to q)\to p\}$ 的证明:
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $(p\to q)\to p$\hfill 假定
+        \item $\lnot p\to (p\to q)$\hfill 否定前件律
+        \item $\lnot p\to p$\hfill (1), (2), HS
+        \item $(\lnot p\to p)\to p$\hfill 否定肯定律
+        \item $p$\hfill (3), (4), MP
+    \end{enumerate}
+\end{solution}
+\begin{problem}
+1. 证明
+\begin{parts}[n]
+    \setcounter{enumi}{1}
+    \part
+    \label{5.1.2}
+    $\vdash (\lnot p\to q)\to (\lnot q\to p)$
+    \part
+    \label{5.1.3}
+    $\vdash \lnot (p\to q)\to \lnot q$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{5.1.2}
+    由演绎定律, 只需要证明 $\{\lnot p\to q, \lnot q\}\vdash p$. 用反证律, 把 $\lnot p$ 作为新假定. \\
+    以下公式从 $\{\lnot p\to q, \lnot q, \lnot p\}$ 都是可证的.
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\lnot p$\hfill 新假定
+        \item $\lnot p\to q$\hfill 假定
+        \item $q$\hfill (1), (2), MP
+        \item $\lnot q$\hfill 假定
+    \end{enumerate}
+    由 (3), (4) 用反证律即得 $\{\lnot p\to q, \lnot q\}\vdash p$.
+
+    \ref{5.1.3}
+    由演绎定律, 只需要证明 $\{\lnot(p\to q)\}\vdash \lnot q$. 用归谬律, 把 $q$ 作为新假定.\\
+    以下公式从 $\{\lnot(p\to q), q\}$ 都是可证的.
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $q$\hfill 新假定
+        \item $q\to (p\to q)$\hfill (L1)
+        \item $p\to q$\hfill (1), (2), MP
+        \item $\lnot (p\to q)$\hfill 假定
+    \end{enumerate}
+    由 (3), (4) 用归谬律即得 $\{\lnot(p\to q)\}\vdash \lnot q$.
+\end{solution}
+\begin{problem}
+2. 证明命题 2-$2^\circ$, $3^\circ$, $4^\circ$.
+\begin{enumerate}[label = 2-$\arabic*^\circ$, itemsep = 0em, topsep = .5em, partopsep = .5em]
+    \setcounter{enumi}{1}
+    \item \label{6.2.2}$\vdash (p\land q)\to q$
+    \item \label{6.2.3}$\vdash (p\land q)\to (q\land p)$
+    \item \label{6.2.4}$\vdash p\to(p\land p)$
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+    \ref{6.2.2} 要证 $\vdash (p\land q)\to q$, 即要证 $\vdash \lnot (p\to \lnot q)\to p$. 下面是所要的一个证明:
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\lnot q\to (p\to \lnot q)$\hfill (L1)
+        \item $(\lnot q\to (p\to \lnot q))\to (\lnot (p\to \lnot q)\to \lnot \lnot q)$\hfill 换位律
+        \item $\lnot (p\to \lnot q)\to \lnot \lnot q$\hfill (1), (2), MP
+        \item $\lnot\lnot q\to q$\hfill 双重否定律
+        \item $\lnot (p\to \lnot q)\to q$\hfill (3), (4), HS
+    \end{enumerate}
+
+    \ref{6.2.3} 要证 $\vdash (p\land q)\to (q\land p)$, 运用演绎定律, 即要证 $\{p\land q\}\vdash \lnot(q\to\lnot p)$, 用归谬律, 把 $q\to\lnot p$ 作为新假定.
+    以下公式从 $\{p\land q, q\to \lnot p\}$ 都是可证的
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $p\land q$\hfill 假定
+        \item $(p\land q)\to p$\hfill 命题 2-$1^\circ$
+        \item $(p\land q)\to q$\hfill 命题 2-$2^\circ$
+        \item $p$\hfill (1), (2), MP
+        \item $q$\hfill (1), (3), MP
+        \item $q\to\lnot p$\hfill 新假定
+        \item $\lnot p$\hfill (5), (6), MP
+    \end{enumerate}
+    由 (4), (7) 用归谬律即得 $\{p\land q\}\vdash \lnot(q\to\lnot p)$, 用演绎定律即有 $\vdash (p\land q)\to (q\land p)$.
+
+    \ref{6.2.4} 要证 $\vdash p\to(p\land p)$, 用演绎定律即要证 $\{p\}\vdash \lnot (p\to \lnot p)$, 用归谬律, 把 $p\to\lnot p$ 作为新假定, 立即可得
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\{p, p\to \lnot p\}\vdash p$
+        \item $\{p, p\to \lnot p\}\vdash \lnot p$
+    \end{enumerate}
+    由 (1), (2) 用归谬律便得 $\{p\}\vdash\lnot (p\to p)$, 用演绎定律即有 $\vdash p\to (p\land p)$.
+\end{solution}
+\problemnumber{6}
+\begin{problem}
+4. 证明命题 4-$1^\circ$
+$$
+    \vdash \lnot (p\land q) \leftrightarrow (\lnot p\lor \lnot q)
+$$
+\end{problem}
+
+\begin{solution}
+    即要证 $\vdash \lnot\lnot (p\to \lnot q)\leftrightarrow(\lnot\lnot p\to\lnot q)$.
+
+    这里先证明 $\vdash \lnot\lnot (p\to \lnot q)\to(\lnot\lnot p\to\lnot q)$, 用演绎定律即要证 $\{\lnot\lnot(p\to\lnot q)\}\vdash (\lnot\lnot p\to\lnot q)$, 有
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\lnot\lnot (p\to \lnot q)$\hfill 假定
+        \item $\lnot\lnot (p\to \lnot q)\to (p\to\lnot q)$\hfill 双重否定律
+        \item $p\to\lnot q$\hfill (1), (2), MP
+        \item $\lnot\lnot p\to p$\hfill 双重否定律
+        \item $\lnot\lnot p\to\lnot q$\hfill (3), (4), HS
+    \end{enumerate}
+
+    再证明 $\vdash (\lnot\lnot p\to \lnot q)\to\lnot\lnot (p\to\lnot q)$, 用演绎定律即要证 $\{\lnot\lnot p\to\lnot q\}\vdash \lnot\lnot (p\to\lnot q)$, 有
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\lnot\lnot p\to\lnot q$\hfill 假定
+        \item $p\to\lnot\lnot p$\hfill 第二双重否定律
+        \item $p\to\lnot q$\hfill (1), (2), HS
+        \item $(p\to\lnot q)\to\lnot\lnot (p\to\lnot q)$\hfill 第二双重否定律
+        \item $\lnot\lnot (p\to\lnot q)$\hfill (3), (4), MP
+    \end{enumerate}
+
+    运用上面证明的两个定理, 给出 $\vdash \lnot\lnot (p\to \lnot q)\leftrightarrow(\lnot\lnot p\to\lnot q)$ 的证明如下
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\lnot\lnot (p\to \lnot q)\to(\lnot\lnot p\to\lnot q)$\hfill 已证明
+        \item $(\lnot\lnot (p\to \lnot q)\to(\lnot\lnot p\to\lnot q))\to (((\lnot\lnot p\to\lnot q)\to \lnot\lnot (p\to \lnot q))\to (\lnot\lnot (p\to \lnot q)\leftrightarrow(\lnot\lnot p\to\lnot q)))$
+
+              \hfill 命题 3-$5^\circ$
+        \item $((\lnot\lnot p\to\lnot q)\to \lnot\lnot (p\to \lnot q))\to (\lnot\lnot (p\to \lnot q)\leftrightarrow(\lnot\lnot p\to\lnot q))$\hfill (1), (2), MP
+        \item $(\lnot\lnot p\to \lnot q)\to\lnot\lnot (p\to\lnot q)$\hfill 已证明
+        \item $\lnot\lnot (p\to \lnot q)\leftrightarrow(\lnot\lnot p\to\lnot q)$\hfill (3), (4), MP
+    \end{enumerate}
+    即证明了 $\vdash \lnot (p\land q) \leftrightarrow (\lnot p\lor \lnot q)$.
+\end{solution}
+\problemnumber{7}
+\begin{problem}
+2. 下面的公式那些恒为永真式?
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{7.2.3}
+    $(q\lor r)\to(\lnot r\to q)$
+    \part \label{7.2.4}
+    $(p\land\lnot q)\lor((q\land \lnot r)\land(r\land\lnot p))$
+    \part \label{7.2.5}
+    $(p\to(q\to r))\to((p\land\lnot q)\lor r)$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{7.2.3}   $(q\lor r)\to(\lnot r\to q)$ 是永真式, 以下是它的真值表.
+    \begin{center}
+        \begin{tabular}{ccc|c|cccc}
+            $(q$ & $\lor$ & $r)$ & $\to$ & $(\lnot$ & $r$ & $\to$ & $q)$ \\
+            1    & 1      & 1    & 1     & 0        & 1   & 1     & 1    \\
+            1    & 1      & 0    & 1     & 1        & 0   & 1     & 1    \\
+            0    & 1      & 1    & 1     & 0        & 1   & 1     & 0    \\
+            0    & 0      & 0    & 1     & 1        & 0   & 0     & 0
+        \end{tabular}
+    \end{center}
+    \ref{7.2.4}   $(p\land\lnot q)\lor((q\land \lnot r)\land(r\land\lnot p))$ 不是永真式, 以下是它的真值表.
+    \begin{center}
+        \begin{tabular}{cccc|c|ccccccccc}
+            $(p$ & $\land$ & $\lnot$ & $q)$ & $\lor$ & $((q$ & $\land$ & $\lnot$ & $r)$ & $\land$ & $(r$ & $\land$ & $\lnot$ & $p))$ \\
+            1    & 0       & 0       & 1    & 0      & 1     & 0       & 0       & 1    & 0       & 1    & 0       & 0       & 1     \\
+            1    & 0       & 0       & 1    & 0      & 1     & 1       & 1       & 0    & 0       & 0    & 0       & 0       & 1     \\
+            1    & 1       & 1       & 0    & 1      & 0     & 0       & 0       & 1    & 0       & 1    & 0       & 0       & 1     \\
+            1    & 1       & 1       & 0    & 1      & 0     & 0       & 1       & 0    & 0       & 0    & 0       & 0       & 1     \\
+            0    & 0       & 0       & 1    & 0      & 1     & 0       & 0       & 1    & 0       & 1    & 1       & 1       & 0     \\
+            0    & 0       & 0       & 1    & 0      & 1     & 1       & 1       & 0    & 0       & 0    & 0       & 1       & 0     \\
+            0    & 0       & 1       & 0    & 0      & 0     & 0       & 0       & 1    & 0       & 1    & 1       & 1       & 0     \\
+            0    & 0       & 1       & 0    & 0      & 0     & 0       & 1       & 0    & 0       & 0    & 0       & 1       & 0
+        \end{tabular}
+    \end{center}
+    \ref{7.2.5} $(p\to(q\to r))\to((p\land\lnot q)\lor r)$ 不是永真式, 以下是它的真值表.
+    \begin{center}
+        \begin{tabular}{ccccc|c|cccccc}
+            $(p$ & $\to$ & $(q$ & $\to$ & $r))$ & $\to$ & $((p$ & $\land$ & $\lnot$ & $q)$ & $\lor$ & $r)$ \\
+            1    & 1     & 1    & 1     & 1     & 1     & 1     & 0       & 0       & 1    & 1      & 1    \\
+            1    & 0     & 1    & 0     & 0     & 1     & 1     & 0       & 0       & 1    & 0      & 0    \\
+            1    & 1     & 0    & 1     & 1     & 1     & 1     & 1       & 1       & 0    & 1      & 1    \\
+            1    & 1     & 0    & 1     & 0     & 1     & 1     & 1       & 1       & 0    & 1      & 0    \\
+            0    & 1     & 1    & 1     & 1     & 1     & 0     & 0       & 0       & 1    & 1      & 1    \\
+            0    & 1     & 1    & 0     & 0     & 0     & 0     & 0       & 0       & 1    & 0      & 0    \\
+            0    & 1     & 0    & 1     & 1     & 1     & 0     & 0       & 1       & 0    & 1      & 1    \\
+            0    & 1     & 0    & 1     & 0     & 0     & 0     & 0       & 1       & 0    & 0      & 0
+        \end{tabular}
+    \end{center}
+\end{solution}
+\problemnumber{7}
+\begin{problem}
+3. 以下结论是否正确? 为什么?
+\begin{parts}[n]
+    \part\label{7.3.1}
+    $\vDash p(x_1, \cdots, x_n)\ \Leftrightarrow\ \ \vDash p(\lnot x_1, \cdots, \lnot x_n)$
+    \part\label{7.3.2}
+    $\vDash (p\to q)\leftrightarrow(p'\to q')\ \Rightarrow\ \ \vDash p\leftrightarrow p'\ \text{且}\ \vDash q\leftrightarrow q'$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{7.3.1} 正确, 证明如下.\\
+    (充分性) 因为 $\vDash p(x_1, \cdots, x_n)$, 用 $\lnot x_1, \cdots, \lnot x_n$ 分别全部替换 $p(x_1, \cdots, x_n)$ 中的 $x_1, \cdots, x_n$, 由代换定理有 $\vDash p(\lnot x_1, \cdots, \lnot x_n)$\\
+    (必要性) 已知 $\vDash p(\lnot x_1, \cdots, \lnot x_n)$, 用反证法, 假设存在 $x_1, \cdots, x_n$ 使得 $v(p(x_1, \cdots, x_n)) = 0$, 则取 $x'_1 = \lnot x_1$, $\cdots$, $x'_n = \lnot x_n$, 因为 $v(\lnot \lnot q) = v(q)$, 所以 $v(\lnot x'_1) = v(x_1), \cdots, v(\lnot x'_n) = v(x_n)$ ,有
+    \begin{equation*}
+        v(p(\lnot x'_1, \cdots, \lnot x'_n)) = p(v(\lnot x'_1), \cdots, v(\lnot x'_n)) = p(v(x_1), \cdots, v(x_n)) = v(p(x_1, \cdots, x_n)) = 0
+    \end{equation*}
+    这与 $\vDash p(\lnot x_1, \cdots, \lnot x_n)$ 矛盾, 所以不存在 $x_1, \cdots, x_n$ 使得 $v(p(x_1, \cdots, x_n)) = 0$, 即 $\vDash p(x_1, \cdots, x_n)$.
+
+    \ref{7.3.2} 错误. 取 $p = q = x$, $p' = q' = \lnot x$, 由同一律, $\vDash p\to q$, $\vDash p'\to q'$, 即 $v(p\to q) \equiv 1$, $v(p'\to q') \equiv 1$, 而 $(1\leftrightarrow 1) = 1$, 所以 $\vDash (p\to q)\leftrightarrow(p'\to q')$, 但是显然 $v(p\leftrightarrow p')=v(x\leftrightarrow\lnot x) \equiv 0$, $v(q\leftrightarrow q') \equiv 0$, 与题设不符, 所以题设错误.
+\end{solution}
+\problemnumber{9}
+\begin{problem}
+1. 证明以下各对公式是等值的.
+\begin{parts}[n]
+    \setcounter{enumi}{1}
+    \part
+    \label{9.1.2}
+    $(\lnot p\land \lnot q)\to\lnot r$ 和 $r\to (q\lor p)$
+    \part
+    \label{9.1.3}
+    $(\lnot p\lor q)\to r$ 和 $(p\land\lnot q)\lor r$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{9.1.2} 由 De. Morgan 律有 $\lnot p\land\lnot q$ 与 $\lnot(p\lor q)$ 等值, 而有析取交换律 $\vDash (p\lor q)\leftrightarrow(q\lor p)$, 所以 $\lnot p\land\lnot q$ 与 $q\lor p$ 等值, 进而
+    \begin{equation}\label{eq:9.1.1}
+        \vDash ((\lnot p\land\lnot q)\to \lnot r)\leftrightarrow(\lnot(q\lor p)\to \lnot r)
+    \end{equation}
+    而由两个换位律可得 $\vdash (\lnot p\to\lnot q)\leftrightarrow(q\to p)$, 从而 $\vDash (\lnot p\to\lnot q)\leftrightarrow(q\to p)$, 由代换定理就有
+    \begin{equation}\label{eq:9.1.2}
+        \vDash (\lnot(q\lor p)\to \lnot r)\leftrightarrow(r\to(q\lor p))
+    \end{equation}
+    由式 (\ref{eq:9.1.1}) 和式 (\ref{eq:9.1.2}), 利用等值的可递性可知 $(\lnot p\land \lnot q)\to\lnot r$ 和 $r\to (q\lor p)$ 等值. $\square$
+
+    \ref{9.1.3} 由双重否定律和第二双重否定律有 $\vDash q\leftrightarrow\lnot\lnot q$, 因此 $\lnot p\lor q$ 与 $\lnot p\lor \lnot\lnot q$ 等值. 由 De. Morgan 律有 $\lnot p\lor \lnot\lnot q$ 与 $\lnot (p\land \lnot q)$ 等值, 由等值的可递性可知 $\lnot p\lor q$ 与 $\lnot(p\land \lnot q)$ 等值, 因此
+    \begin{equation}\label{eq:9.1.3}
+        \vDash ((\lnot p\lor q)\to r)\leftrightarrow \lnot(p\land\lnot q)\to r
+    \end{equation}
+    而 $p\lor q = \lnot p\to q$, 即式 (\ref{eq:9.1.3}) 等价为
+    \begin{equation}
+        \vDash ((\lnot p\lor q)\to r)\leftrightarrow (p\land\lnot q)\lor r
+    \end{equation}
+    所以题中两公式等值. $\square$
+\end{solution}
+\problemnumber{9}
+\begin{problem}
+2. 证明 $\lnot (x_1\lor \lnot x_2)\to (x_2\to x_3)$ 与下列公式都等值.
+\begin{parts}[n]
+    \part
+    \label{9.2.1}
+    $\lnot (x_2\to x_1)\to (\lnot x_2\lor x_3)$
+    \part
+    \label{9.2.2}
+    $(\lnot x_1\land x_2)\to \lnot (x_2\land\lnot x_3)$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{9.2.1} 有析取交换律 $\vDash (x_1\lor \lnot x_2)\leftrightarrow(\lnot x_2\lor x_1)$, 而 $p\lor q = \lnot p\to q$, 因此 $x_1\lor \lnot x_2$ 与 $\lnot\lnot x_2\to x_1$ 等值. 而由双重否定律和第二双重否定律有 $\vDash \lnot\lnot x_2\leftrightarrow x_2$, 所以有
+    \begin{equation}\label{eq:9.2.1}
+        \vDash (x_1\lor \lnot x_2)\leftrightarrow(x_2\to x_1)
+    \end{equation}
+    同样由 $\vDash \lnot\lnot x_2\leftrightarrow x_2$, 有 $\lnot\lnot x_2\to x_3$ 与 $x_2\to x_3$ 等值, 即
+    \begin{equation}\label{eq:9.2.2}
+        \vDash (x_2\to x_3)\leftrightarrow(\lnot x_2\lor x_3)
+    \end{equation}
+    由式 (\ref{eq:9.2.1}) 和式 (\ref{eq:9.2.2}), 利用子公式等值可替换性, 得到 $\lnot(x_1\lor\lnot x_2)\to(x_2\to x_3)$ 与 $\lnot (x_2\to x_1)\to (\lnot x_2\lor x_3)$ 等值. $\square$
+
+    \ref{9.2.2} $x_1\lor \lnot x_2$ 的对偶为 $\lnot x_1\land \lnot\lnot x_2$, 由对偶律 $\lnot x_1\land \lnot\lnot x_2$ 与 $\lnot(x_1\lor\lnot x_2)$ 等值. 而 $\vDash \lnot\lnot x_2\leftrightarrow x_2$, 所以
+    \begin{equation}\label{eq:9.2.3}
+        \vDash (\lor x_1\land x_2)\leftrightarrow\lnot(x_1\lor\lnot x_2)
+    \end{equation}
+    $x_2\land\lnot x_3$ 的对偶为 $\lnot x_2\lor \lnot\lnot x_3$, 由对偶律 $\lnot x_2\lor \lnot\lnot x_3$ 与 $\lnot(x_2\land\lnot x_3)$ 等值. 而 $\vDash \lnot\lnot x_3\leftrightarrow x_3$, 所以 $\lnot x_2\lor x_3$ 与 $\lnot(x_2\land\lnot x_3)$ 等值. 由式 (\ref{eq:9.2.2}) 利用等值的可递性有
+    \begin{equation}\label{eq:9.2.4}
+        \vDash \lnot(x_2\land \lnot x_3)\leftrightarrow(x_2\to x_3)
+    \end{equation}
+    由式 (\ref{eq:9.2.1}) 和式 (\ref{eq:9.2.2}), 利用子公式等值可替换性, 得到 $\lnot(x_1\lor\lnot x_2)\to(x_2\to x_3)$ 与 $(\lnot x_1\land x_2)\to \lnot (x_2\land\lnot x_3)$ 等值. $\square$
+\end{solution}
+\problemnumber{10}
+\begin{problem}
+1. 求以下公式的等值主析取范式.
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part\label{10.1.3}
+    $(x_1\land x_2)\lor (\lnot x_2\leftrightarrow x_3)$
+    \part\label{10.1.4}
+    $\lnot ((x_1\to\lnot x_2)\to x_3)$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{10.1.3} $(x_1\land x_2)\lor (\lnot x_2\leftrightarrow x_3)$ 的成真指派是
+    \begin{equation}
+        (1,1,1), (1,1,0), (1,0,1), (0,1,0), (0,0,1)
+    \end{equation}
+    那么 $(x_1\land x_2)\lor (\lnot x_2\leftrightarrow x_3)$ 的等值主析取范式是
+    \begin{equation}
+        (x_1\land x_2\land x_3)\lor (x_1\land x_2\land\lnot x_3)\lor (x_1\land\lnot x_2\land x_3)\lor (\lnot x_1\land x_2\land\lnot x_3)\lor (\lnot x_1\land\lnot x_2\land x_3)
+    \end{equation}
+
+    \ref{10.1.4} $\lnot ((x_1\to\lnot x_2)\to x_3)$ 的成真指派是
+    \begin{equation}
+        (1,0,0), (0,1,0), (0,0,0)
+    \end{equation}
+    那么 $\lnot ((x_1\to\lnot x_2)\to x_3)$ 的等值主析取范式是
+    \begin{equation}
+        (x_1\land\lnot x_2\land\lnot x_3)\lor (\lnot x_1\land x_2\land\lnot x_3) \lor (\lnot x_1\land\lnot x_2\land\lnot x_3)
+    \end{equation}
+\end{solution}
+\problemnumber{10}
+\begin{problem}
+2. 求以下公式的等值主合取范式.
+\setcounter{enumi}{2}
+\begin{parts}[n]
+    \part\label{10.2.3}
+    $(x_1\land x_2\land x_3)\lor(\lnot x_1\land\lnot x_2\land x_3)$
+    \part\label{10.2.4}
+    $((x_1\to x_2)\to x_3)\to x_4$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{10.2.3} 记 $p=(x_1\land x_2\land x_3)\lor(\lnot x_1\land\lnot x_2\land x_3)$, 这是一个主析取范式, 它的成真指派是
+    \begin{equation}
+        (1,1,1),(0,0,1)
+    \end{equation}
+    $\lnot p$ 的成真指派是
+    \begin{equation}
+        (1,1,0),(1,0,1),(1,0,0),(0,1,1),(0,1,0),(0,0,0)
+    \end{equation}
+    $\lnot p$ 的等值主析取范式是
+    \begin{equation}
+        (x_1\land x_2\land\lnot x_3)\lor (x_1\land\lnot x_2\land x_3)\lor (x_1\land\lnot x_2\land\lnot x_3)\lor (\lnot x_1\land x_2\land x_3)\lor (\lnot x_1\land x_2\land\lnot x_3)\lor (\lnot x_1\land\lnot x_2\land\lnot x_3)
+    \end{equation}
+    由此得 $p$ 的等值主合取范式是
+    \begin{equation}
+        (\lnot x_1\lor\lnot x_2\lor x_3)\land(\lnot x_1\lor x_2\lor\lnot x_3)\land(\lnot x_1\lor x_2\lor x_3)\land(x_1\lor\lnot x_2\lor\lnot x_3)\land(x_1\lor\lnot x_2\lor x_3)\land(x_1\lor x_2\lor x_3)
+    \end{equation}
+
+    \ref{10.2.4} 记 $q = ((x_1\to x_2)\to x_3)\to x_4$, $q$ 的成真指派是
+    \begin{equation}
+        \begin{aligned}
+             & (1,1,1,1), (1,1,0,1), (1,1,0,0), (1,0,1,1), (1,0,0,1), (0,1,1,1), \\
+             & (0,1,0,1), (0,1,0,0), (0,0,1,1), (0,0,0,1), (0,0,0,0)
+        \end{aligned}
+    \end{equation}
+    $\lnot q$ 的成真指派是
+    \begin{equation}
+        (1,1,1,0), (1,0,1,0), (1,0,0,0), (0,1,1,0), (0,0,1,0)
+    \end{equation}
+    $\lnot q$ 的等值主析取范式是
+    \begin{equation}
+        (x_1\land x_2\land x_3\land\lnot x_4)\lor (x_1\land\lnot x_2\land x_3\land\lnot x_4)\lor (x_1\land\lnot x_2\land\lnot x_3\land\lnot x_4)\lor (\lnot x_1\land x_2\land x_3\land\lnot x_4)\lor (\lnot x_1\land\lnot x_2\land x_3\land\lnot x_4)
+    \end{equation}
+    由此得 $q$ 的等值主合取范式是
+    \begin{equation}
+        (\lnot x_1\lor\lnot x_2\lor\lnot x_3\lor x_4)\land(\lnot x_1\lor x_2\lor\lnot x_3\lor x_4)\land(\lnot x_1\lor x_2\lor x_3\lor x_4)\land(x_1\lor\lnot x_2\lor\lnot x_3\lor x_4)\land (x_1\lor x_2\lor\lnot x_3\lor x_4)
+    \end{equation}
+\end{solution}
+\problemnumber{11}
+\begin{problem}
+2. 分别找出只含有运算 $\lnot$ 和 $\land$ 的公式, 使之与以下各公式等值.
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part
+    $(x_1\leftrightarrow \lnot x_2)\leftrightarrow x_3$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    因为 $u\leftrightarrow v = \lnot (u\land \lnot v)\land\lnot (\lnot u\land v)$, 所以有
+
+    \begin{equation*}
+        \begin{aligned}
+            (x_1\leftrightarrow \lnot x_2)\leftrightarrow x_3 & = (\lnot (x_1\land x_2)\land\lnot (\lnot x_1\land\lnot x_2))\leftrightarrow x_3                                                                                     \\
+                                                              & =  \lnot(\lnot (x_1\land x_2)\land\lnot (\lnot x_1\land\lnot x_2)\land\lnot x_3)\land\lnot (\lnot(\lnot(x_1\land x_2)\land\lnot(\lnot x_1\land\lnot x_2))\land x_3)
+        \end{aligned}
+    \end{equation*}
+\end{solution}
+\problemnumber{11}
+\begin{problem}
+3. 分别找出只含有运算 $\lnot$ 和 $\lor$ 的公式, 使之与以下各公式等值.
+\begin{parts}[n]
+    \setcounter{enumi}{1}
+    \part
+    $(\lnot x_1\land\lnot x_2)\to(\lnot x_3\land x_4)$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    因为 $u\to v=\lnot u\lor v$, 所以有
+    \begin{equation*}
+        \begin{aligned}
+            (\lnot x_1\land\lnot x_2)\to(\lnot x_3\land x_4) & = \lnot(x_1\lor x_2)\to \lnot(x_3\lor \lnot x_4) \\
+                                                             & = (x_1\lor x_2)\lor \lnot (x_3\lor \lnot x_4)
+        \end{aligned}
+    \end{equation*}
+\end{solution}
+\problemnumber{12}
+\begin{problem}
+2. $A$, $B$, $C$, $D$ 为四个事件. 已知: $A$ 和 $B$ 不可能同时发生; 若 $A$ 发生, 则 $C$ 不发生而 $D$ 发生; 若 $D$ 发生, 则 $B$ 不发生. 结论: $B$ 和 $C$ 不可能同时发生.
+\end{problem}
+\begin{solution}
+    用 $x_1, x_2, x_3, x_4$ 分别表示 $A$, $B$, $C$, $D$ 发生, 于是题中的论证可形式化为
+    \begin{equation*}
+        \{\lnot(x_1\land x_2), x_1\to (\lnot x_3\land x_4), x_4\to \lnot x_2\}\vdash \lnot (x_2\land x_3)
+    \end{equation*}
+    问题归结为下面的真值方程组 (1)\textasciitilde (4) 是否有解:
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\lnot (v_1\land v_2)=1$
+        \item $v_1\to (\lnot v_3\land v_4) = 1$
+        \item $v_4\to \lnot v_2 = 1$
+        \item $\lnot (v_2\land v_3) = 0$\\
+              由 (4) 式可得
+        \item $v_2 = 1$, 且
+        \item $v_3 = 1$\\
+              由 (1) 式和 (5) 式可得
+        \item $v_1 = 0$\\
+              由 (3) 式和 (5) 式可得
+        \item $v_4 = 0$\\
+              将 (5), (6), (7), (8) 式代入 (2) 式的左边, 得
+              $$
+                  v_1\to (\lnot v_3\land v_4) = 0\to (0\land 0) = 1
+              $$
+    \end{enumerate}
+    所得结果说明 $(0, 1, 1, 0)$ 是 (1)\textasciitilde (4) 式的解, 它是三个前提的成真指派, 但却是结论的成假指派, 所以题中的论证不合理.
+\end{solution}
+\problemnumber{12}
+\begin{problem}
+3. 例 3 中如果办案人员作出的判断是: ``$a$, $b$, $c$ 三人中至少有一人未作案'', 判断是否正确?
+\end{problem}
+\begin{solution}
+    用 $x_1$, $x_2$, $x_3$, $x_4$ 分别表示 $a$, $b$, $c$, $d$ 作案, 办案人员的推理可形式化为
+    \begin{align*}
+         & \{(\lnot x_1\land\lnot x_2)\leftrightarrow(\lnot x_3\land \lnot x_4), (x_1\land x_2)\to ((x_3\lor x_4)\land \lnot(x_3\land x_4)), \\
+         & (x_2\land x_3)\to ((x_1\land x_4)\lor (\lnot x_1\land \lnot x_4))\}\vdash \lnot x_1\lor\lnot x_2\lor \lnot x_3
+    \end{align*}
+    解方程组
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $(\lnot v_1\land\lnot v_2)\leftrightarrow(\lnot v_3\land \lnot v_4)=1$
+        \item $(v_1\land v_2)\to ((v_3\lor v_4)\land \lnot(v_3\land v_4))=1$
+        \item $(v_2\land v_3)\to ((v_1\land v_4)\lor (\lnot v_1\land \lnot v_4))=1$
+        \item $\lnot v_1\lor\lnot v_2\lor \lnot v_3=0$\\
+              由 (4) 式可得
+        \item $v_1=1$, 且
+        \item $v_2=1$, 且
+        \item $v_3=1$\\
+              由 (2), (5), (6), (7) 式可得
+        \item $v_4 = 0$\\
+              将解得值代入 (3) 式的左边, 得
+        \item $(v_2\land v_3)\to ((v_1\land v_4)\lor (\lnot v_1\land \lnot v_4))=(1\land 1)\to ((1\land 0)\lor (0\land 1)) = 1\to (0\lor 0) = 0$\\
+              与 (3) 式矛盾, 因此方程组无解.
+    \end{enumerate}
+    所以判断是正确的.
+\end{solution}
+\problemnumber{14}
+\begin{problem}
+2. 在以下公式中, 哪些 $x_1$ 的出现是自由的? 哪些 $x_1$ 的出现是约束的? 项 $f_1^2(x_1, x_3)$ 对这些公式中的 $x_2$ 是不是自由的?
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{14.2.3}
+    $\forall x_1 R_1^1(x_1)\to \forall x_2R_1^2(x_1, x_2)$
+    \part \label{14.2.4}
+    $\forall x_2 R_1^2(f_1^2(x_1, x_2), x_1)\to \forall x_1R_2^2(x_3, f_2^2(x_1, x_2))$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{14.2.3} 第 3 个 $x_1$ 的出现是自由的, 第 1, 2 个 $x_1$ 的出现是约束的.
+
+    因为 $x_2$ 在公式中不自由出现, 所以项 $f_1^2(x_1, x_3)$ 对公式中的 $x_2$ 是自由的.
+
+    \ref{14.2.4} 第 1, 2 个 $x_1$ 的出现是自由的, 第 3, 4 个 $x_1$ 的出现是约束的.
+
+    项 $f_1^2(x_1, x_3)$ 对公式中的 $x_2$ 是不自由的, 因为替换第二个 $x_2$ 后项 $f_1^2(x_1, x_3)$ 中的 $x_1$ 受到约束.
+\end{solution}
+
+\problemnumber{14}
+\begin{problem}
+3. 设 $t$ 是项 $f_1^2(x_1, x_3)$, $p(x_1)$ 是下面的公式. 确定 $t$ 对 $p(x_1)$ 中的 $x_1$ 是否自由? 如果是自由的, 写出 $p(t)$.
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part\label{14.3.3}
+    $\forall x_2 R_1^1(f_1^1(x_2))\to \forall x_3 R_1^3(x_1, x_2, x_3)$
+    \part\label{14.3.4}
+    $\forall x_2 R_1^3(x_1, f_1^1(x_1), x_2)\to \forall x_3 R_1^1(f_1^2(x_1, x_3))$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{14.3.3} $t$ 对 $p(x_1)$ 中的 $x_1$ 不自由, 因为替换后 $t$ 中的 $x_3$ 受到约束.
+
+    \ref{14.3.4} $t$ 对 $p(x_1)$ 中的 $x_1$ 不自由, 因为替换后 $t$ 中的 $x_3$ 受到约束.
+\end{solution}
+\problemnumber{14}
+\begin{problem}
+5. 设个体变元 $x$ 在公式 $p(x)$ 中自由出现, 个体变元 $y$ 不在公式 $p(x)$ 中自由出现. 试证, 如果 $y$ 对 $p(x)$ 中的 $x$ 是自由的, 那么 $x$ 对 $p(y)$ 中的 $y$ 也是自由的.
+\end{problem}
+\begin{solution}
+    因为 $x$ 在公式 $p(x)$ 中自由出现, 所以所有的 $x$ 都不是在 $\forall x$ 中或在 $\forall x$ 的范围中. 将 $p(y)$ 中的 $y$ 分为两部分:
+    \begin{enumerate}[label = (\alph*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $p(x)$ 中原有的 $y$, 它们本身就是不自由出现的.
+        \item $p(x)$ 中 $x$ 被替换后的 $y$, 因为 $y$ 对 $p(x)$ 中的 $x$ 是自由的, 所以这部分 $y$ 都是自由的, 即它们都不是在 $\forall y$ 中或在 $\forall y$ 的范围中.
+    \end{enumerate}
+    而因为 $p(x)$ 中的 $x$ 都不是在 $\forall x$ 中或在 $\forall x$ 的范围中, 所以 $p(y)$ 中自由的 $y$ (即 b 部分) 都不是在 $\forall x$ 中或在 $\forall x$ 的范围中. 因此, 用 $x$ 替换 $p(y)$ 中自由出现的 $y$ 后, 这些 $x$ 都不会出现在 $\forall x$ 中或在 $\forall x$ 的范围中. 因此, $x$ 对 $p(y)$ 中的 $y$ 也是自由的.
+\end{solution}.
+\problemnumber{15}
+\begin{problem}
+2. 试证对任意公式 $p$ 与 $q$, 有
+$$
+    \vdash \forall x(p\to q)\to (\forall xp\to \forall xq)
+$$
+\end{problem}
+\begin{solution}
+    先证明 $\{\forall x(p\to q), \forall x p\}\vdash \forall xq$:
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\forall x(p\to q)$\hfill 假定
+        \item $\forall x(p\to q)\to (p\to q)$\hfill (K4)
+        \item $p\to q$ \hfill (1), (2), MP
+        \item $\forall x p$\hfill 假定
+        \item $\forall x p\to p$\hfill (K4)
+        \item $p$\hfill (4), (5), MP
+        \item $q$\hfill (6), (3), MP
+        \item $\forall xp$\hfill (7), Gen
+    \end{enumerate}
+    在上面的证明中, 除了 $x$ 外没有使用其他的 Gen 变元, 而 $x$ 显然不在 $\forall x p$ 和 $\forall x(p\to q)$ 中自由出现, 由演绎定理, 先后有 $\{\forall x(p\to q)\}\vdash \forall xp\to \forall xq$, $\vdash \forall x(p\to q)\to (\forall xp\to \forall xq)$. 公式得证.
+\end{solution}
+\problemnumber{15}
+\begin{problem}
+3. 求证:
+\begin{parts}[n]
+    \part\label{15.3.1}
+    $\{\forall x_1\forall x_2 R_1^2(x_1, x_2)\}\vdash \forall x_1 R_1^2(x_1, x_1)$
+    \part\label{15.3.2}
+    $\{\forall x_1\forall x_2 R_1^2(x_1, x_2)\}\vdash \forall x_2\forall x_3 R_1^2(x_2, x_3)$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{15.3.1} 证明如下:
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\forall x_1\forall x_2 R_1^2(x_1, x_2)$ \hfill 假定
+        \item $\forall x_1\forall x_2 R_1^2(x_1, x_2)\to \forall x_2 R_1^2(x_1, x_2)$\hfill (K4)
+        \item $\forall x_2 R_1^2(x_1, x_2)$\hfill (1), (2), MP
+        \item $\forall x_2 R_1^2(x_1, x_2)\to R_1^2(x_1, x_1)$\hfill (K4)
+        \item $R_1^2(x_1, x_1)$\hfill (3), (4), MP
+        \item $\forall x_1 R_1^2(x_1, x_1)$\hfill (5), Gen
+    \end{enumerate}
+    \ref{15.3.2} 证明如下:
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\forall x_1\forall x_2 R_1^2(x_1, x_2)$ \hfill 假定
+        \item $\forall x_1\forall x_2 R_1^2(x_1, x_2)\to \forall x_2 R_1^2(x_1, x_2)$\hfill (K4)
+        \item $\forall x_2 R_1^2(x_1, x_2)$\hfill (1), (2), MP
+        \item $\forall x_2 R_1^2(x_1, x_2)\to R_1^2(x_1, x_3)$\hfill (K4)
+        \item $R_1^2(x_1, x_3)$\hfill (3), (4), MP
+        \item $\forall x_3 R_1^2(x_1, x_3)$\hfill (5), Gen
+        \item $\forall x_1\forall x_3 R_1^2(x_1, x_3)$\hfill (6), Gen
+        \item $\forall x_1\forall x_3 R_1^2(x_1, x_3)\to \forall x_3 R_1^2(x_2, x_3)$\hfill (K4)
+        \item $\forall x_3 R_1^2(x_2, x_3)$\hfill (7), (8), MP
+        \item $\forall x_2\forall x_3 R_1^2(x_2, x_3)$\hfill (9), Gen
+    \end{enumerate}
+\end{solution}
+\problemnumber{15}
+\begin{problem}
+4. 设 $x$ 不在 $p$ 中自由出现. 求证:
+\begin{parts}[n]
+    \item \label{15.4.1} $\vdash (p\to \forall xq)\to \forall x(p\to q)$
+    \item \label{15.4.2} $\vdash (p\to \exists xq)\to \exists x(p\to q)$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{15.4.1} 要证明 $(p\to \forall xq)\to \forall x(p\to q)$, 只用证明 $\{p\to \forall xq\}\vdash \forall x(p\to q)$, 过程中除了 $x$ 以外不使用别的 Gen 变元, 如下:
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $p\to \forall xq$\hfill 假定
+        \item $\forall xq\to q$\hfill (K4)
+        \item $p\to q$\hfill (1), (2), HS
+        \item $\forall x(p\to q)$\hfill (3), Gen
+    \end{enumerate}
+    因为 $x$ 不在 $p\to \forall xq$ 中自由出现, 由演绎定理, 不增加新的 Gen 变元就可得 $\vdash (p\to \forall q)\to \forall (p\to \forall q)$.
+    \\
+    \ref{15.4.2} 这里先证明 $\vdash \lnot (p\to q)\to p$ 和 $\vdash \lnot (p\to q)\to \lnot q$.
+    \begin{enumerate}[parsep = 0pt, itemsep = .25em, topsep = .25em]
+        \item 利用演绎定理和反证律, 以下公式从 $\{\lnot (p\to q), \lnot p\}$ 可证:
+              \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+                  \item $\lnot p$\hfill 新假定
+                  \item $\lnot p\to (p\to q)$\hfill 否定前件律
+                  \item $p\to q$\hfill (1), (2), MP
+                  \item $\lnot (p\to q)$\hfill 假定
+              \end{enumerate}
+              由 (3), (4) 用反证律可得 $\{\lnot(p\to q)\}\vdash p$, 再由演绎定理得到 $\vdash \lnot (p\to q)\to p$.
+        \item 利用演绎定律和归谬律, 以下公式从 $\{\lnot(p\to q), q\}$ 可证:
+              \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+                  \item $q$\hfill 新假定
+                  \item $q\to (p\to q)$\hfill (L1)
+                  \item $p\to q$\hfill (1), (2), MP
+                  \item $\lnot (p\to q)$\hfill 假定
+              \end{enumerate}
+              由 (3), (4) 用归谬律可得 $\{\lnot(p\to q)\}\vdash \lnot q$, 再由演绎定理得到 $\vdash \lnot (p\to q)\to \lnot q$.
+    \end{enumerate}
+
+    然后证明题中命题, 为此只用证 $\{p\to\exists xq\}\vdash\exists x(p\to q)$, 过程中不使用除 $x$ 以外的 Gen 变元.
+
+    以下公式从 $\{p\to\exists xq, \forall x\lnot(p\to q)\}$ 可证:
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\forall x\lnot (p\to q)$\hfill 新假定
+        \item $\forall x\lnot (p\to q)\to \lnot(p\to q)$\hfill (K4)
+        \item $\lnot (p\to q)$\hfill (1), (2), MP
+        \item $\lnot (p\to q)\to p$\hfill 已证明
+        \item $p$\hfill (3), (4), HS
+        \item $p\to \exists xq$\hfill 假定
+        \item $\exists xq\ (=\lnot \forall x\lnot q)$\hfill (5), (6), MP
+        \item $\lnot (p\to q)\to \lnot q$\hfill 已证明
+        \item $\lnot q$\hfill (3), (8), MP
+        \item $\forall x\lnot q$\hfill (9), Gen
+    \end{enumerate}
+    因为 $x$ 不在 $\forall x\lnot (p\to q)$ 中自由出现, 由 (9), (10) 用归谬律可得 $\{p\to \exists xq\}\vdash \exists x(p\to q)$, 再用演绎定理得到 $\vdash (p\to \exists xq)\to \exists x(p\to q)$.
+\end{solution}
+\problemnumber{16}
+\begin{problem}
+1. 设 $x$ 不在 $q$ 中自由出现. 求证:
+\begin{parts}[n]
+    \part \label{16.1.1} $\vdash (\exists xp\to q)\to \forall x(p\to q)$
+    \part \label{16.1.2} $\vdash \exists x(p\to q)\to (\forall xp\to q)$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{16.1.1} 要证 $\vdash (\exists xp\to q)\to \forall x(p\to q)$, 只用证 $\{\exists xp\to q\}\vdash \forall x(p\to q)$, 过程中不使用除 $x$ 以外的 Gen 变元.
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\lnot \forall x \lnot p \to q$\hfill 假定
+        \item $(\lnot \forall x \lnot p \to q)\to (\lnot q\to \lnot\lnot \forall x \lnot p)$\hfill 换位律
+        \item $\lnot q\to \lnot\lnot \forall x \lnot p$\hfill (1), (2), MP
+        \item $\lnot\lnot \forall x\lnot p\to \forall x\lnot p$\hfill 双重否定律
+        \item $\lnot q\to \forall x\lnot p$\hfill (3), (4), HS
+        \item $\forall x\lnot p\to \lnot p$\hfill (K4)
+        \item $\lnot q\to \lnot p$\hfill (5), (6), HS
+        \item $(\lnot q\to \lnot p)\to (p\to q)$\hfill (K3)
+        \item $p\to q$\hfill (7), (8), MP
+        \item $\forall x(p\to q)$\hfill (9), Gen
+    \end{enumerate}
+    因为 $x$ 不在 $\exists xp\to q$ 中自由出现, 由演绎定理, 不增加新的 Gen 变元就可得 $\vdash (\exists xp\to q)\to \forall x(p\to q)$.
+
+    \ref{16.1.2} 要证 $\vdash \exists x(p\to q)\to (\forall xp\to q)$, 只用证 $\{\exists x(p\to q), \forall xp\}\vdash q$, 过程中不使用除 $x$ 以外的 Gen 变元.
+
+    以下公式从 $\{\exists x(p\to q), \forall xp, \lnot q\}$ 可证:
+    \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item $\forall xp$\hfill 假定
+        \item $\forall xp \to p$\hfill (K4)
+        \item $p$\hfill (1), (2), MP
+        \item $p\to (\lnot q\to \lnot (p\to q))$\hfill 永真式
+        \item $\lnot q\to\lnot (p\to q)$\hfill (3), (4), MP
+        \item $\lnot q$\hfill 新假定
+        \item $\lnot (p\to q)$\hfill (6), (5), MP
+        \item $\forall x\lnot (p\to q)$\hfill (7), Gen
+        \item $\lnot \forall x\lnot (p\to q)$\hfill 假定
+    \end{enumerate}
+    其中式 (4) 的真值表见表 \ref{tab:16.1.2}, 因 Gen 变元 $x$ 不在假定中自由出现, 由 (8), (9) 用反证律得 $\{\exists x(p\to q), \forall xp\}\vdash q$, 再用两次演绎定理得 $\vdash \exists x(p\to q)\to (\forall xp\to q)$.
+    \begin{table}[!htbp]
+        \centering
+        \caption{$p\to (\lnot q\to \lnot (p\to q))$ 的真值表}
+        \label{tab:16.1.2}
+        \begin{tabular}{c|c|ccccccc}
+            $p$ & $\to$ & $(\lnot$ & $q$ & $\to$ & $\lnot$ & $(p$ & $\to$ & $q))$ \\
+            \hline
+            1   & 1     & 0        & 1   & 1     & 0       & 1    & 1     & 1     \\
+            1   & 1     & 1        & 0   & 1     & 1       & 1    & 0     & 0     \\
+            0   & 1     & 0        & 1   & 1     & 0       & 0    & 1     & 1     \\
+            0   & 1     & 1        & 0   & 0     & 0       & 0    & 1     & 0     \\
+        \end{tabular}
+    \end{table}
+\end{solution}
+\problemnumber{16}
+\begin{problem}
+3. 找出与所给公式等价的前束范式.
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{16.3.3} $\forall x_1(R_1^1(x_1)\to R_1^2(x_1, x_2))\to (\exists x_2 R_1^1(x_2)\to \exists x_3R_1^3(x_2, x_3))$
+    \part \label{16.3.4} $\exists x_1 R_1^2(x_1, x_2)\to (R_1^1(x_1)\to \lnot \exists x_3 R_1^2 (x_1, x_3))$
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{16.3.3} 适当改变题中公式的约束变元得到等价的 $q_1$:
+    $$
+        q_1 = \forall x_1(R_1^1(x_1)\to R_1^2(x_1, x_2))\to (\exists x_4 R_1^1(x_4)\to \exists x_3R_1^3(x_2, x_3))
+    $$
+
+    由 $q_1$ 出发, 得到以下的等价公式:
+
+    $q_2=\exists x_1 ((R_1^1(x_1)\to R_1^2(x_1, x_2))\to (\exists x_4 R_1^1(x_4)\to \exists x_3R_1^3(x_2, x_3)))$\hfill (由命题 2-$2^\circ$)
+
+    $q_3=\exists x_1 ((R_1^1(x_1)\to R_1^2(x_1, x_2))\to \exists x_3(\exists x_4 R_1^1(x_4)\to R_1^3(x_2, x_3)))$\hfill (由命题 2-$2^\circ$)
+
+    $q_4=\exists x_1\exists x_3((R_1^1(x_1)\to R_1^2(x_1, x_2))\to(\exists x_4 R_1^1(x_4)\to R_1^3(x_2, x_3)))$\hfill (由命题 2-$2^\circ$)
+
+    $q_5=\exists x_1\exists x_3((R_1^1(x_1)\to R_1^2(x_1, x_2))\to\forall x_4(R_1^1(x_4)\to R_1^3(x_2, x_3)))$\hfill (由命题 2-$2^\circ$)
+
+    $q_6=\exists x_1\exists x_3\forall x_4((R_1^1(x_1)\to R_1^2(x_1, x_2))\to(R_1^1(x_4)\to R_1^3(x_2, x_3)))$\hfill (由命题 2-$2^\circ$)
+
+    $q_6$ 即为所求的前束范式, 即
+    $$
+        \exists x_1\exists x_3\forall x_4((R_1^1(x_1)\to R_1^2(x_1, x_2))\to(R_1^1(x_4)\to R_1^3(x_2, x_3)))
+    $$
+
+    \vspace{1em}
+    \ref{16.3.4} 适当改变题中公式的约束变元得到等价的 $q_1$:
+    $$
+        q_1 = \exists x_4 R_1^2(x_4, x_2)\to (R_1^1(x_1)\to \lnot \exists x_3 R_1^2 (x_1, x_3))
+    $$
+
+    由 $q_1$ 出发, 得到以下的等价公式:
+
+    $q_2=\forall x_4(R_1^2(x_4, x_2)\to (R_1^1(x_1)\to \lnot \exists x_3 R_1^2(x_1, x_3)))$\hfill (由命题 2-$2^\circ$)
+
+    $q_3=\forall x_4(R_1^2(x_4, x_2)\to (R_1^1(x_1)\to \forall x_3 \lnot R_1^2(x_1, x_3)))$\hfill (由命题 2-$3^\circ$)
+
+    $q_4=\forall x_4(R_1^2(x_4, x_2)\to \forall x_3 (R_1^1(x_1)\to \lnot R_1^2(x_1, x_3)))$\hfill (由命题 2-$2^\circ$)
+
+    $q_5=\forall x_4\forall x_3 (R_1^2(x_4, x_2)\to (R_1^1(x_1)\to \lnot R_1^2(x_1, x_3)))$\hfill (由命题 2-$2^\circ$)
+
+    $q_5$ 即为所求的前束范式, 利用 $\lnot(p\land (q\land r)) = p\to \lnot (q\land r)=p\to (q\to\lnot r)$, 得到所求的前束范式
+    $$
+        \forall x_4\forall x_3 \lnot(R_1^2(x_4, x_2)\land R_1^1(x_1)\land R_1^2(x_1, x_3))
+    $$
+\end{solution}
+\problemnumber{17}
+\begin{problem}
+2. 设 $\varphi, \psi \in \Phi_M$. 求证: 若对项 $t$ 中的任一变元 $x$ 都有 $\varphi(x)=\psi(x)$, 则 $\varphi(t)=\psi(t)$.
+\end{problem}
+
+\begin{solution}
+    以 $t$ 中出现的个体常元, 个体变元和运算为基础构建项集 $T$, 对 $t$ 在 $T$ 中的层次数 $k$ 进行归纳:
+    \begin{enumerate}[label = $\arabic*^\circ$, itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item 当 $k=0$ 时, $t=c_i$ 或 $t=x_i$, 因为 $\varphi(c_i)=\psi(c_i)=\overline{c_i}$ 和 $\varphi(x_i)=\psi(x_i)$, 所以 $\varphi(t)=\psi(t)$.
+        \item 当 $k>0$ 时, 设 $t = f_i^n(t_1, \cdots, t_n)$, 其中 $t_1, \cdots, t_n$ 是较低层次的项. 由归纳假设, 有
+              $$
+                  \varphi(t_1) = \psi(t_1), \cdots, \varphi(t_n) = \psi(t_n)
+              $$
+              因此
+              $$
+                  \varphi(t) = \varphi(f_i^n(t_1, \cdots, t_n)) = \overline{f_i^n}(\varphi(t_1), \cdots, \varphi(t_n)) = \overline{f_i^n}(\psi(t_1), \cdots, \psi(t_n)) = \psi(f_i^n(t_1, \cdots, t_n)) = \psi(t)
+              $$
+    \end{enumerate}
+    由项集 $T$ 的分层性及 $1^\circ$ 和 $2^\circ$ 归纳可知题中命题成立.
+\end{solution}
+
+\problemnumber{17}
+\begin{problem}
+3. 设 $t\in T$, $\varphi$ 和 $\varphi'\in \Phi_M$, $\varphi'$ 是 $\varphi$ 的 $x$ 变通, 且 $\varphi'(x)=\varphi(t)$. 用项 $t$ 代换项 $u(x)$ 中 $x$ 所得的项记为 $u(t)$. 求证 $\varphi'(u(x)) = \varphi(u(t))$.
+\end{problem}
+
+\begin{solution}
+    对 $u(x)$ 在项集 $T$ 中的层次数 $k$ 进行归纳:
+    \begin{enumerate}[label = $\arabic*^\circ$, itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item 当 $k=0$ 时, 有三种可能的情况:
+              \begin{enumerate}[label = \arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+                  \item $u(x) = c_i$, 此时 $u(t) = c_i$, 有 $\varphi'(u(x)) = \varphi'(c_i) = \overline{c_i} = \varphi(c_i) = \varphi(u(t))$.
+                  \item $u(x) = x$, 此时 $u(t) = t$, 由已知条件有 $\varphi'(u(x)) = \varphi'(x) = \varphi(t) = \varphi(u(t))$.
+                  \item $u(x) = y \neq x$, 此时 $u(t) = y$, 因为 $\varphi'$ 是 $\varphi$ 的 $x$ 变通, 所以有 $\varphi'(u(x)) = \varphi'(y) = \varphi(y) = \varphi(u(t))$
+              \end{enumerate}
+        \item 当 $k > 0$ 时, 设 $u(x) = f_i^n(t_1(x), \cdots, t_n(x))$, 其中 $t_1(x), \cdots, t_n(x)$ 是较低层次的项. 这时 $u(t) = f_i^n(t_1(t), \cdots, t_n(t))$. 由归纳假设, 有
+              $$
+                  \varphi'(t_1(x)) = \varphi'(t_1(t)), \cdots, \varphi'(t_n(x)) = \varphi'(t_n(t))
+              $$
+              因此
+              \begin{align*}
+                  \varphi'(u(x)) & = \varphi'(f_i^n(t_1(x), \cdots, t_n(x))) = \overline{f_i^n}(\varphi'(t_1(x)), \cdots, \varphi'(t_n(x)))              \\
+                                 & = \overline{f_i^n}(\varphi(t_1(t)), \cdots, \varphi(t_n(t))) = \varphi(f_i^n(t_1(t), \cdots, t_n(t))) = \varphi(u(t))
+              \end{align*}
+    \end{enumerate}
+    由项集 $T$ 的分层性及 $1^\circ$ 和 $2^\circ$ 归纳可知题中命题成立.
+\end{solution}
+
+\problemnumber{18}
+\begin{problem}
+1. 设 $K$ 中的 $C = \{c_1\}$, $F=\{f_1^1, f_1^2, f_2^2\}$, $R=\{R_1^2\}$. 它的一个解释域是 $\mathbb{N}=\{0, 1, 2, \cdots\}$, $\overline{c_1}=0$, $\overline{f_1^1}$ 是后继函数, $\overline{f_1^2}$ 是 $+$, $\overline{f_2^2}$ 是 $\times$, $\overline{R_1^2}$ 是 $=$. 试对以下公式分别找出 $\varphi, \psi\in\Phi_{\mathbb{N}}$, 使 $\lvert p\rvert(\varphi) = 1$, $\lvert p\rvert(\psi) = 0$, 其中 $p$ 为:
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{18.1.3} $\lnot R_1^2(f_2^2(x_1, x_2), f_2^2(x_2, x_3))$.
+    \part \label{18.1.4} $\forall x_1 R_1^2(f_2^2(x_1, x_2), x_3)$.
+    \part \label{18.1.5} $\forall x_1 R_1^2(f_2^2(x_1, c_1), x_1)\to R_1^2(x_1, x_2)$.
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{18.1.3} 取 $\varphi$ 满足 $\varphi(x_1)\neq\varphi(x_3)$ 且 $\varphi(x_2) = 0$ 即可, 比如 $\varphi(x_1) = 1, \varphi(x_2) = 1, \varphi(x_3) = 2$.
+
+    取 $\psi$ 满足 $\psi(x_1)=\psi(x_3)$ 或 $\psi(x_2) = 0$ 即可, 比如 $\psi(x_1) = 1$, $\psi(x_2) = 0$, $\psi(x_3) = 1$.
+
+    \ref{18.1.4} 取 $\varphi$ 满足 $\varphi(x_2) = \varphi(x_3) = 0$ 即可, 比如 $\varphi(x_1) = \varphi(x_2) = \varphi(x_3) = 0$.
+
+    取 $\psi$ 满足 $\psi(x_2)$ 和 $\psi(x_3)$ 不同时为 0 即可, 比如 $\psi(x_1) = 0, \psi(x_2) = 1, \psi(x_3) = 1$.
+
+    \ref{18.1.5} 公式在该解释域中恒真, 所以对所有的 $\varphi$ 都有 $\lvert p\rvert(\varphi) = 1$, 比如 $\varphi(x_1) = \varphi(x_2) = 0$.
+
+    不存在 $\psi\in\Phi_{\mathbb{N}}$ 使得 $\lvert p\rvert(\psi) = 0$.
+\end{solution}
+
+\problemnumber{18}
+\begin{problem}
+2. 已知 $K$ 中 $C=\{c_1\}$, $F=\{f_1^2\}$, $R=\{R_1^2\}$, 还已知 $K$ 的解释域 $\mathbb{Z}$ (整数集), $\overline{c_1} = 0$, $\overline{f_1^2}$ 是减法, $\overline{R_1^2}$ 是 ``<''. 试给出 $\varphi, \psi\in\Phi_{\mathbb{Z}}$, 使 $\lvert p\rvert(\varphi) = 1$, $\lvert p\rvert(\psi) = 0$, 其中 $p$ 为:
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{19.1.3} $\lnot R_1^2(x_1, f_1^2(x_1, f_1^2(x_1, x_2)))$.
+    \part \label{19.1.4} $\forall x_1 R_1^2(f_1^2(x_1, x_2), x_3)$.
+    \part \label{19.1.5} $\forall x_1 R_1^2(f_1^2(x_1, c_1), x_1)\to R_1^2(x_1, x_2)$.
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{19.1.3} 取 $\varphi$ 满足 $\varphi(x_1)\geq \varphi(x_2)$ 即可, 比如 $\varphi(x_1) = \varphi(x_2) = 0$.
+
+    取 $\psi$ 满足 $\psi(x_1) < \psi(x_2)$ 即可, 比如 $\psi(x_1) = 1, \psi(x_2) = 2$.
+
+    \ref{19.1.4} 公式在该解释域中恒假, 所以不存在 $\varphi\in\Phi_\mathbb{Z}$ 使得 $\lvert p\rvert(\varphi) = 1$.
+
+    对所有的 $\psi$ 都有 $\lvert p\rvert(\psi) = 0$, 比如 $\psi(x_1) = \psi(x_2) = \psi(x_3) = 0$.
+
+    \ref{19.1.5} 公式在该解释域中恒真, 所以对所有的 $\varphi$ 都有 $\lvert p\rvert(\varphi) = 1$, 比如 $\varphi(x_1) = \varphi(x_2) = 0$.
+
+    不存在 $\psi\in\Phi_{\mathbb{N}}$ 使得 $\lvert p\rvert(\psi) = 0$.
+\end{solution}
+
+\problemnumber{20}
+\begin{problem}
+2. 设 $K$ 中 $C = \{c_1\}$, $F=\{f_1^2\}$, $R=\{R_1^2\}$, 还已知 $K$ 的解释域 $\mathbb{Z}$ (整数集), $\overline{c_1} = 0$, $\overline{f_1^2}$ 是减法, $\overline{R_1^2}$ 是 ``<''. 求 $\lvert p\rvert_\mathbb{Z}$, 其中 $p$ 为:
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{20.2.3} $\forall x_1\forall x_2\forall x_3 (R_1^2(x_1, x_2)\to R_1^2(f_1^2(x_1, x_3), f_1^2(x_2, x_3)))$.
+    \part \label{20.2.4} $\forall x_1\exists x_2 R_1^2 (x_1, f_1^2(f_1^2(x_1, x_2), x_2))$.
+\end{parts}
+\end{problem}
+\begin{solution}
+    \ref{20.2.3} 因为对任意的 $\varphi\in \Phi_\mathbb{Z}$, $\varphi(x_1) < \varphi(x_2)$ 和 $\varphi(x_1) - \varphi(x_3) < \varphi(x_2) - \varphi(x_3)$ 同为真或同为假, 就有
+    $\lvert R_1^2(x_1, x_2)\to R_1^2(f_1^2(x_1, x_3), f_1^2(x_2, x_3))\rvert(\varphi) = 1$,
+    得到 $\lvert R_1^2(x_1, x_2)\to R_1^2(f_1^2(x_1, x_3), f_1^2(x_2, x_3))\rvert_\mathbb{Z} = 1$, 所以 $\lvert p\rvert_\mathbb{Z} = 1$.
+
+    \ref{20.2.4} 因为对任意的 $\varphi\in \Phi_\mathbb{Z}$, 总是存在 $\varphi$ 的 $x_2$ 变通 $\varphi': \varphi'(x_2) < 0$ 使得
+    $$
+        \varphi'(x_1) < (\varphi'(x_1) - \varphi'(x_2)) - \varphi'(x_2) = \varphi'(x_1) - 2\varphi'(x_2)
+    $$
+    即 $\lvert \exists x_2 R_1^2 (x_1, f_1^2(f_1^2(x_1, x_2), x_2))\rvert(\varphi) = 1$, 得到
+    $\lvert \exists x_2 R_1^2 (x_1, f_1^2(f_1^2(x_1, x_2), x_2))\rvert_\mathbb{Z} = 1$, 所以 $\lvert p\rvert_\mathbb{Z} = 1$.
+\end{solution}
+\problemnumber{20}
+\begin{problem}
+3. 证明 $K$ 中以下公式都不是有效式.
+\begin{parts}[n]
+    \setcounter{enumi}{2}
+    \part \label{20.3.3} $\forall x_1 (\lnot R_1^1(x_1)\to \lnot R_1^1(c_1))$
+    \part \label{20.3.4} $\forall x_1 R_1^2(x_1, x_1)\to \exists x_2 \forall x_1 R_1^2(x_1, x_2)$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{20.3.3} 取 $M = \mathbb{N}$, $\overline{c_1} = 0$, $\overline{R_1^1}$ 为 ``$=0$'', 则 $\lvert\lnot R_1^1(c_1)\rvert_M = 0$,  对于任一项解释 $\varphi\in\Phi_M$, 存在 $\varphi$ 的 $x_1$ 变通 $\varphi' : \varphi'(x_1)\neq 0$ 使得 $\lvert\lnot R_1^1(x_1)\to \lnot R_1^1(c_1)\rvert(\varphi') = 0$, 所以
+    $$
+        \lvert\forall x_1 (\lnot R_1^1(x_1)\to \lnot R_1^1(c_1))\rvert_M = 0
+    $$
+    所以公式不是有效式.
+
+    \ref{20.3.4} 取 $M = \mathbb{N}$, $\overline{R_1^2}$ 为 ``$=$'', 则 $\lvert R_1^2(x_1, x_1)\rvert_M = 1\ \Rightarrow\ \lvert\forall x_1 R_1^2(x_1, x_1)\rvert_M = 1$, 对任一项解释 $\varphi\in\Phi_M$ 的任一 $x_2$ 变通 $\varphi'$, 都存在 $\varphi'$ 的 $x_1$ 变通 $\varphi'': \varphi''(x_1)\neq\varphi''(x_2)$ 使得 $\lvert R_1^2(x_1, x_2)\rvert(\varphi'') = 0$, 有 $\lvert\forall x_1 R_1^2(x_1, x_2)\rvert(\varphi') = 0$, 所以 $\lvert\exists x_2\forall x_1 R_1^2(x_1, x_2)\rvert_M = 0$, 因此
+    $$
+        \lvert\forall x_1 R_1^2(x_1, x_1)\to \exists x_2 \forall x_1 R_1^2(x_1, x_2)\rvert_M = 0
+    $$
+    所以公式不是有效式.
+\end{solution}
+
+\problemnumber{20}
+\begin{problem}
+4. 在 $K$ 中增加新的个体常元 $b_1, b_2, \cdots$, 其他不变, 得到新的扩大的谓词演算 $K^+$. 设 $M$ 是 $K^+$ 的解释域 (也同时可看成是 $K$ 的解释域). 已知 $\varphi^+$ 和 $\varphi$ 分别是 $K^+$ 和 $K$ 的项解释, 且满足 $\varphi^+(x_i)=\varphi(x_i), i = 1, 2, \cdots$. 求证:
+\begin{parts}[r]
+    \part \label{20.4.1} 对 $K$ 中的任何项 $t$, $\varphi^+(t)=\varphi(t)$
+    \part \label{20.4.2} 对 $K$ 中的任何公式 $p$,  $\lvert p\rvert(\varphi^+)=\lvert p\rvert(\varphi)$
+\end{parts}
+\end{problem}
+
+\begin{solution}
+    \ref{20.4.1} 对 $t$ 在项集 $T$ 中的层次数 $k$ 进行归纳:
+    \begin{enumerate}[label = $\arabic*^\circ$, itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item 当 $k = 0$ 时, $t = c_i$ 或 $t = x_i$, 因为 $\varphi^+(c_i) = \overline{c_i} = \varphi(c_i)$, $\varphi^+(x_i)=\varphi(x_i)$, 所以 $\varphi^+(t) = \varphi(t)$.
+        \item 当 $k > 0$ 时, 设 $t = f_i^n(t_1, \cdots, t_n)$, 其中 $t_1, \cdots, t_n$ 是较低层次的项. 由归纳假设, 有
+              $$
+                  \varphi^+(t_1) = \varphi(t_1), \cdots, \varphi^+(t_n) = \varphi(t_n)
+              $$
+              因此
+              \begin{align*}
+                  \varphi^+(t) & = \varphi^+(f_i^n(t_1, \cdots, t_n)) = \overline{f_i^n}(\varphi^+(t_1), \cdots, \varphi^+(t_n))        \\
+                               & = \overline{f_i^n}(\varphi(t_1), \cdots, \varphi(t_n)) = \varphi(f_i^n(t_1, \cdots, t_n)) = \varphi(t)
+              \end{align*}
+    \end{enumerate}
+    由项集 $T$ 的分层性及 $1^\circ$ 和 $2^\circ$ 归纳可知题中命题成立.
+    \\
+    \ref{20.4.2} 对 $p$ 在公式集 $K(Y)$ 中的层次数 $k$ 进行归纳:
+    \begin{enumerate}[label = $\arabic*^\circ$, itemsep = 0em, topsep = .5em, partopsep = .5em]
+        \item 当 $k = 0$ 时, 设 $p = R_i^n(t_1, \cdots, t_n)$, 由 \ref{20.4.1} 可知
+              $$
+                  \varphi^+(t_1) = \varphi(t_1), \cdots, \varphi^+(t_n) = \varphi(t_n)
+              $$
+              则有
+              $$
+                  \lvert\varphi^+\rvert(p) = 1\ \Leftrightarrow\ (\varphi^+(t_1), \cdots, \varphi^+(t_n))\in R_i^n\ \Leftrightarrow\ (\varphi(t_1), \cdots, \varphi(t_n))\in R_i^n\ \Leftrightarrow\ \lvert p\rvert(\varphi) = 1
+              $$
+        \item 当 $k > 0$ 时, 有如下三种可能的情况, 其中 $q$, $r$ 为较低层次的公式.
+              \begin{enumerate}[label = (\arabic*), itemsep = 0em, topsep = .5em, partopsep = .5em]
+                  \item $p = q\to r$. 有 $\lvert p\rvert(\varphi^+) = \lvert q\rvert(\varphi^+)\to \lvert r\rvert(\varphi^+) =\lvert q\rvert(\varphi)\to \lvert r\rvert(\varphi) = \lvert p\rvert(\varphi)$
+                  \item $p = \lnot q$. 有 $\lvert p\rvert(\varphi^+) = \lnot \lvert q\rvert(\varphi^+) = \lnot \lvert q\rvert(\varphi) = \lvert p\rvert(\varphi)$
+                  \item $p = \forall x_i q$. 若 $\varphi'$ 是 $\varphi$ 的任一 $x_i$ 变通, 且 $\varphi^{+'}$ 是 $K^+$ 的和 $\varphi'$ 有相同变元指派的项解释, 则 $\varphi^{+'}$ 是 $\varphi^+$ 的 $x_i$ 变通. 反之, 若 $\varphi^{+'}$ 是 $\varphi^+$ 的任一 $x_i$ 变通, 且 $\varphi'$ 是 $K$ 的和 $\varphi^{+'}$ 有相同变元指派的项解释, 则 $\varphi'$ 是 $\varphi$ 的 $x_i$ 变通. 于是有
+                        \begin{align*}
+                            \lvert p\rvert(\varphi^+) = 1\  & \Leftrightarrow\ \text{对任一 $\varphi^+$ 的 $x_i$ 变通 $\varphi^{+'}$, $\lvert q\rvert(\varphi^{+'}) = 1$}                                                                      \\
+                                                            & \Leftrightarrow\ \text{对任一 $\varphi$ 的 $x_i$ 变通 $\varphi'$, $\lvert q\rvert(\varphi') = 1$}\ \Leftrightarrow\ \lvert x_i q\rvert(\varphi) = 1, \lvert p\rvert(\varphi) = 1
+                        \end{align*}
+              \end{enumerate}
+    \end{enumerate}
+    由公式集 $K(Y)$ 的分层性及 $1^\circ$ 和 $2^\circ$ 归纳可知题中命题成立.
+\end{solution}
+
+\problemnumber{21}
+\begin{problem}
+2. $\vdash \exists x_2 R_1^2(x_1, x_2)\to \exists x_2 R_1^2(x_2, x_2)$ 是否成立?
+\end{problem}
+
+\begin{solution}
+    不成立. 假设命题成立, 则有 $\vDash \exists x_2 R_1^2(x_1, x_2)\to \exists x_2 R_1^2(x_2, x_2)$.
+
+    取 $M = \mathbb{N}$, $\overline{R_1^2}$ 为 ``$\neq$'', 则 $\lvert R_1^2(x_2, x_2)\rvert_M = 0\ \Rightarrow\ \lvert\exists x_2 R_1^2(x_2, x_2)\rvert_M = 0$. 而对任一项解释 $\varphi\in\Phi_M$, 总存在 $\varphi$ 的 $x_2$ 变通 $\varphi': \varphi'(x_2)\neq\varphi'(x_1)$ 使得 $\lvert R_1^2(x_1, x_2)\rvert(\varphi') = 1$, 所以 $\lvert\exists x_2 R_1^2(x_1, x_2)\rvert_M = 1$. 于是得到
+    $$
+        \lvert\exists x_2 R_1^2(x_1, x_2)\to \exists x_2 R_1^2(x_2, x_2)\rvert_M = 0
+    $$
+    与假设矛盾, 所以命题不成立.
+\end{solution}
+\end{document}
