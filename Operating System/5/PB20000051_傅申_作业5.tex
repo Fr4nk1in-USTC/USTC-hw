@@ -1,0 +1,236 @@
+\documentclass[11pt]{homework}
+
+% TODO: replace these with your information
+\newcommand{\hwname}{傅申}
+\newcommand{\hwid}{PB20000051}
+\newcommand{\hwtype}{操作系统作业}
+\newcommand{\hwnum}{5}
+\usepackage{calc}
+\usepackage{enumitem}
+
+\begin{document}
+\setlength{\intextsep}{0em}
+\setlength{\belowdisplayskip}{.25em} \setlength{\belowdisplayshortskip}{.25em}
+\setlength{\abovedisplayskip}{.25em} \setlength{\abovedisplayshortskip}{.25em}
+\maketitle
+% Your content
+\question
+\begin{alphaparts}
+    \questionpart Suppose block $A_1$ will be updated
+    \begin{description}[
+            leftmargin = !,
+            labelwidth = \widthof{\bfseries RAID-5},
+            topsep = 0pt,
+            itemsep = 0pt,
+            parsep = 0pt
+        ]
+        \item[RAID-5] For RMW, block $A_1$ and $A_p$ will be updated, \underline{2 blocks} will be
+            accessed.
+
+            But for RWM, in addition to $A_1$ and $A_p$, block $A_2$, $A_3$ and $A_4$ will
+            be read to calculate the new parity, so \underline{5 blocks} will be accessed.
+        \item[RAID-6] For RMW, block $A_1$, $A_p$ and $A_q$ will be updated, \underline{3 blocks}
+            will be accessed.
+
+            But for RWM, in addition to $A_1$, $A_p$ and $A_q$, block $A_2$ and $A_3$ will
+            be read to calculate the new parity, so \underline{5 blocks} will be accessed.
+    \end{description}
+    \questionpart \hfill
+    \begin{description}[
+            leftmargin = !,
+            labelwidth = \widthof{\bfseries RAID-5},
+            topsep = 0pt,
+            itemsep = 0pt,
+            parsep = 0pt
+        ]
+        \item[RAID-5] Suppose $A_1$, $A_2$, $A_3$, $A_4$, $B_1$, $B_2$ and $B_3$ will be updated.
+
+            For RMW, since the update of parity needs the old data, every data block update would
+            cause the parity block to be updated, thus, $2\times 7$ = \underline{14 blocks} will be
+            accessed.
+
+            But for RRW, the update of parity only needs the new data, so the parity block update
+            can be done after all the data block updates. In this case, $B_4$ will be read to
+            calculate the new parity, thus, \underline{10 blocks} (7 updated block + $B_4$ + 2
+            parity block) will be accessed.
+        \item[RAID-6] Suppose $A_1$, $A_2$, $A_3$, $B_1$, $B_2$, $B_3$ and $C_1$ will be updated.
+
+            For RMW, since the update of parity needs the old data, every data block update would
+            cause the 2 parity blocks to be updated, thus, $3\times 7$ = \underline{21 blocks} will
+            be accessed.
+
+            But for RRW, the update of parity only needs the new data, so the parity block update
+            can be done after all the data block updates. In this case, $C_1$ and $C_2$ will be read
+            to calculate the new $C_p$, thus, \underline{15 blocks} (7 updated block + $C_2$ + $C_3$
+            + 6 parity block) will be accessed.
+    \end{description}
+\end{alphaparts}
+\question
+\begin{description}[
+        leftmargin = !,
+        labelwidth = \widthof{\bfseries C-SCAN},
+        topsep = 0pt,
+        itemsep = 0pt,
+        parsep = 0pt
+    ]
+    \item[FCFS] Order: 2150, 2069, 1212, 2296, 2800, 544, 1618, 356, 1523, 4965, 3681;
+
+        Total distance: 13011 cylinders;
+
+    \item[SSTF] Order: 2150, 2069, 2296, 2800, 3681, 4965, 1618, 1523, 1212, 544, 356;
+
+        Total distance: 7586 cylinders;
+
+    \item[SCAN] Order: 2150, 2296, 2800, 3681, 4965, (4999), 2069, 1618, 1523, 1212, 544, 356;
+
+        Total distance: 7492 cylinders;
+
+    \item[LOOK] Order: 2150,2296, 2800, 3681, 4965, 2069, 1618, 1523, 1212, 544, 356;
+
+        Total distance: 7424 cylinders;
+
+    \item[C-SCAN] Order: 2150, 2296, 2800, 3681, 4965, (4999, 0), 356, 544, 1212, 1523, 1618, 2069;
+
+        Total distance: 9917 cylinders;
+
+    \item[C-LOOK] Order: 2150, 2296, 2800, 3681, 4965, 356, 544, 1212, 1523, 1618, 2069;
+
+        Total distance: 9137 cylinders;
+\end{description}
+\question
+Most of file operations involve searching the directory for locating the file. To avoid this
+constant searching, many system require that an \texttt{open()} system call be made before a file
+is first used. The operating system keeps a table, called the \textbf{open-file table}, containing
+information about all open files. When a file operation is requested, the file is specified via an
+index into this table, so no searching is required. When the file is no longer being used, it is
+closed by the process, and the operating system removes its entry from the open-file table,
+potentially releasing locks.
+
+With the open-file table, the open files is indexed in memory, easily accessible by the process.
+We can get the open file from the open-file table rather than directory traversal for each access.
+Considering that we usually have a sequential operation to the files, the open-file table can
+improve performance and reduce I/O.
+
+\question
+\texttt{755} stands for \texttt{rwxr-xr-x}, meaning
+\begin{itemize}
+    \item The file's owner can read, write and execute the file.
+    \item The file's group and others can read and execute the file.
+\end{itemize}
+
+\question
+Suppose we need to write a new large file to the file system that we have enough space for. But
+there is no hole big enough to fit the new file. The problem called external fragmentation occurs.
+To solve this problem, we need the very expensive defragmentation process to reorganize the file system, moving
+files together to make space for the new file.
+
+Another problem is that the file may not have enough space to grow. To solve this problem, we need
+to relocate the file to a new location that has enough space.
+
+\question
+The advantage:
+\begin{itemize}
+    \item External fragmentation problem is solved.
+    \item Files can grow and shrink freely.
+    \item Free block management is easy to implement.
+    \item The random access problem can be eased by keeping a cached version of FAT inside the kernel.
+\end{itemize}
+
+The major problem is that the entire FAT has to be stored in memory so that the performance of
+looking up of an arbitrary block is satisfactory.
+
+\question
+The read order is:
+\begin{enumerate}
+    \item Read the root directory.
+    \item Read the index node of \texttt{/a}.
+    \item Read the disk block of \texttt{/a}.
+    \item Read the index node of \texttt{/a/b}.
+    \item Read the disk block of \texttt{/a/b}.
+    \item Read the index node of \texttt{/a/b/c}.
+    \item Read the disk block of \texttt{/a/b/c}.
+\end{enumerate}
+\begin{alphaparts}
+    \questionpart All read operation will invoke an I/O operation, thus, 7 I/O operation is required.
+    \questionpart The inodes are in the memory, so reading them won't cause I/O operation. 4 I/O
+    operation is required.
+\end{alphaparts}
+\question
+The block size is 8 KB, i.e., $2^{13}$ bytes. A pointer requires $2^2$ bytes. The maximum file size
+would be
+$$
+    \begin{aligned}
+                                                       & \underbrace{12\times 2^{13}}_{\text{Direct Block}} & +                                            & \underbrace{1\times 2^{13-2}
+        \times 2^{13}}_{\text{Indirect Block}}         & +                                                  & \underbrace{1\times 2^{13-2} \times 2^{13-2}
+        \times 2^{13}}_{\text{Double Indirect Blocks}} & +                                                  & \underbrace{1\times 2^{13-2}
+        \times 2^{13-2} \times 2^{13-2}\times 2^{12}}_{\text{Triple Indirect Blocks}}                                                                                                                               \\
+        =                                              & 12 \times 2^{13}                                   & +                                            & 2^{24}                       & + & 2^{35} & + & 2^{46}
+    \end{aligned}
+$$
+The result is 70,403,120,791,552 bytes, i.e., approximately 64 TB.
+
+\question
+A hard link is a directory entry pointing to an existing file. When it is created, there is no new
+file content created, and the link count of the target file will be incremented. It's like a new
+pathname of the target file is created.
+
+A symbolic link is a file (shortcut) storing the pathname of the target file. When it is created,
+there is a new inode created, and the link count of the target file won't change.
+
+\question
+The difference between data journaling and metadata journaling is that in data journaling, the data
+will be written to disk twice, once to the journal and once to the on-disk location, but in
+metadata journaling, the data will be written to disk only once, to the on-disk location only.
+
+The sequence for data journaling is:
+\begin{enumerate}
+    \item Journal write: Write the contents of the transaction (including TxB, metadata, and data)
+    \item Journal commit: metadata, and data (including TxE)
+    \item Checkpoint: Write the contents of the update to their on-disk locations
+    \item Free: free the space of log
+\end{enumerate}
+
+The sequence for metadata journaling is:
+\begin{enumerate}
+    \item Data write \& Journal metadata write: Write the contents of the transaction (including TxB
+          and data) and write the contens of the on-disk locations. Two write can be issued in parallel.
+    \item Journal commit: Write TxE
+    \item Checkpoint: Write the contents of the update to their on-disk locations
+    \item Free: free the space of log
+\end{enumerate}
+
+\question
+Polling, Interrupt and Direct Memory Access (DMA).
+
+\question
+\begin{itemize}
+    \item I/O scheduling
+          \begin{itemize}
+              \item Maintain a per-device queue
+              \item Re-ordering the requests
+              \item Average waiting time, fairness, etc.
+          \end{itemize}
+    \item Buffering - store data in memory while transferring between devices
+          \begin{itemize}
+              \item To cope with device speed mismatch
+              \item To cope with device transfer size mismatch
+              \item To maintain ``copy semantics'' (e.g., copy from application's buffer to kernel buffer)
+          \end{itemize}
+    \item Caching - faster device holding copy of data
+          \begin{itemize}
+              \item Always just a copy
+              \item Key to performance
+              \item Sometimes combined with buffering
+          \end{itemize}
+    \item Spooling - hold output for a device
+
+          If device can serve only one request at a time, e.g., Printing
+
+    \item Error handling and I/O protection
+          \begin{itemize}
+              \item OS can recover from disk read error, device unavailable, transient write failures
+              \item All I/O instructions defined to be privileged
+          \end{itemize}
+    \item Power management, etc.
+\end{itemize}
+\end{document}
