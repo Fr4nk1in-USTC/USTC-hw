@@ -40,27 +40,29 @@
     \end{equation}
     $X(t)$ 的方差为
     \begin{equation}
-        \mathrm{Var}[X(t)] = E[X^2(t)] = \frac{1}{2\pi}\int_0^{2\pi}\sin^2 ut\mathrm{d}u = \frac{1}{2t}
+        \mathrm{Var}[X(t)]=E[X^2(t)]=\frac{1}{2\pi}\int_0^{2\pi}\sin^2 ut\mathrm{d}u=\frac{1}{2}-\frac{\sin(4\pi t)}{8\pi t}
     \end{equation}
 
-    \ref{1.a} 因为 $X(t)$ 的方差函数不是常数, 所以其不是严平稳过程. 而 $X(t)$ 的协方差函数为
+    \ref{1.a} $X(t)$ 的协方差函数为
     \begin{equation} \label{eq:1.3}
         \begin{aligned}
             R_X(h) & = R_X(t, t+h) = E[X(t+h)X(t)]                                                                                                           \\
                    & = \frac{1}{2\pi}\int_0^{2\pi} \sin u(t + h) \sin ut\mathrm{d} u                                                                         \\
                    & = \frac{1}{4\pi}\int_0^{2\pi} [\cos u(2t+h) - \cos uh]\mathrm{d} u                                                                      \\
                    & = \begin{cases}
-                           \frac{1}{2}                                                                                      & h = 0   \\
-                           \displaystyle\frac{1}{4\pi}\left[\frac{1}{2t + h}\sin (4t+2h)\pi - \frac{1}{h}\sin 2h\pi\right], & h\neq 0
+                           \displaystyle\frac{1}{2}                                                                         & h = 0   \\
+                           \displaystyle\frac{1}{4\pi}\left[\frac{1}{h}\sin 2h\pi - \frac{1}{2t + h}\sin (4t+2h)\pi\right], & h\neq 0
                        \end{cases}
         \end{aligned}
     \end{equation}
     因为 $t$, $h$ 都是整数, 所以 $\sin (4t+2h)\pi = 0$, $\sin 2h\pi = 0$, 就有 $R_X(h) = 0$, 所以
     $\{X(t), t = 1, 2, \cdots\}$ 是宽平稳过程.
 
+    考虑 $F_t(x)=P\{\sin Ut\le x\}$, 显然 $F_{t+h}=P\{\sin U(t+h)\le x\}$ 与其不一定相同, 所以其不是严平稳过程。 
+
     \ref{1.b} 因为 $X(t)$ 的方差函数不是常数, 所以其不是严平稳过程. 而由式 \ref{eq:1.3} 可知, 当 $h\neq 0$ 时,
     \begin{equation}
-        R_X(t+h, t) = \frac{1}{4\pi}\left[\frac{1}{2t + h}\sin (4t+2h)\pi - \frac{1}{h}\sin 2h\pi\right]
+        R_X(t+h, t) = \frac{1}{4\pi}\left[\frac{1}{h}\sin 2h\pi - \frac{1}{2t + h}\sin (4t+2h)\pi\right]
     \end{equation}
     因为 $t\in [0, \infty)$, 所以上面的式子与 $t$ 有关, $\{X(t), t \geq 0\}$ 不是宽平稳过程.
 \end{solution}
